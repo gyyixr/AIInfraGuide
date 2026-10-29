@@ -6,4 +6,7 @@ dist/
 .env.*
 *.log
 public/pagefind/
+.local/
+__pycache__/
+labs/llm_rl/results/latest.json
 docs/guides/课程资料

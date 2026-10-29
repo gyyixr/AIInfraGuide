@@ -38,7 +38,7 @@ AIInfraGuide 正是为了解决这些问题而创建的——一个**开源、�
 
 ## 📖 AIInfraGuide 内容体系
 
-知识库围绕 **4 大学习模块 + 2 个辅助板块 + 面试宝典**，覆盖 AI Infra 工程师需要掌握的关键技术栈：
+知识库围绕 **5 大学习模块 + 2 个辅助板块 + 面试宝典**，覆盖 AI Infra 工程师需要掌握的关键技术栈：
 
 | 板块 | 涵盖内容 |
 |---|---|
@@ -47,6 +47,7 @@ AIInfraGuide 正是为了解决这些问题而创建的——一个**开源、�
 | **模块二：CUDA 编程与算子优化** | CUDA 编程入门、性能优化基础、Reduce/GEMM/Softmax/Attention 经典算子实现、AI 编译器、性能分析工具链 |
 | **模块三：分布式训练** | 分布式训练总论、优化器、数据并行(DP/DDP/FSDP)、ZeRO 系列、张量并行与序列并行、流水线并行、3D 并行、训练框架实战 |
 | **模块四：推理优化** | LLM 推理基础、推理引擎核心技术、主流推理框架(vLLM 等)、量化、Speculative Decoding、PD 解耦架构、性能分析与 Benchmark |
+| **模块五：LLM RL 后训练** | PPO、GAE、GRPO、DPO、奖励工程、多轮 Agent、在线蒸馏、RL 框架、训练推理协同、数值实验 |
 | **性能分析** | Nsight Systems/Compute、Roofline 模型、Profiling 实战 |
 | **面试宝典** | 目前共收录 180+ 场面试真题，覆盖 60+ 家公司，按梯队分类组织，助你高效备战拿下心仪 Offer |
 
@@ -237,6 +238,53 @@ AIInfraGuide 正是为了解决这些问题而创建的——一个**开源、�
 | 第 9 章 | 生产部署与运维 | 容器化与 K8s 部署、可观测性、自动扩缩容、负载均衡、容量规划 |
 | 第 10 章 | 端侧推理 | 端侧软硬件栈、异构执行、运行时选型、量化、内存优化与 Benchmark |
 | 10.1 | [端侧推理基础：从模型导出到异构硬件执行](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第12章-端侧推理/121-端侧推理基础/) | 端侧约束、软硬件栈、运行时选型、量化与内存优化、Benchmark，以及 ExecuTorch/XNNPACK 最小实例 |
+
+<br>
+
+## 🧠 模块五：LLM RL 后训练
+
+沿用分布式训练模块的「章节导读 + 专题详解」结构，包含 **10 章导读、20 篇详解**。每篇结合直觉、公式、数值或系统算例、工程排查、自测答案和一手资料。
+
+本地站点入口：[LLM RL 后训练](http://localhost:4321/AIInfraGuide/rl/)。Markdown 源文档位于 [模块五目录](docs/guides/模块五-LLM-RL后训练/)。
+
+| 章节 | 专题 |
+|---|---|
+| 第 1 章 后训练全景 | SFT/RLHF/RLVR、轨迹张量与策略梯度 |
+| 第 2 章 PPO 与价值学习 | 裁剪目标、GAE、一轮 PPO 数据流 |
+| 第 3 章 GRPO 与 RLVR | 组内优势、RLOO、DAPO/Dr. GRPO、长度与稳定性 |
+| 第 4 章 偏好优化与 DPO | 偏好数据、奖励模型、DPO 推导与边界 |
+| 第 5 章 奖励工程与评估 | 可验证奖励、数据流水线、pass@k、训练诊断 |
+| 第 6 章 多轮 Agent 与在线蒸馏 | 工具环境、轨迹 mask、信用分配、OPD |
+| 第 7 章 RL 系统架构与框架 | 角色编排、进程通信、verl / ROLL / slime |
+| 第 8 章 训练推理协同与性能优化 | 混合部署、权重同步、异步 rollout、吞吐与显存 |
+| 第 9 章 可靠训练与故障排查 | Checkpoint、恢复、可复现性、故障定位 |
+| 第 10 章 数值实验与学习验收 | 手算目标、CPU RL 闭环、梯度校验、精确恢复 |
+
+配套 [CPU 数值实验](labs/llm_rl/README.md) 无需下载模型或安装 GPU 依赖：
+
+```bash
+npm run test:rl
+npm run lab:rl
+```
+
+实验使用四上下文、四动作策略表，验证数学与状态流转；完整 GPU 框架训练和多机性能未作为已验证结果。
+
+## 💻 本地浏览
+
+需要 Node.js（建议使用当前受支持的 LTS）和 npm；数值实验另需 Python 3.10+。从仓库根目录运行：
+
+```bash
+npm ci
+npm run site:local
+```
+
+打开 **[http://localhost:4321/AIInfraGuide/](http://localhost:4321/AIInfraGuide/)**，新模块为 **[http://localhost:4321/AIInfraGuide/rl/](http://localhost:4321/AIInfraGuide/rl/)**。`site:local` 会依次检查 Astro 类型、构建页面、生成 Pagefind 搜索索引并启动预览；启动期间请等待构建完成。按 `Ctrl+C` 停止。
+
+在 WSL 中启动后，可从 Windows 浏览器访问同一个 localhost 地址。端口 4321 已占用时，先看终端输出的实际端口，或用 `npm run preview -- --host 0.0.0.0 --port 4322` 预览已构建内容。服务绑定 `0.0.0.0`，便于 WSL/主机访问。
+
+日常修改 Markdown 时用 `npm run dev:local` 热更新。搜索索引由构建生成，修改后要执行 `npm run build` 更新搜索；预览模式下修改内容也需要重新构建。URL 必须保留已有 `/AIInfraGuide/` 前缀。
+
+构建后可用 `npm run check:rl-site` 检查新模块的页面覆盖、链接、锚点与公式；详见[交付验证记录](labs/llm_rl/VALIDATION.md)。
 
 <br>
 

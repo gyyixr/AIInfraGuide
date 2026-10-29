@@ -4,7 +4,8 @@ export const GUIDE_CATEGORIES = {
   'cuda-optimization': { label: 'CUDA编程与算子优化', icon: '⚡', order: 3 },
   'distributed-training': { label: '分布式训练', icon: '🌐', order: 4 },
   'inference-optimization': { label: '推理优化', icon: '🚀', order: 5 },
-  'performance-analysis': { label: '性能分析', icon: '📊', order: 6 },
+  'llm-rl': { label: 'LLM RL后训练', icon: '🧠', order: 6 },
+  'performance-analysis': { label: '性能分析', icon: '📊', order: 7 },
 } as const;
 
 export type CategorySlug = keyof typeof GUIDE_CATEGORIES;

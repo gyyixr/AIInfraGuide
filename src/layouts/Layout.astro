@@ -17,7 +17,7 @@ interface Props {
 
 const {
   title = 'AIInfraGuide - AI Infra全栈知识库',
-  description = '深入理解 AI Infra 的核心全栈技术：CUDA算子优化、分布式训练、推理优化、性能分析',
+  description = '深入理解 AI Infra 的核心全栈技术：CUDA算子优化、分布式训练、推理优化、LLM RL后训练、性能分析',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -41,6 +41,7 @@ const navModules = [
   { label: 'CUDA编程', prefix: '/cuda', url: getPath('/cuda') },
   { label: '推理优化 🔥', prefix: '/inference', url: getPath('/inference') },
   { label: '分布式训练', prefix: '/distributed', url: getPath('/distributed') },
+  { label: 'LLM RL后训练', prefix: '/rl', url: getPath('/rl') },
 ];
 
 // 导航栏高亮：根据当前路径判断激活项

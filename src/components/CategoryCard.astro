@@ -16,6 +16,7 @@ const gradientMap: Record<string, { from: string; to: string; glow: string }> = 
   'cuda-optimization': { from: '#F59E0B', to: '#EF4444', glow: 'rgba(245,158,11,0.15)' },
   'distributed-training': { from: '#10B981', to: '#06B6D4', glow: 'rgba(16,185,129,0.15)' },
   'inference-optimization': { from: '#8B5CF6', to: '#EC4899', glow: 'rgba(139,92,246,0.15)' },
+  'llm-rl': { from: '#E11D48', to: '#F97316', glow: 'rgba(225,29,72,0.15)' },
   'performance-analysis': { from: '#F97316', to: '#F59E0B', glow: 'rgba(249,115,22,0.15)' },
 };
 
@@ -51,6 +52,9 @@ const gradient = gradientMap[slug] || gradientMap['learning-path'];
         )}
         {slug === 'inference-optimization' && (
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+        )}
+        {slug === 'llm-rl' && (
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5m0-5-7 7M8 21H3v-5m0 5 7-7M3.6 9a9 9 0 0 1 14.8-3.8M20.4 15a9 9 0 0 1-14.8 3.8" />
         )}
         {slug === 'performance-analysis' && (
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />

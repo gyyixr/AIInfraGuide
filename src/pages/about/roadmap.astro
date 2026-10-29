@@ -64,7 +64,24 @@ const modules = [
       '第12章 端侧推理',
     ],
   },
+  {
+    name: '模块五：LLM RL 后训练',
+    color: '#E11D48',
+    chapters: [
+      '第1章 后训练全景',
+      '第2章 PPO 与价值学习',
+      '第3章 GRPO 与 RLVR',
+      '第4章 偏好优化与 DPO',
+      '第5章 奖励工程与评估',
+      '第6章 多轮 Agent 与在线蒸馏',
+      '第7章 RL 系统架构与框架',
+      '第8章 训练推理协同与性能优化',
+      '第9章 可靠训练与故障排查',
+      '第10章 数值实验与学习验收',
+    ],
+  },
 ];
+const chapterCount = modules.reduce((count, module) => count + module.chapters.length, 0);
 ---
 
 <Layout title="教程更新计划 - AIInfraGuide" description="AIInfraGuide 本站教程的更新计划与进度安排">
@@ -80,7 +97,7 @@ const modules = [
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
         本站教程更新计划
       </h1>
-      <p class="text-lg text-gray-500 dark:text-gray-400">四大模块、29 个章节的系统化更新路线</p>
+      <p class="text-lg text-gray-500 dark:text-gray-400">{modules.length} 大模块、{chapterCount} 个章节的系统化更新路线</p>
     </div>
 
     <div
@@ -124,12 +141,12 @@ const modules = [
       </div>
 
       <h2>更新计划总览</h2>
-      <p>本站教程共分为 <strong>4 个模块</strong>，覆盖从前置基础到推理优化的完整 AI Infra 技术栈。以下是各模块的章节规划和更新安排：</p>
+      <p>本站教程共分为 <strong>{modules.length} 个模块</strong>，覆盖前置基础、CUDA、分布式训练、推理优化与 LLM RL 后训练。以下是各模块的章节规划和更新安排：</p>
     </div>
 
     <!-- Module Cards -->
     <div class="mt-8 space-y-6">
-      {modules.map((mod, i) => (
+      {modules.map((mod) => (
         <div class="rounded-xl border border-gray-200 dark:border-white/[0.06] overflow-hidden">
           <div class="px-6 py-4 flex items-center gap-3" style={`background: ${mod.color}10;`}>
             <div class="w-2 h-2 rounded-full shrink-0" style={`background: ${mod.color};`} />

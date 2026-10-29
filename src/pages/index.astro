@@ -24,7 +24,7 @@ const aboutPages = [
   },
   {
     title: '本站教程更新计划',
-    description: '四大模块、29 个章节的系统化更新路线，介绍本站教程的规划、更新节奏与获取方式。',
+    description: '五大学习模块的系统化更新路线，介绍本站教程的规划、更新节奏与获取方式。',
     href: getPathEarly('/about/roadmap'),
     pubDate: new Date('2026-04-11'),
     tags: ['公告', '更新计划'],
@@ -60,6 +60,7 @@ const categoryDescriptions: Record<string, string> = {
   'cuda-optimization': 'CUDA 编程模型、算子开发与性能优化',
   'distributed-training': '数据并行、模型并行与大规模分布式训练',
   'inference-optimization': '模型压缩、量化加速与推理引擎优化',
+  'llm-rl': 'PPO、GRPO、DPO、奖励工程与训练推理协同',
   'performance-analysis': '性能瓶颈定位、Profiling 工具与调优策略',
 };
 
@@ -69,6 +70,7 @@ const categoryUrlPrefix: Record<string, string> = {
   'cuda-optimization': '/cuda',
   'distributed-training': '/distributed',
   'inference-optimization': '/inference',
+  'llm-rl': '/rl',
   'performance-analysis': '/guides',
 };
 
@@ -120,7 +122,7 @@ const getFirstGuideUrl = (category: string, urlPrefix: string) => {
         从零开始深入理解 AI Infra 的全栈核心技术（持续更新中）
       </p>
       <p class="text-sm text-gray-500 dark:text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
-        从底层的 CUDA 编程到模型的分布式训练和推理优化，构建完整的 AI Infra 知识体系
+        从 CUDA 编程到分布式训练、推理优化与 LLM RL 后训练，构建完整的 AI Infra 知识体系
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3 justify-center">

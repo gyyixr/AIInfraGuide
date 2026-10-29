@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/pagefind",
+    "build": "astro check && node scripts/clean-search.mjs && astro build && pagefind --site dist && cp -r dist/pagefind public/pagefind",
     "preview": "astro preview",
+    "site:local": "npm run build && astro preview --host 0.0.0.0 --port 4321",
+    "dev:local": "astro dev --host 0.0.0.0 --port 4321",
+    "lab:rl": "python3 labs/llm_rl/rl_lab.py --output labs/llm_rl/results/latest.json",
+    "test:rl": "python3 -m unittest discover -s labs/llm_rl -p 'test_*.py' -v",
+    "check:rl-site": "python3 scripts/check-rl-site.py",
     "astro": "astro"
   },
   "dependencies": {

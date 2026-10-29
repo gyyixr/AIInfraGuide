@@ -1,0 +1,21 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import GuideContent from '../../components/GuideContent.astro';
+import { flattenChapterOrder } from '../../utils/chapterGrouping';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', ({ data }) => !data.draft && data.category === 'llm-rl');
+  return guides.map((guide) => ({ params: { slug: guide.id }, props: guide }));
+}
+
+type Props = CollectionEntry<'guides'>;
+const guide = Astro.props;
+const sameCategory = flattenChapterOrder(
+  await getCollection('guides', ({ data }) => !data.draft && data.category === 'llm-rl')
+);
+---
+
+<Layout title={`${guide.data.title} - AIInfraGuide`} description={guide.data.description}>
+  <GuideContent guide={guide} sameCategory={sameCategory} sidebarCategories={['llm-rl']} urlPrefix="/rl" />
+</Layout>

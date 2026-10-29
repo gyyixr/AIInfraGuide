@@ -14,6 +14,7 @@ const guides = defineCollection({
       'cuda-optimization',
       'distributed-training',
       'inference-optimization',
+      'llm-rl',
       'performance-analysis',
       'course',
     ]),

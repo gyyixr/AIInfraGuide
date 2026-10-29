@@ -27,6 +27,24 @@ export interface ModuleMeta {
 }
 
 export const MODULE_METADATA: Partial<Record<CategorySlug, ModuleMeta>> = {
+  'llm-rl': {
+    title: '模块五：LLM RL 后训练',
+    description:
+      '从 SFT、RLHF 与 RLVR 的训练全景出发，逐步推导 PPO、GRPO、DPO，深入奖励工程、多轮 Agent、在线蒸馏、训练推理协同和故障排查，最后用可运行的数值实验串联完整数据流。',
+    color: '#E11D48',
+    tips: [
+      '先阅读第 1—3 章并手算一轮优势、概率比和裁剪，再进入框架实现',
+      '第 4—6 章连接偏好数据、奖励评估、多轮环境与教师反馈',
+      '第 7—9 章重点跟踪张量、进程、通信和权重版本，区分算法目标与系统实现',
+      '第 10 章提供无需 GPU 或下载模型的实验；框架源码核对与大规模训练验证分别标明',
+    ],
+    prerequisites: 'Transformer、自回归生成、概率与梯度、PyTorch；系统章节建议先学习分布式训练和推理优化',
+    resources: [
+      { type: '论文', title: 'Proximal Policy Optimization', href: 'https://arxiv.org/abs/1707.06347', description: '理解采样策略、当前策略与裁剪目标之间的关系' },
+      { type: '论文', title: 'DeepSeekMath / GRPO', href: 'https://arxiv.org/abs/2402.03300', description: '从组内相对奖励理解无需独立价值模型的策略优化' },
+      { type: '官方文档', title: 'verl', href: 'https://verl.readthedocs.io/en/latest/', description: '对照算法配置、训练后端与 rollout 引擎阅读实现，具体版本见第 7 章' },
+    ],
+  },
   prerequisites: {
     title: '模块一：前置知识',
     description:
@@ -99,4 +117,5 @@ export const CATEGORY_URL_PREFIX: Partial<Record<CategorySlug, string>> = {
   'cuda-optimization': '/cuda',
   'distributed-training': '/distributed',
   'inference-optimization': '/inference',
+  'llm-rl': '/rl',
 };
