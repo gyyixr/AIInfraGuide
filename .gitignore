@@ -9,4 +9,5 @@ public/pagefind/
 .local/
 __pycache__/
 labs/llm_rl/results/latest.json
+labs/distributed/results/latest*.json
 docs/guides/课程资料

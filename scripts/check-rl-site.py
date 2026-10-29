@@ -4,6 +4,7 @@
 Run after npm run build. External references are reviewed by the authors;
 this checker deliberately checks local delivery without network dependencies.
 """
+import argparse
 import json
 import re
 from html.parser import HTMLParser
@@ -34,9 +35,14 @@ class Page(HTMLParser):
 
 
 def main():
-    pages = sorted((DIST / "rl").rglob("*.html"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--module", choices=("rl", "distributed"), default="rl")
+    args = parser.parse_args()
+    module = args.module
+    source_directory = "模块五-LLM-RL后训练" if module == "rl" else "模块三-分布式训练"
+    pages = sorted((DIST / module).rglob("*.html"))
     if not pages:
-        raise SystemExit("No built RL pages. Run npm run build first.")
+        raise SystemExit(f"No built {module} pages. Run npm run build first.")
     cache = {}
     errors = []
     checked_links = 0
@@ -46,7 +52,7 @@ def main():
             cache[path] = Page(path.read_text())
         return cache[path]
 
-    docs = list((ROOT / "docs/guides/模块五-LLM-RL后训练").glob("*.md"))
+    docs = list((ROOT / "docs/guides" / source_directory).glob("*.md"))
     chapters, children = set(), {}
     for doc in docs:
         text = doc.read_text()
@@ -67,7 +73,7 @@ def main():
         if chapter not in chapters:
             errors.append(f"chapter {chapter}: no chapter introduction")
     if len(pages) != len(docs) + 1:
-        errors.append(f"built RL pages ({len(pages)}) do not match source docs + landing ({len(docs)+1})")
+        errors.append(f"built {module} pages ({len(pages)}) do not match source docs + landing ({len(docs)+1})")
 
     for path in pages:
         page = read(path)
@@ -98,9 +104,9 @@ def main():
                 if anchor not in read(target).ids:
                     errors.append(f"{path.relative_to(DIST)}: missing anchor: {href}")
 
-    result = {"source_documents": len(docs), "chapters": len(chapters),
+    result = {"module": module, "source_documents": len(docs), "chapters": len(chapters),
               "detailed_articles": sum(map(len, children.values())),
-              "built_rl_pages": len(pages), "local_links_checked": checked_links,
+              "built_pages": len(pages), "local_links_checked": checked_links,
               "errors": errors}
     print(json.dumps(result, ensure_ascii=False, indent=2))
     if errors:

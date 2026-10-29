@@ -1,0 +1,73 @@
+{
+  "scope": "two actual CPU/Gloo processes; float64 linear model; no GPU/NCCL/FSDP performance claim",
+  "torch": "2.13.0+cu132",
+  "world_size": 2,
+  "backend": "gloo",
+  "valid_elements_per_rank": [
+    3,
+    5
+  ],
+  "global_valid_elements": 8,
+  "wrong_local_mean_gradient_error": 0.062083333333333435,
+  "collectives": [
+    {
+      "rank": 0,
+      "all_reduce": 3.0,
+      "all_gather": [
+        0,
+        1
+      ],
+      "reduce_scatter": 10,
+      "all_to_all": [
+        0,
+        10
+      ]
+    },
+    {
+      "rank": 1,
+      "all_reduce": 3.0,
+      "all_gather": [
+        0,
+        1
+      ],
+      "reduce_scatter": 12,
+      "all_to_all": [
+        1,
+        11
+      ]
+    }
+  ],
+  "history": [
+    {
+      "step": 1,
+      "global_mean_loss": 0.1378,
+      "gradient_max_error": 1.1102230246251565e-16,
+      "parameter_max_error": 6.938893903907228e-18,
+      "optimizer_state_max_error": 3.469446951953614e-18,
+      "restored_oracle_parameter_error": null
+    },
+    {
+      "step": 2,
+      "global_mean_loss": 0.12143014696107512,
+      "gradient_max_error": 1.1102230246251565e-16,
+      "parameter_max_error": 1.3877787807814457e-17,
+      "optimizer_state_max_error": 3.469446951953614e-18,
+      "restored_oracle_parameter_error": 0.0
+    },
+    {
+      "step": 3,
+      "global_mean_loss": 0.10610377756423096,
+      "gradient_max_error": 5.551115123125783e-17,
+      "parameter_max_error": 1.3877787807814457e-17,
+      "optimizer_state_max_error": 3.469446951953614e-18,
+      "restored_oracle_parameter_error": 0.0
+    }
+  ],
+  "final_parameters": [
+    0.12993547193372562,
+    -0.16988492183421666,
+    0.0799626554733823
+  ],
+  "checks": "passed",
+  "resume_scope": "in-memory deterministic oracle model+AdamW restore; not distributed durable checkpoint"
+}

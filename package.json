@@ -12,6 +12,10 @@
     "lab:rl": "python3 labs/llm_rl/rl_lab.py --output labs/llm_rl/results/latest.json",
     "test:rl": "python3 -m unittest discover -s labs/llm_rl -p 'test_*.py' -v",
     "check:rl-site": "python3 scripts/check-rl-site.py",
+    "lab:distributed": "python3 labs/distributed/mechanics_lab.py --output labs/distributed/results/latest-mechanics.json",
+    "test:distributed": "python3 -m unittest discover -s labs/distributed -p 'test_*.py' -v",
+    "lab:ddp": "node scripts/run-ddp-lab.mjs",
+    "check:distributed-site": "python3 scripts/check-rl-site.py --module distributed",
     "astro": "astro"
   },
   "dependencies": {

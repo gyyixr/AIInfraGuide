@@ -182,6 +182,43 @@ AIInfraGuide 正是为了解决这些问题而创建的——一个**开源、�
 
 <br>
 
+### 本次深入补充（2026-10-30）
+
+分布式训练现包含 **11 章导读、23 篇详解**，新增以下 17 篇专题。后七章补齐逐步推导、可手算例子、源码入口、实践边界和自测答案，同时修订旧文中的通信字节、精度状态与拓扑假设。
+
+| 专题 | 内容 |
+|---|---|
+| [2.2 Ring 逐轮推导与通信性能分析](docs/guides/模块三-分布式训练/2.2-Ring逐轮推导与通信性能分析.md) | 手算四 rank Ring 的六轮发送、接收与累加，建立字节和时间模型，再分析 bucket、异步完成语义、带宽测试和通信排障 |
+| [3.2 梯度累积与有效 Batch 更新](docs/guides/模块三-分布式训练/3.2-梯度累积与有效Batch更新.md) | 推导不等样本数下的全局 loss 与 DDP 缩放，逐步计算梯度累积、裁剪和 AdamW 更新，区分 micro-step、optimizer step 与并行 rank |
+| [4.3 两进程 DDP 实验与正确性验收](docs/guides/模块三-分布式训练/4.3-两进程DDP实验与正确性验收.md) | 无需 GPU 地运行真实 Gloo 集合通信、DDP 梯度累积与 AdamW 更新，对照单进程 oracle 检查不等样本数、全局裁剪、状态恢复和 rank 一致性 |
+| [5.1 ZeRO 分片与显存通信账本：每份状态由谁负责](docs/guides/模块三-分布式训练/5.1-ZeRO分片与显存通信账本.md) | 从四参数更新推导 ZeRO-1/2/3，统一参数、梯度与优化器字节口径，手算 7B 模型的静态下限、瞬时峰值及每 rank 通信量 |
+| [5.2 FSDP2 与 Offload 工程实践：让状态生命周期可观察](docs/guides/模块三-分布式训练/5.2-FSDP2与Offload工程实践.md) | 将 ZeRO 账本映射到 fully_shard、DTensor、参数组与预取，提供最小训练骨架，并量化 CPU/NVMe 卸载的内存、带宽和恢复成本 |
+| [6.1 张量并行的前向、反向与通信：从两层矩阵乘法推导](docs/guides/模块三-分布式训练/6.1-张量并行的前向反向与通信.md) | 手算 Column/Row Parallel Linear 的完整前反向，区分分片与部分和，推导 Transformer TP 的通信位置、字节量及扩展边界 |
+| [6.2 序列并行与并行线性层实践：在算子之间保持正确布局](docs/guides/模块三-分布式训练/6.2-序列并行与并行线性层实践.md) | 从 TP 的残余激活复制推导 Megatron 风格 SP，跟踪 AllGather/ReduceScatter 前反向、RMSNorm 梯度、GQA 约束与 PyTorch DTensor 方案 |
+| [7.1 流水线调度与 Bubble 推导：把每个时隙画清楚](docs/guides/模块三-分布式训练/7.1-流水线调度与Bubble推导.md) | 从层间依赖推导 GPipe 与同步 1F1B，用逐时隙时间线核对气泡、激活存活量和梯度累积，区分利用率公式与真实吞吐 |
+| [7.2 交错流水线与负载均衡：把省下的 Bubble 变成吞吐](docs/guides/模块三-分布式训练/7.2-交错流水线与负载均衡.md) | 推导虚拟 stage 的理想收益和消息代价，手算分层负载、P2P 数据量与瓶颈，结合 Megatron 调度源码建立可复核的优化步骤 |
+| [8.1 混合精度与优化器数值链路](docs/guides/模块三-分布式训练/8.1-混合精度与优化器数值链路.md) | 从浮点间距出发，逐步跟踪前向、反向、梯度累积、Adam 状态和主权重更新，区分 autocast 与显式 BF16 参数并复算显存账本 |
+| [8.2 激活重计算与显存生命周期](docs/guides/模块三-分布式训练/8.2-激活重计算与显存生命周期.md) | 从反向所需张量和峰值重叠出发，推导 checkpoint 分段模型、重算时间代价、梯度累积及选择性保存，提供带 Dropout 的一致性实验 |
+| [9.1 长序列训练与上下文并行](docs/guides/模块三-分布式训练/9.1-长序列训练与上下文并行.md) | 手算 32K Attention 的显存与计算量，追踪 Ring、AllGather 与 Ulysses 的张量布局和通信字节，再分析 CP 与 DP/TP、mask、标签和全局 loss 的接口 |
+| [9.2 RingAttention 与长序列工程实践](docs/guides/模块三-分布式训练/9.2-RingAttention与长序列工程实践.md) | 逐轮追踪四 rank 的 KV 环传，手推 online softmax 与反向梯度，再分析因果负载、通信重叠、全局随机数和真实多卡验证路径 |
+| [10.1 MoE 路由与专家并行：逐个 token 走完 Dispatch 与 Combine](docs/guides/模块三-分布式训练/10.1-MoE路由与专家并行.md) | 用六 token、四专家、两设备的完整例子推导 Top-2 路由、All-to-All split、专家矩阵形状、输出归并和反向传播，区分 EP、ETP 与专家数据副本 |
+| [10.2 MoE 负载均衡与通信优化：从路由直方图到关键路径](docs/guides/模块三-分布式训练/10.2-MoE负载均衡与通信优化.md) | 手算专家负载、容量与辅助损失，拆解 Grouped GEMM、permutation、All-to-All 和通信重叠，建立不会混淆质量与吞吐的 MoE 优化流程 |
+| [11.1 多维并行拓扑与 Rank 编排：把每张卡放进正确的通信组](docs/guides/模块三-分布式训练/11.1-多维并行拓扑与Rank编排.md) | 手列 8 卡 TP×PP×DP 通信组，解释 CP 和专家并行的不同网格，再比较 64 卡拓扑、global batch 与实际通信域 |
+| [11.2 训练性能建模与可靠恢复：把并行配置变成可验收的账本](docs/guides/模块三-分布式训练/11.2-训练性能建模与可靠恢复.md) | 逐项计算混合精度状态、分片内存、通信下界和流水线空泡，统一 token 吞吐与 MFU 口径，并设计包含 optimizer、RNG 和数据进度的恢复实验 |
+
+本地浏览：[分布式训练模块](http://localhost:4321/AIInfraGuide/distributed/)。配套 [实验说明](labs/distributed/README.md) 与 [验证记录](labs/distributed/VALIDATION.md)：
+
+```bash
+npm run test:distributed
+npm run lab:distributed
+# 在具备 PyTorch/Gloo 的 Python 环境中：
+npm run lab:ddp
+```
+
+纯标准库脚本验证数学机制；DDP 实验真实运行两个 CPU/Gloo 进程，不将其写作多 GPU 或生产性能验证。指定解释器的方法见实验说明。
+
+<br>
+
 ## 🚀 模块四：推理优化
 
 以 **vLLM** 为贯穿主线，覆盖 LLM 推理基础、推理引擎核心技术、nano-vllm 源码解读、量化、Speculative Decoding、分布式推理、PD 解耦架构、生产级服务特性、性能分析、生产部署运维，以及端到端选型实战。
