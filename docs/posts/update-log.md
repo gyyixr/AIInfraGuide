@@ -9,6 +9,60 @@ tags: ["公告", "更新日志"]
 
 ---
 
+## 2026-11-07
+
+### 同步上游更新
+
+同步原仓库至 `c09d316`，合入推理优化文章修订、手绘 SVG 插图、表格与参考资料排版，以及更新日志导航。保留本 fork 的 LLM RL 后训练模块、分布式训练深化专题、配套实验和本地预览/搜索构建脚本；README 的学习模块数量、快速导航和本地运行说明一并合并。
+
+---
+
+## 2026-11-01
+
+### 调整内容
+
+**模块四 · 推理优化** 第 3 章「nano-vllm 源码解读」6 篇文章修订：源码走读对齐 nano-vllm main 分支 2026-04-26 的提交，新增 3 张示意图，原有 8 张 Mermaid 图全部改为手绘风格 SVG，并修正了部分不准确的表述：
+
+- **文章：** [3.1 项目全景与四层架构](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/31-项目全景与四层架构/) | 项目信息表更新代码行数、版本与依赖、Star 数；四层架构图与请求生命周期图改为 SVG；补充 Prefill 与 Decode 不混批的说明
+
+- **文章：** [3.2 配置、入口与一次 generate 的全流程](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/32-配置入口与推理主循环/) | 补充 `tensor_parallel_size`、`ignore_eos` 等参数的约束；说明 nano-vllm 不支持贪心采样，以及 README 示例不套对话模板的问题；补充 `step` 返回的 `num_tokens` 用正负号区分阶段
+
+- **文章：** [3.3 模型骨架与核心算子](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/33-模型与核心算子/) | 张量并行切分图改为 SVG；新增 Sampler 一节；补充每层 2 次 all_reduce 的来源，以及 KV 头数限制 TP 度的说明
+
+- **文章：** [3.4 KV Cache 与 BlockManager](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/34-kvcache与blockmanager/) | 前缀缓存一节拆成哈希链、登记、匹配三部分；新增前缀命中分配示意图，匹配流程图改为 SVG；补充最后一块不查表、命中在用块与空闲块的区别，以及整块粒度带来的复用截断
+
+- **文章：** [3.5 Scheduler 与连续批处理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/35-scheduler与连续批处理/) | 序列状态图与调度闭环图改为 SVG；逐条解释 prefill 分支的三处 `break`、严格先来先服务带来的队头阻塞；补充抢占走重计算、`while ... else` 的执行条件
+
+- **文章：** [3.6 ModelRunner、CUDA Graph 与性能基准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/36-modelrunner引擎循环与性能/) | 新增 `slot_mapping` 计算图与 CUDA Graph 档位图，`run` 流程图与全章调用链图改为 SVG；补充 KV Cache 的 6 维布局、档位上限与 `max_num_seqs` 的关系；性能基准补充测试条件和结论的适用范围
+
+**模块四 · 推理优化** 第 4 章「量化」6 篇文章修订：新增 7 张示意图，原有 4 张扁平风格插图重画为手绘风格，原有 Mermaid 图全部改为 SVG，并对照 vLLM v0.32.0 源码修正了部分表述：
+
+- **文章：** [4.1 量化基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/41-量化基础/) | 新增四种量化粒度图，重画对称/非对称量化数轴；补充 4-bit 对称量化的编码范围；PyTorch 量化参考资料改为 torchao 文档
+
+- **文章：** [4.2 W8A8 与 SmoothQuant](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/42-w8a8与smoothquant/) | 重画配对缩放图，离线量化流程图改为 SVG
+
+- **文章：** [4.3 Weight-only INT4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/43-weight-only-int4/) | 新增 W4A16 打包与片上反量化图、GPTQ/AWQ 对比图，Marlin 流水线图改为 SVG
+
+- **文章：** [4.4 KV Cache 量化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/44-kv-cache量化/) | 重画 KIVI 分组示意图；补充 Value 残留区按滑动窗口逐 Token 量化移出的说明
+
+- **文章：** [4.5 FP8 与 NVFP4/MXFP4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/45-fp8与nvfp4-mxfp4/) | 新增 FP8 与 INT8 刻度分布对比图，重画 FP4 微块缩放图；在线 FP8 方案补充 `fp8_per_channel`
+
+- **文章：** [4.6 量化选型与 vLLM 实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/46-量化选型与vllm实战/) | 选型流程图改为 SVG；修正在线 FP8 的加载方式（v0.32.0 先建在 meta 设备上逐层转换，不会整份载入 16-bit 权重）
+
+**模块四 · 推理优化** 第 5 章「Speculative Decoding」修订：新增 1 张示意图，原有 4 张 Mermaid 图全部改为手绘风格 SVG，并对照 vLLM v0.32.0 源码修正了部分表述：
+
+- **文章：** [5.1 投机解码核心原理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/51-投机解码核心原理/) | Draft + Verify 一轮流程图改为 SVG，按 γ = 4 标出接受、修正与作废的位置；新增残差采样保分布示意图，用第 7 节的数值演示两条路径相加等于 p
+
+- **文章：** [5.2 Draft 模型与无模型方案](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/52-draft模型与无模型方案/) | N-gram 查找流程图改为 SVG，标出 vLLM 取最长、最早匹配的规则；修正 `ngram_gpu` 的适用范围（V1、V2 Model Runner 都可用）；补充 Suffix 不设候选上限时的默认值
+
+- **文章：** [5.3 Medusa、EAGLE 与 MTP](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/53-medusa与eagle/) | Draft Tree 图改为 SVG，与第 8 节实验同一棵树，画出树形 Mask 与按深度编号的 Position ID；补充 Block 验收只在 V2 Model Runner 中实现；修正 MTP 免版本错配的适用条件
+
+- **文章：** [5.4 收益边界与限制](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/54-收益边界与限制/) | 调度循环图改为 SVG，补充同一 Batch 内不同请求步长不同的示例；修正 Adaptive Verification 的支持范围（不只 DSpark），以及 N-gram/Suffix 在高 QPS 下的收益描述
+
+- **文章：** [5.5 vLLM 投机解码实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/55-vllm投机解码实战/) | 逐位置接受指标改用实际暴露的 `..._per_pos_total` 名称并说明计数含义；补充 `--speculative-config` 的简写 `-sc`
+
+---
+
 ## 2026-10-30
 
 ### 深入补充分布式训练

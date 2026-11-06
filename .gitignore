@@ -10,4 +10,5 @@ public/pagefind/
 __pycache__/
 labs/llm_rl/results/latest.json
 labs/distributed/results/latest*.json
-docs/guides/课程资料
+image-cards/
+docs/interview/面试宝典
