@@ -1,0 +1,78 @@
+[
+  {
+    "file": "docs/guides/模块四-推理优化/11.1-请求入口Tokenizer与多进程协议.md",
+    "lines": 365,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "registration rollback and delta output passed\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/11.2-Scheduler状态机与预算不变量.md",
+    "lines": 350,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "[('A', 1), ('B', 1)] [4, 8, 10] [99]\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/11.3-KV缓存索引驱逐与事件协议.md",
+    "lines": 363,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "parent chain, namespace and zero-ref cache semantics passed\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/11.4-ModelRunner算子派发与DayZero接入.md",
+    "lines": 352,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "[91, 10, 20, 30] [31, 0, 1, 2] [0, 1, 4] portable\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/12.1-推理Infra源码追问与计算题.md",
+    "lines": 639,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "capacity, page budget, PD ratio, timestamps and softmax passed\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/12.2-推理系统设计与项目答辩.md",
+    "lines": 433,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "average 3.167 next_focus performance_evidence\n{'theory': 3.0, 'source': 2.0, 'project': 3.5, 'review': 1.5}\n",
+        "stderr": ""
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第11章-SGLang与vLLM源码数据流.md",
+    "lines": 134,
+    "python": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第12章-推理源码题库与项目实战.md",
+    "lines": 133,
+    "python": []
+  }
+]

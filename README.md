@@ -2,11 +2,13 @@
 
 > 从零开始深入理解 AI Infra 的核心全栈技术
 
-**上游在线浏览：[https://caomaolufei.github.io/AIInfraGuide/](https://caomaolufei.github.io/AIInfraGuide/)** ｜ [更新日志](https://caomaolufei.github.io/AIInfraGuide/blog/update-log/)
+**上游在线浏览：[https://caomaolufei.github.io/AIInfraGuide/](https://caomaolufei.github.io/AIInfraGuide/)** ｜ [更新日志](docs/posts/update-log.md)
 
-本项目系统梳理 AI Infra 的技术栈，从 GPU 硬件、CUDA 编程与算子优化，到分布式训练、推理优化和 LLM RL 后训练，帮助工程师建立完整的 AI 基础设施知识体系。另设面试宝典板块，收录 180+ 场面试真题，覆盖 60+ 家公司。
+本项目系统梳理 AI Infra 的技术栈，从 GPU 硬件、CUDA 编程与算子优化，到分布式训练、推理优化、LLM RL 后训练、性能工程与 DeepSeek 开放技术，帮助工程师建立可以结合源码与实验复核的知识体系。另设面试宝典板块，收录 180+ 场面试真题，覆盖 60+ 家公司。
 
-**快速导航：** [学习路线](#-aiinfra-学习路线) · [前置知识](#-模块一前置知识) · [CUDA 编程与算子优化](#-模块二cuda-编程与算子优化) · [分布式训练](#-模块三分布式训练) · [推理优化](#-模块四推理优化) · [LLM RL 后训练](#-模块五llm-rl-后训练) · [面试宝典](#-面试宝典) · [本地浏览](#-本地浏览) · [参与贡献](#-欢迎参与贡献)
+**当前扩展内容：** 以本仓库和本地站点为准；上游在线站点不代表本 fork 的新增内容已经发布。[进阶导航](docs/guides/训练推理与DeepSeek进阶学习导航.md) · [资料来源与覆盖边界](docs/guides/资料来源版本与覆盖边界.md)
+
+**快速导航：** [学习路线](#-aiinfra-学习路线) · [前置知识](#-模块一前置知识) · [CUDA 编程与算子优化](#-模块二cuda-编程与算子优化) · [分布式训练](#-模块三分布式训练) · [推理优化](#-模块四推理优化) · [LLM RL 后训练](#-模块五llm-rl-后训练) · [性能工程](#-模块六性能工程与生产实践) · [DeepSeek开放技术](#-模块七deepseek-开放技术详解) · [面试宝典](#-面试宝典) · [本地浏览](#-本地浏览) · [参与贡献](#-欢迎参与贡献)
 
 <div align="center">
   <img src="https://img.shields.io/github/stars/caomaolufei/AIInfraGuide.svg?style=flat" alt="Stars" />
@@ -40,17 +42,18 @@ AIInfraGuide 是一个**开源、系统、面向实践**的 AI Infra 知识库�
 
 ## 📖 AIInfraGuide 内容体系
 
-知识库由 **学习路线 + 5 大学习模块 + 面试宝典** 组成，另有一个规划中的性能分析板块，覆盖 AI Infra 工程师需要掌握的关键技术栈：
+知识库由 **学习路线 + 7 大学习模块 + 面试宝典** 组成。新增性能工程与 DeepSeek 专题，并把训练、推理、RL 的源码与状态生命周期继续展开：
 
 | 板块 | 涵盖内容 |
 |---|---|
 | **AIInfra 学习路线** | 系统化的学习路径、知识图谱、推荐资源 |
 | **模块一：前置知识** | 编程语言基础、数学基础、Transformer 架构、PyTorch 框架、GPU 硬件概论、集合通信基础 |
 | **模块二：CUDA 编程与算子优化** | CUDA 编程入门、性能优化基础、Reduce/GEMM/Softmax/Attention 经典算子实现、AI 编译器、性能分析工具链 |
-| **模块三：分布式训练** | 分布式训练总论、集合通信原语、优化器、数据并行(DP/DDP/FSDP)、ZeRO 系列、张量/序列/流水线并行、混合精度、上下文并行、MoE 并行、3D 并行 |
+| **模块三：分布式训练** | 并行基础、HSDP/DistOpt、FP8/FP4、长上下文、数据治理与索引、Megatron源码、可靠性、成本、项目及框架/异构生态 |
 | **模块四：推理优化** | LLM 推理基础、推理引擎核心技术、nano-vllm 源码解读、量化、Speculative Decoding、分布式推理、PD 解耦架构、性能分析与 Benchmark、生产部署、端侧推理 |
-| **模块五：LLM RL 后训练** | PPO、GAE、GRPO、DPO、奖励工程、多轮 Agent、在线蒸馏、RL 框架、训练推理协同、数值实验 |
-| **性能分析**（规划中） | Nsight Systems/Compute、Roofline 模型、Profiling 实战 |
+| **模块五：LLM RL 后训练** | PPO/GAE、GRPO/DPO、奖励、多轮Agent、在线蒸馏、框架、权重同步、长轨迹mask、GSPO与环境队列、数值实验 |
+| **模块六：性能工程与生产实践** | Roofline、统计测量、Nsys/NCU、编译与Graph、NCCL/RDMA、NUMA/IO、数值与发布门禁 |
+| **模块七：DeepSeek开放技术详解** | 模型架构、训练与RL、DeepInfer/DSpark、算子通信、3FS/smallpond、集群、视觉与Agent生态、本地复现实验 |
 | **面试宝典** | 收录 180+ 场面试真题，覆盖 60+ 家公司，按公司梯队分类 |
 
 每篇文章都遵循「先白话后术语」的写作原则——先用通俗的语言解释"是什么、为什么需要"，再给出严谨的技术细节，确保读者既看得懂也学得对。
@@ -61,7 +64,9 @@ AIInfraGuide 是一个**开源、系统、面向实践**的 AI Infra 知识库�
 
 | 序号 | 文章 | 说明 |
 |:---:|------|------|
-| 1 | [AI Infra 学习路线](https://caomaolufei.github.io/AIInfraGuide/guides/ai-infra学习路线/) | AI Infra 技术栈全貌、系统化学习路径与知识图谱 |
+| 1 | [AI Infra 学习路线](<docs/guides/AI Infra学习路线.md>) | AI Infra 技术栈全貌、系统化学习路径与知识图谱 |
+| 2 | [训练、推理与DeepSeek进阶导航](docs/guides/训练推理与DeepSeek进阶学习导航.md) | 七模块、分岗路线与新增专题的网页入口 |
+| 3 | [资料来源、版本与覆盖边界](docs/guides/资料来源版本与覆盖边界.md) | 三份参考材料、固定源码与实验证据的区分 |
 
 <br>
 
@@ -82,22 +87,22 @@ AIInfraGuide 是一个**开源、系统、面向实践**的 AI Infra 知识库�
 
 | 序号 | 文章 | 说明 |
 |:---:|------|------|
-| 第 1 章 | [编程语言基础](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/第1章-编程语言基础/) | Python 工程化与并发、C/C++ 内存管理与构建、Python/C++ 互操作、Linux 与 GPU 软件栈 |
-| 第 2 章 | [数学基础](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/第2章-数学基础/) | 线性代数与 GEMM 分块、Softmax/交叉熵/KL 散度、反向传播、数值计算与混合精度 |
-| 第 3 章 | [🔥 Transformer 架构：快速入门篇](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/transformer架构快速入门/) | Encoder-Decoder 结构、Self-Attention 机制入门 |
-| 3.1 | [AI Infra 工程师为什么必须懂 Transformer](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/31-ai-infra工程师为什么必须懂transformer/) | 从 Infra 视角理解 Transformer 的计算与显存特性 |
-| 3.2 | [Transformer 全貌及代码实现](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/32-transformer全貌及代码实现/) | 完整 Transformer 架构拆解与 PyTorch 实现 |
-| 3.3 | [Self-Attention 机制深入理解](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/33-self-attention机制深入理解/) | QKV 与缩放点积、MHA/MQA/GQA/MLA 对比、Causal Mask、计算瓶颈分析 |
-| 3.4 | [Transformer 前馈网络 FFN 深入理解](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/34-transformer前馈网络ffn深入理解/) | 激活函数与 SwiGLU、中间维度选择、FFN 的张量并行切分、MoE |
-| 3.5 | [Transformer 位置编码深入理解](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/35-transformer位置编码深入理解/) | Sinusoidal、可学习位置编码、RoPE、ALiBi 与长上下文扩展 |
-| 3.6 | [LayerNorm 与残差连接深入理解](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/36-layernorm与残差连接深入理解/) | 残差连接、归一化方法全景、Pre-Norm 与 Post-Norm、CUDA 优化视角 |
-| 3.7 | [Transformer Decoder Block 完整解析](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/37-transformer-decoder-block完整解析/) | Decoder-only 选型、完整数据流、PyTorch 实现、参数量/FLOPs/显存手算 |
-| 3.8 | [从 Transformer 到 LLM 自回归生成深入理解](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/38-从transformer到llm自回归生成深入理解/) | 采样策略、Prefill 与 Decode 阶段、KV Cache 及其优化、推理性能指标 |
-| 3.9 | [Tokenization 与词嵌入](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/transformer/39-tokenization与词嵌入/) | 分词算法、从独热编码到 Word Embedding、Transformer 输入层的构造 |
-| 第 4 章 | [🔥 PyTorch 框架快速入门篇](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/pyroch/pytorch框架入门/) | Tensor、autograd、nn.Module、完整训练循环、GPU 训练与性能分析入门 |
-| 第 5 章 | [🔥 GPU 基础知识：从硬件架构到 AI 计算](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/gpu/gpu-basics/) | CPU vs GPU、SM 架构、显存层级、Tensor Core |
-| 5.1 | [NVIDIA GPU 架构演进：从 Volta 到 Blackwell](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/gpu/nvidia-gpu-evolution/) | V100 → A100 → H100 → B200 架构演进 |
-| 第 6 章 | [🔥 集群通信网络与 NCCL：分布式训练的通信骨架](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/communication/collective-communication-primer/) | 通信原语、Ring AllReduce 算法、NCCL 实战 |
+| 第 1 章 | [编程语言基础](<docs/guides/模块一-前置知识/第1章-编程语言基础.md>) | Python 工程化与并发、C/C++ 内存管理与构建、Python/C++ 互操作、Linux 与 GPU 软件栈 |
+| 第 2 章 | [数学基础](<docs/guides/模块一-前置知识/第2章-数学基础.md>) | 线性代数与 GEMM 分块、Softmax/交叉熵/KL 散度、反向传播、数值计算与混合精度 |
+| 第 3 章 | [🔥 Transformer 架构：快速入门篇](<docs/guides/模块一-前置知识/transformer/Transformer架构快速入门.md>) | Encoder-Decoder 结构、Self-Attention 机制入门 |
+| 3.1 | [AI Infra 工程师为什么必须懂 Transformer](<docs/guides/模块一-前置知识/transformer/3.1 AI Infra工程师为什么必须懂Transformer.md>) | 从 Infra 视角理解 Transformer 的计算与显存特性 |
+| 3.2 | [Transformer 全貌及代码实现](<docs/guides/模块一-前置知识/transformer/3.2 Transformer全貌及代码实现.md>) | 完整 Transformer 架构拆解与 PyTorch 实现 |
+| 3.3 | [Self-Attention 机制深入理解](<docs/guides/模块一-前置知识/transformer/3.3 Self-Attention机制深入理解.md>) | QKV 与缩放点积、MHA/MQA/GQA/MLA 对比、Causal Mask、计算瓶颈分析 |
+| 3.4 | [Transformer 前馈网络 FFN 深入理解](<docs/guides/模块一-前置知识/transformer/3.4 Transformer前馈网络FFN深入理解.md>) | 激活函数与 SwiGLU、中间维度选择、FFN 的张量并行切分、MoE |
+| 3.5 | [Transformer 位置编码深入理解](<docs/guides/模块一-前置知识/transformer/3.5 Transformer位置编码深入理解.md>) | Sinusoidal、可学习位置编码、RoPE、ALiBi 与长上下文扩展 |
+| 3.6 | [LayerNorm 与残差连接深入理解](<docs/guides/模块一-前置知识/transformer/3.6 LayerNorm与残差连接深入理解.md>) | 残差连接、归一化方法全景、Pre-Norm 与 Post-Norm、CUDA 优化视角 |
+| 3.7 | [Transformer Decoder Block 完整解析](<docs/guides/模块一-前置知识/transformer/3.7 Transformer Decoder Block完整解析.md>) | Decoder-only 选型、完整数据流、PyTorch 实现、参数量/FLOPs/显存手算 |
+| 3.8 | [从 Transformer 到 LLM 自回归生成深入理解](<docs/guides/模块一-前置知识/transformer/3.8 从Transformer到LLM自回归生成深入理解.md>) | 采样策略、Prefill 与 Decode 阶段、KV Cache 及其优化、推理性能指标 |
+| 3.9 | [Tokenization 与词嵌入](<docs/guides/模块一-前置知识/transformer/3.9 Tokenization与词嵌入.md>) | 分词算法、从独热编码到 Word Embedding、Transformer 输入层的构造 |
+| 第 4 章 | [🔥 PyTorch 框架快速入门篇](<docs/guides/模块一-前置知识/pyroch/PyTorch框架入门.md>) | Tensor、autograd、nn.Module、完整训练循环、GPU 训练与性能分析入门 |
+| 第 5 章 | [🔥 GPU 基础知识：从硬件架构到 AI 计算](<docs/guides/模块一-前置知识/gpu/gpu-basics.md>) | CPU vs GPU、SM 架构、显存层级、Tensor Core |
+| 5.1 | [NVIDIA GPU 架构演进：从 Volta 到 Blackwell](<docs/guides/模块一-前置知识/gpu/nvidia-gpu-evolution.md>) | V100 → A100 → H100 → B200 架构演进 |
+| 第 6 章 | [🔥 集群通信网络与 NCCL：分布式训练的通信骨架](<docs/guides/模块一-前置知识/communication/collective-communication-primer.md>) | 通信原语、Ring AllReduce 算法、NCCL 实战 |
 
 <br>
 
@@ -120,29 +125,29 @@ AIInfraGuide 是一个**开源、系统、面向实践**的 AI Infra 知识库�
 
 | 序号 | 文章 | 说明 |
 |:---:|------|------|
-| 快速入门 | [🔥 CUDA 编程快速入门指南](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/cuda编程入门指南/) | CUDA 编程模型、线程层级、内存模型与 Kernel 编写 |
-| 第 1 章 | [CUDA 编程入门](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第1章-cuda编程入门/) | 开发环境搭建、编程模型、内存模型、第一个实用 Kernel |
-| 1.1 | [CUDA 开发环境搭建](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/11-cuda开发环境搭建/) | 驱动与 Toolkit 安装、nvcc 与 CMake、多版本 CUDA 管理、常见问题排查 |
-| 1.2 | [CUDA 编程模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/12-cuda编程模型/) | Grid/Block/Thread 三级线程层次、线程索引计算、Kernel 启动配置 |
-| 1.3 | [CUDA 内存模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/13-cuda内存模型/) | 全局、共享、寄存器、常量与统一内存的特性、适用场景与选型 |
-| 1.4 | [第一个实用 Kernel：向量加法](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/14-第一个实用kernel/) | 用向量加法走通 Kernel 编写、主机端代码、错误检查与性能测量 |
-| 第 2 章 | [CUDA 性能优化基础](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第2章-cuda性能优化基础/) | Warp 与执行模型、内存访问优化、Occupancy 与资源分配、同步与原子操作 |
-| 2.1 | [Warp 与执行模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/21-warp与执行模型/) | SIMT 执行模型、Warp Divergence、Warp Shuffle 与 Warp 级归约 |
-| 2.2 | [内存访问优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/22-内存访问优化/) | 全局内存合并访问、Shared Memory Bank Conflict、向量化加载 |
-| 2.3 | [Occupancy 与资源分配](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/23-occupancy与资源分配/) | SM 资源清单、影响 Occupancy 的三大因素、计算实例与调优策略 |
-| 2.4 | [同步与原子操作](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/24-同步与原子操作/) | Block 内与 Warp 级同步、Memory Fence、原子操作优化、Cooperative Groups |
-| 第 3 章 | [经典算子实现 - Reduce](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第3章-经典算子实现-reduce/) | 朴素实现、共享内存+树形归约、Warp Shuffle 优化、多级归约 |
-| 3.1 | [CUDA Reduce 算子优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/31-cuda-reduce算子优化/) | 从朴素规约到 Warp Shuffle 与向量化加载，8 个版本逐步优化 |
-| 第 4 章 | [经典算子实现 - GEMM](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第4章-经典算子实现-gemm/) | 矩阵乘法基础、Shared Memory Tiling、进一步优化、与 cuBLAS 对比 |
-| 4.1 | [CUDA GEMM 算子性能优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/41-cuda-gemm算子性能优化/) | Block/Warp/Thread 三级 Tiling、float4 向量化、Bank Conflict 消除、双缓冲与异步拷贝 |
-| 第 5 章 | [经典算子实现 - Softmax 与算子融合](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第5章-经典算子实现-softmax与算子融合/) | Softmax 数值稳定实现、Online Softmax、算子融合 |
-| 5.1 | [CUDA Softmax 朴素实现优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/51-cuda-softmax朴素实现优化/) | Safe Softmax、Warp Shuffle 规约、向量化加载、两遍融合 Kernel |
-| 5.2 | [CUDA Online Softmax 实现优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/52-cuda-online-softmax实现/) | Online Softmax 推导与 CUDA 实现，FlashAttention 的前置知识 |
-| 第 6 章 | [Attention 算子](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第6章-attention算子/) | FlashAttention V1/V2/V3、Decode 阶段加速、PagedAttention CUDA 实现 |
-| 6.1 | [FlashAttention V1 详解](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/61-flashattention-v1详解/) | Tiling + Online Softmax 把额外显存从 $O(N^2)$ 降到 $O(N)$，IO 复杂度分析与反向重计算 |
-| 6.2 | [FlashAttention V2 详解](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/62-flashattention-v2详解/) | 调换内外循环、减少非矩阵乘运算、Warp 级工作分配、Causal Mask 优化 |
-| 第 7 章 | [AI 编译器](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/第7章-ai编译器/) | Triton、torch.compile、TVM/XLA 概述 |
-| 7.1 | [Triton 编程模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/71-triton编程框架/) | Triton 编程模型与基础语法，以 Softmax 为例与 PyTorch 实现对比性能 |
+| 快速入门 | [🔥 CUDA 编程快速入门指南](<docs/guides/模块二-CUDA编程与算子优化/CUDA编程入门指南.md>) | CUDA 编程模型、线程层级、内存模型与 Kernel 编写 |
+| 第 1 章 | [CUDA 编程入门](<docs/guides/模块二-CUDA编程与算子优化/第1章-CUDA编程入门.md>) | 开发环境搭建、编程模型、内存模型、第一个实用 Kernel |
+| 1.1 | [CUDA 开发环境搭建](<docs/guides/模块二-CUDA编程与算子优化/1.1-CUDA开发环境搭建.md>) | 驱动与 Toolkit 安装、nvcc 与 CMake、多版本 CUDA 管理、常见问题排查 |
+| 1.2 | [CUDA 编程模型](<docs/guides/模块二-CUDA编程与算子优化/1.2-CUDA编程模型.md>) | Grid/Block/Thread 三级线程层次、线程索引计算、Kernel 启动配置 |
+| 1.3 | [CUDA 内存模型](<docs/guides/模块二-CUDA编程与算子优化/1.3-CUDA内存模型.md>) | 全局、共享、寄存器、常量与统一内存的特性、适用场景与选型 |
+| 1.4 | [第一个实用 Kernel：向量加法](<docs/guides/模块二-CUDA编程与算子优化/1.4-第一个实用Kernel.md>) | 用向量加法走通 Kernel 编写、主机端代码、错误检查与性能测量 |
+| 第 2 章 | [CUDA 性能优化基础](<docs/guides/模块二-CUDA编程与算子优化/第2章-CUDA性能优化基础.md>) | Warp 与执行模型、内存访问优化、Occupancy 与资源分配、同步与原子操作 |
+| 2.1 | [Warp 与执行模型](<docs/guides/模块二-CUDA编程与算子优化/2.1-Warp与执行模型.md>) | SIMT 执行模型、Warp Divergence、Warp Shuffle 与 Warp 级归约 |
+| 2.2 | [内存访问优化](<docs/guides/模块二-CUDA编程与算子优化/2.2-内存访问优化.md>) | 全局内存合并访问、Shared Memory Bank Conflict、向量化加载 |
+| 2.3 | [Occupancy 与资源分配](<docs/guides/模块二-CUDA编程与算子优化/2.3-Occupancy与资源分配.md>) | SM 资源清单、影响 Occupancy 的三大因素、计算实例与调优策略 |
+| 2.4 | [同步与原子操作](<docs/guides/模块二-CUDA编程与算子优化/2.4-同步与原子操作.md>) | Block 内与 Warp 级同步、Memory Fence、原子操作优化、Cooperative Groups |
+| 第 3 章 | [经典算子实现 - Reduce](<docs/guides/模块二-CUDA编程与算子优化/第3章-经典算子实现-Reduce.md>) | 朴素实现、共享内存+树形归约、Warp Shuffle 优化、多级归约 |
+| 3.1 | [CUDA Reduce 算子优化](<docs/guides/模块二-CUDA编程与算子优化/3.1-CUDA Reduce算子优化.md>) | 从朴素规约到 Warp Shuffle 与向量化加载，8 个版本逐步优化 |
+| 第 4 章 | [经典算子实现 - GEMM](<docs/guides/模块二-CUDA编程与算子优化/第4章-经典算子实现-GEMM.md>) | 矩阵乘法基础、Shared Memory Tiling、进一步优化、与 cuBLAS 对比 |
+| 4.1 | [CUDA GEMM 算子性能优化](<docs/guides/模块二-CUDA编程与算子优化/4.1-CUDA GEMM算子性能优化.md>) | Block/Warp/Thread 三级 Tiling、float4 向量化、Bank Conflict 消除、双缓冲与异步拷贝 |
+| 第 5 章 | [经典算子实现 - Softmax 与算子融合](<docs/guides/模块二-CUDA编程与算子优化/第5章-经典算子实现-Softmax与算子融合.md>) | Softmax 数值稳定实现、Online Softmax、算子融合 |
+| 5.1 | [CUDA Softmax 朴素实现优化](<docs/guides/模块二-CUDA编程与算子优化/5.1-CUDA Softmax朴素实现优化.md>) | Safe Softmax、Warp Shuffle 规约、向量化加载、两遍融合 Kernel |
+| 5.2 | [CUDA Online Softmax 实现优化](<docs/guides/模块二-CUDA编程与算子优化/5.2-CUDA Online Softmax实现.md>) | Online Softmax 推导与 CUDA 实现，FlashAttention 的前置知识 |
+| 第 6 章 | [Attention 算子](<docs/guides/模块二-CUDA编程与算子优化/第6章-Attention算子.md>) | FlashAttention V1/V2/V3、Decode 阶段加速、PagedAttention CUDA 实现 |
+| 6.1 | [FlashAttention V1 详解](<docs/guides/模块二-CUDA编程与算子优化/6.1-FlashAttention V1详解.md>) | Tiling + Online Softmax 把额外显存从 $O(N^2)$ 降到 $O(N)$，IO 复杂度分析与反向重计算 |
+| 6.2 | [FlashAttention V2 详解](<docs/guides/模块二-CUDA编程与算子优化/6.2-FlashAttention V2详解.md>) | 调换内外循环、减少非矩阵乘运算、Warp 级工作分配、Causal Mask 优化 |
+| 第 7 章 | [AI 编译器](<docs/guides/模块二-CUDA编程与算子优化/第7章-AI编译器.md>) | Triton、torch.compile、TVM/XLA 概述 |
+| 7.1 | [Triton 编程模型](<docs/guides/模块二-CUDA编程与算子优化/7.1-Triton编程框架.md>) | Triton 编程模型与基础语法，以 Softmax 为例与 PyTorch 实现对比性能 |
 
 
 <br>
@@ -169,16 +174,16 @@ AIInfraGuide 是一个**开源、系统、面向实践**的 AI Infra 知识库�
 
 | 序号 | 文章 | 说明 |
 |:---:|------|------|
-| 第 1 章 | [分布式训练总论](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/第1章-分布式训练总论/) | 为什么需要分布式训练、训练显存账本、五大并行策略全景、环境搭建与 DDP 启动 |
-| 1.1 | [分布式训练总论：显存账本与五大并行策略全景](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/11-分布式训练总论/) | 手算训练显存账本，总览五大并行策略全景与选择原则 |
-| 1.2 | [环境搭建与分布式启动](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/12-环境搭建与分布式启动/) | rank/local_rank/world_size、torchrun 启动与会合机制、NCCL 调试、最小 DDP 脚本 |
-| 第 2 章 | [集合通信原语](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/第2章-集合通信原语/) | AllReduce/ReduceScatter/AllGather/All-to-All 语义、Ring 算法、通信量量化分析 |
-| 2.1 | [集合通信原语详解](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/21-集合通信原语详解/) | AllReduce/ReduceScatter/AllGather/All-to-All 语义、Ring AllReduce 原理、通信耗时量化 |
-| 第 3 章 | [优化器](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/第3章-优化器/) | SGD/Adam/AdamW 演进、优化器状态显存开销分析、大 Batch 优化器 LAMB/LARS |
-| 3.1 | [优化器：从 SGD 到 AdamW 与显存开销分析](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/31-优化器原理与显存开销分析/) | 优化器演进、优化器状态显存开销、FP32 主权重的必要性、LARS/LAMB |
-| 第 4 章 | [数据并行](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/第4章-数据并行/) | DataParallel、DistributedDataParallel、FSDP |
-| 4.1 | [数据并行详解](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/41-数据并行详解/) | DP/DDP/FSDP 演进、梯度同步机制、通信量与显存账本的数学推导 |
-| 4.2 | [PyTorch 数据并行从原理到实战](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/42-pytorch-数据并行从原理到实战/) | 通信原语、DDP、FSDP 参数分片、多机多卡实战，附完整代码示例 |
+| 第 1 章 | [分布式训练总论](<docs/guides/模块三-分布式训练/第1章-分布式训练总论.md>) | 为什么需要分布式训练、训练显存账本、五大并行策略全景、环境搭建与 DDP 启动 |
+| 1.1 | [分布式训练总论：显存账本与五大并行策略全景](<docs/guides/模块三-分布式训练/1.1 分布式训练总论.md>) | 手算训练显存账本，总览五大并行策略全景与选择原则 |
+| 1.2 | [环境搭建与分布式启动](<docs/guides/模块三-分布式训练/1.2 环境搭建与分布式启动.md>) | rank/local_rank/world_size、torchrun 启动与会合机制、NCCL 调试、最小 DDP 脚本 |
+| 第 2 章 | [集合通信原语](<docs/guides/模块三-分布式训练/第2章-集合通信原语.md>) | AllReduce/ReduceScatter/AllGather/All-to-All 语义、Ring 算法、通信量量化分析 |
+| 2.1 | [集合通信原语详解](<docs/guides/模块三-分布式训练/2.1 集合通信原语详解.md>) | AllReduce/ReduceScatter/AllGather/All-to-All 语义、Ring AllReduce 原理、通信耗时量化 |
+| 第 3 章 | [优化器](<docs/guides/模块三-分布式训练/第3章-优化器.md>) | SGD/Adam/AdamW 演进、优化器状态显存开销分析、大 Batch 优化器 LAMB/LARS |
+| 3.1 | [优化器：从 SGD 到 AdamW 与显存开销分析](<docs/guides/模块三-分布式训练/3.1 优化器原理与显存开销分析.md>) | 优化器演进、优化器状态显存开销、FP32 主权重的必要性、LARS/LAMB |
+| 第 4 章 | [数据并行](<docs/guides/模块三-分布式训练/第4章-数据并行.md>) | DataParallel、DistributedDataParallel、FSDP |
+| 4.1 | [数据并行详解](<docs/guides/模块三-分布式训练/4.1 数据并行详解.md>) | DP/DDP/FSDP 演进、梯度同步机制、通信量与显存账本的数学推导 |
+| 4.2 | [PyTorch 数据并行从原理到实战](<docs/guides/模块三-分布式训练/4.2 PyTorch 数据并行从原理到实战.md>) | 通信原语、DDP、FSDP 参数分片、多机多卡实战，附完整代码示例 |
 
 <br>
 
@@ -219,6 +224,22 @@ npm run lab:ddp
 
 <br>
 
+### 新增训练主线（2026-11-07）
+
+| 阅读入口 | 新增内容 |
+|---|---|
+| [第12章：训练数据系统](docs/guides/模块三-分布式训练/第12章-训练数据系统.md) | 治理去重、mixture、tokenizer、GPTDataset三索引、packing与存储吞吐 |
+| [第13章：Megatron源码与训练状态](docs/guides/模块三-分布式训练/第13章-Megatron源码与训练状态.md) | 迭代、ModuleSpec/TE、main_grad/DistOpt、Hybrid/GTP、MLA/MTP与PGCollection |
+| [第14章：大规模训练可靠性](docs/guides/模块三-分布式训练/第14章-大规模训练可靠性.md) | checkpoint staging/finalize、重分片、RNG、fail-slow/SDC、调度与故障演练 |
+| [第15章：超大规模训练设计与成本](docs/guides/模块三-分布式训练/第15章-超大规模训练设计与成本.md) | 参数/FLOPs、五类配置、训练课程、optimizer、scaling laws与μP |
+| [第16章：训练源码题库与项目](docs/guides/模块三-分布式训练/第16章-训练源码题库与项目实战.md) | 40道完整问答、8个项目合同、12周路线 |
+| [第17章：训练框架与异构生态](docs/guides/模块三-分布式训练/第17章-训练框架与异构加速生态.md) | TorchTitan、MaxText、开放框架与AMD/TPU/Trainium迁移合约 |
+| [HSDP与多实例DistOpt](docs/guides/模块三-分布式训练/5.3-HSDP与多实例分布式优化器.md) | inner/outer状态、两级归约与d=D/I |
+| [FP8/FP4缩放](docs/guides/模块三-分布式训练/8.3-FP8与FP4训练的缩放数值与验收.md) | amax、块缩放、转置、BF16 shadow与验收 |
+| [长上下文](docs/guides/模块三-分布式训练/第9章-长序列训练与上下文并行.md) | RoPE课程、混合长度、有效评测、AutoSP与HexiSeq |
+
+训练覆盖按机制与来源段落复核，详见[训练覆盖审计](docs/expansion-2026/TRAINING_COVERAGE_AUDIT.md)。40道代表题和项目规格不等于原Megatron报告全部126题逐项实现。
+
 ## 🚀 模块四：推理优化
 
 以 **vLLM** 为贯穿主线，覆盖 LLM 推理基础、推理引擎核心技术、nano-vllm 源码解读、量化、Speculative Decoding、分布式推理、PD 解耦架构、生产级服务特性、性能分析、生产部署运维，以及端到端选型实战。
@@ -240,43 +261,52 @@ npm run lab:ddp
 
 | 序号 | 文章 | 说明 |
 |:---:|------|------|
-| 第 1 章 | [LLM 推理基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第1章-llm推理基础/第1章-llm推理基础/) | Prefill/Decode 两阶段、KV Cache、性能指标、Roofline 瓶颈分析、推理链路 |
-| 1.1 | [LLM 推理基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第1章-llm推理基础/11-llm推理基础/) | Prefill/Decode 两阶段、KV Cache 显存账本、TTFT/TPOT 指标，用 Roofline 解释 Decode 为何 Memory Bound |
-| 1.2 | [vLLM 快速入门](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第1章-llm推理基础/12-vllm快速入门/) | 从安装到部署你的第一个 LLM 推理服务，离线批量推理与在线 OpenAI 兼容服务 |
-| 第 2 章 | [推理引擎核心技术](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/第2章-推理引擎核心技术/) | PagedAttention、Continuous Batching、Prefix Cache、Chunked Prefill、Attention 后端与图优化 |
-| 2.1 | [PagedAttention](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/21-pagedattention/) | 借鉴虚拟内存分页思想，用 Block Table 消除 KV Cache 碎片化，支持前缀共享与 Copy-on-Write |
-| 2.2 | [Continuous Batching](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/22-continuous-batching/) | Iteration-level Scheduling 让请求随到随拼、完成即退，把 GPU 利用率从三成拉到八成以上 |
-| 2.3 | [Prefix Cache 与 RadixAttention](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/23-prefix-cache-与-radixattention/) | vLLM 基于 Hash 的自动前缀缓存，SGLang 用 Radix Tree 做更高效的前缀共享 |
-| 2.4 | [Chunked Prefill 与统一调度](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/24-chunked-prefill-与统一调度/) | 切块 Prefill 消除对 Decode 的干扰，vLLM V1 用统一 Token 预算调度器抹平 Prefill/Decode 边界 |
-| 2.5 | [Attention 后端与图优化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/25-attention-后端与图优化/) | 可插拔 Attention 后端与 CUDA Graph、torch.compile 消除 Decode 阶段的 CPU 启动开销 |
-| 第 3 章 | [nano-vllm 源码解读](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/第3章-nano-vllm源码解读/) | 以约 1200 行极简引擎 nano-vllm 为主线，逐模块读懂连续批处理、PagedAttention、FlashAttention、张量并行与 CUDA Graph |
-| 3.1 | [项目全景与四层架构](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/31-项目全景与四层架构/) | nano-vllm 定位、目录结构，与接口/引擎/调度/执行四层架构及端到端数据流 |
-| 3.2 | [配置、入口与一次 generate 的全流程](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/32-配置入口与推理主循环/) | Config/SamplingParams、LLM 对 LLMEngine 的封装，以及 generate→add_request→step→postprocess 主循环 |
-| 3.3 | [模型骨架与核心算子](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/33-模型与核心算子/) | RMSNorm/RoPE/SwiGLU、并行 Linear 族与张量并行、词表并行 Embedding/LMHead、Attention 两条路径 |
-| 3.4 | [KV Cache 与 BlockManager](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/34-kvcache与blockmanager/) | Block 结构、PagedAttention 分块、基于 xxhash 的前缀缓存、块的分配回收与 Sequence 状态机 |
-| 3.5 | [Scheduler 与连续批处理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/35-scheduler与连续批处理/) | Waiting/Running 双队列、Prefill/Decode 分离调度、Token Budget、chunked prefill 与抢占重算 |
-| 3.6 | [ModelRunner、CUDA Graph 与性能基准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/36-modelrunner引擎循环与性能/) | 序列张量化、全局 Context、KV Cache 显存切分、CUDA Graph 捕获回放，以及官方基准与 vLLM 对比 |
-| 第 4 章 | [量化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/第4章-量化/) | 量化基础、SmoothQuant、GPTQ/AWQ、FP8、NVFP4/MXFP4、KV Cache 量化 |
-| 4.1 | [量化基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/41-量化基础/) | Scale 与零点、对称与非对称、位宽与格距、量化粒度、校准与 PTQ/QAT |
-| 4.2 | [W8A8 与 SmoothQuant](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/42-w8a8与smoothquant/) | 激活离群值、等价缩放与迁移强度 α、INT8 GEMM、LLM Compressor 配方 |
-| 4.3 | [Weight-only INT4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/43-weight-only-int4/) | GPTQ 误差补偿、AWQ 激活感知缩放、Marlin 融合 Kernel 与 vLLM 的 Kernel 选择 |
-| 4.4 | [KV Cache 量化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/44-kv-cache量化/) | KIVI 分组与残留缓存、FP8 KV 的 Scale 校准与跳层、长上下文验证 |
-| 4.5 | [FP8 与 NVFP4/MXFP4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/45-fp8与nvfp4-mxfp4/) | E4M3/E5M2、FP8 Scale、E2M1 微块缩放、NVFP4 与 MXFP4 对比及硬件执行条件 |
-| 4.6 | [量化选型与 vLLM 实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/46-量化选型与vllm实战/) | 基于 v0.32.0 的按瓶颈选型、在线量化入口、FP16/AWQ 吞吐与生成质量对照 |
-| 第 5 章 | [Speculative Decoding](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/第5章-speculative-decoding/) | Draft+Verify 原理、N-gram/Suffix、Medusa/EAGLE/MTP、vLLM 投机解码实战 |
-| 5.1 | [投机解码核心原理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/51-投机解码核心原理/) | Draft + Verify、接受与残差采样的保分布证明、one-hot Draft、KV 回退 |
-| 5.2 | [Draft 模型与无模型方案](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/52-draft模型与无模型方案/) | 独立 Draft 与 PARD、Tokenizer 兼容、N-gram/Suffix、接受率与候选覆盖 |
-| 5.3 | [Medusa、EAGLE 与 MTP](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/53-medusa与eagle/) | 多头预测、Tree Attention、EAGLE-2/3、DeepSeek-V3 MTP、Block Verification |
-| 5.4 | [收益边界与限制](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/54-收益边界与限制/) | 提交长度与轮耗时账本、投机长度递减、Dynamic SD、并发、量化与流式延迟 |
-| 5.5 | [vLLM 投机解码实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/55-vllm投机解码实战/) | 基于 v0.32.0 的基线/N-gram/Draft/EAGLE-3 对照、逐请求接受指标与 Benchmark |
-| 第 10 章 | [端侧推理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第10章-端侧推理/第10章-端侧推理/) | 端侧软硬件栈、异构执行、运行时选型、量化、内存优化与 Benchmark |
-| 10.1 | [端侧推理基础：从模型导出到异构硬件执行](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第10章-端侧推理/101-端侧推理基础/) | 端侧约束、软硬件栈、运行时选型、量化与内存优化、Benchmark，以及 ExecuTorch/XNNPACK 最小实例 |
+| 第 1 章 | [LLM 推理基础](<docs/guides/模块四-推理优化/第1章-LLM推理基础/第1章-LLM推理基础.md>) | Prefill/Decode 两阶段、KV Cache、性能指标、Roofline 瓶颈分析、推理链路 |
+| 1.1 | [LLM 推理基础](<docs/guides/模块四-推理优化/第1章-LLM推理基础/1.1-LLM推理基础.md>) | Prefill/Decode 两阶段、KV Cache 显存账本、TTFT/TPOT 指标，用 Roofline 解释 Decode 为何 Memory Bound |
+| 1.2 | [vLLM 快速入门](<docs/guides/模块四-推理优化/第1章-LLM推理基础/1.2-vLLM快速入门.md>) | 从安装到部署你的第一个 LLM 推理服务，离线批量推理与在线 OpenAI 兼容服务 |
+| 第 2 章 | [推理引擎核心技术](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/第2章-推理引擎核心技术.md>) | PagedAttention、Continuous Batching、Prefix Cache、Chunked Prefill、Attention 后端与图优化 |
+| 2.1 | [PagedAttention](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/2.1-PagedAttention.md>) | 借鉴虚拟内存分页思想，用 Block Table 消除 KV Cache 碎片化，支持前缀共享与 Copy-on-Write |
+| 2.2 | [Continuous Batching](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/2.2-Continuous Batching.md>) | Iteration-level Scheduling 让请求随到随拼、完成即退，减少固定 batch 的尾部空转 |
+| 2.3 | [Prefix Cache 与 RadixAttention](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/2.3-Prefix Cache 与 RadixAttention.md>) | vLLM 基于 Hash 的自动前缀缓存，SGLang 用 Radix Tree 做更高效的前缀共享 |
+| 2.4 | [Chunked Prefill 与统一调度](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/2.4-Chunked Prefill 与统一调度.md>) | 切块 Prefill 消除对 Decode 的干扰，vLLM V1 用统一 Token 预算调度器抹平 Prefill/Decode 边界 |
+| 2.5 | [Attention 后端与图优化](<docs/guides/模块四-推理优化/第2章-推理引擎核心技术/2.5-Attention 后端与图优化.md>) | 可插拔 Attention 后端与 CUDA Graph、torch.compile 消除 Decode 阶段的 CPU 启动开销 |
+| 第 3 章 | [nano-vllm 源码解读](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/第3章-nano-vllm源码解读.md>) | 以约 1200 行极简引擎 nano-vllm 为主线，逐模块读懂连续批处理、PagedAttention、FlashAttention、张量并行与 CUDA Graph |
+| 3.1 | [项目全景与四层架构](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.1-项目全景与四层架构.md>) | nano-vllm 定位、目录结构，与接口/引擎/调度/执行四层架构及端到端数据流 |
+| 3.2 | [配置、入口与一次 generate 的全流程](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.2-配置入口与推理主循环.md>) | Config/SamplingParams、LLM 对 LLMEngine 的封装，以及 generate→add_request→step→postprocess 主循环 |
+| 3.3 | [模型骨架与核心算子](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.3-模型与核心算子.md>) | RMSNorm/RoPE/SwiGLU、并行 Linear 族与张量并行、词表并行 Embedding/LMHead、Attention 两条路径 |
+| 3.4 | [KV Cache 与 BlockManager](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.4-KVCache与BlockManager.md>) | Block 结构、PagedAttention 分块、基于 xxhash 的前缀缓存、块的分配回收与 Sequence 状态机 |
+| 3.5 | [Scheduler 与连续批处理](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.5-Scheduler与连续批处理.md>) | Waiting/Running 双队列、Prefill/Decode 分离调度、Token Budget、chunked prefill 与抢占重算 |
+| 3.6 | [ModelRunner、CUDA Graph 与性能基准](<docs/guides/模块四-推理优化/第3章-nano-vllm源码解读/3.6-ModelRunner引擎循环与性能.md>) | 序列张量化、全局 Context、KV Cache 显存切分、CUDA Graph 捕获回放，以及官方基准与 vLLM 对比 |
+| 第 4 章 | [量化](<docs/guides/模块四-推理优化/第4章-量化/第4章-量化.md>) | 量化基础、SmoothQuant、GPTQ/AWQ、FP8、NVFP4/MXFP4、KV Cache 量化 |
+| 4.1 | [量化基础](<docs/guides/模块四-推理优化/第4章-量化/4.1-量化基础.md>) | Scale 与零点、对称与非对称、位宽与格距、量化粒度、校准与 PTQ/QAT |
+| 4.2 | [W8A8 与 SmoothQuant](<docs/guides/模块四-推理优化/第4章-量化/4.2-W8A8与SmoothQuant.md>) | 激活离群值、等价缩放与迁移强度 α、INT8 GEMM、LLM Compressor 配方 |
+| 4.3 | [Weight-only INT4](<docs/guides/模块四-推理优化/第4章-量化/4.3-Weight-only-INT4.md>) | GPTQ 误差补偿、AWQ 激活感知缩放、Marlin 融合 Kernel 与 vLLM 的 Kernel 选择 |
+| 4.4 | [KV Cache 量化](<docs/guides/模块四-推理优化/第4章-量化/4.4-KV-Cache量化.md>) | KIVI 分组与残留缓存、FP8 KV 的 Scale 校准与跳层、长上下文验证 |
+| 4.5 | [FP8 与 NVFP4/MXFP4](<docs/guides/模块四-推理优化/第4章-量化/4.5-FP8与NVFP4-MXFP4.md>) | E4M3/E5M2、FP8 Scale、E2M1 微块缩放、NVFP4 与 MXFP4 对比及硬件执行条件 |
+| 4.6 | [量化选型与 vLLM 实战](<docs/guides/模块四-推理优化/第4章-量化/4.6-量化选型与vLLM实战.md>) | 基于 v0.32.0 的按瓶颈选型、在线量化入口、FP16/AWQ 吞吐与生成质量对照 |
+| 第 5 章 | [Speculative Decoding](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/第5章-Speculative-Decoding.md>) | Draft+Verify 原理、N-gram/Suffix、Medusa/EAGLE/MTP、vLLM 投机解码实战 |
+| 5.1 | [投机解码核心原理](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/5.1-投机解码核心原理.md>) | Draft + Verify、接受与残差采样的保分布证明、one-hot Draft、KV 回退 |
+| 5.2 | [Draft 模型与无模型方案](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/5.2-Draft模型与无模型方案.md>) | 独立 Draft 与 PARD、Tokenizer 兼容、N-gram/Suffix、接受率与候选覆盖 |
+| 5.3 | [Medusa、EAGLE 与 MTP](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/5.3-Medusa与EAGLE.md>) | 多头预测、Tree Attention、EAGLE-2/3、DeepSeek-V3 MTP、Block Verification |
+| 5.4 | [收益边界与限制](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/5.4-收益边界与限制.md>) | 提交长度与轮耗时账本、投机长度递减、Dynamic SD、并发、量化与流式延迟 |
+| 5.5 | [vLLM 投机解码实战](<docs/guides/模块四-推理优化/第5章-Speculative-Decoding/5.5-vLLM投机解码实战.md>) | 基于 v0.32.0 的基线/N-gram/Draft/EAGLE-3 对照、逐请求接受指标与 Benchmark |
+| 第 10 章 | [端侧推理](<docs/guides/模块四-推理优化/第10章-端侧推理/第10章-端侧推理.md>) | 端侧软硬件栈、异构执行、运行时选型、量化、内存优化与 Benchmark |
+| 10.1 | [端侧推理基础：从模型导出到异构硬件执行](<docs/guides/模块四-推理优化/第10章-端侧推理/10.1-端侧推理基础.md>) | 端侧约束、软硬件栈、运行时选型、量化与内存优化、Benchmark，以及 ExecuTorch/XNNPACK 最小实例 |
 
 <br>
 
+### 新增源码、生产与题库入口
+
+- [第6—9章工程主线](docs/guides/模块四-推理优化/第6章-分布式推理.md)：分布式容量、WideEP、PD/KV传输、Benchmark、流式背压与故障演练。
+- [第11章：SGLang与vLLM源码数据流](docs/guides/模块四-推理优化/第11章-SGLang与vLLM源码数据流.md)：请求、Scheduler、KV、ModelRunner及结构化输出/投机状态。
+- [第12章：源码题库与项目](docs/guides/模块四-推理优化/第12章-推理源码题库与项目实战.md)：计算题、系统设计、项目与分岗模拟面试。
+- [235题逐题速查](docs/guides/模块四-推理优化/12.3-推理面试235题索引与逐题速查.md)：保留全部题号、题干、分类和顺序，每题有重写要点与教程入口；不等同于235个完整实现或硬件实验。
+
+来源与逐题映射见[推理覆盖审计](docs/expansion-2026/INFERENCE_COVERAGE_AUDIT.md)。
+
 ## 🧠 模块五：LLM RL 后训练
 
-沿用分布式训练模块的「章节导读 + 专题详解」结构，包含 **10 章导读、20 篇详解**。每篇结合直觉、公式、数值或系统算例、工程排查、自测答案和一手资料。
+沿用分布式训练模块的「章节导读 + 专题详解」结构，继续展开到长上下文与异步RL工程。每篇结合直觉、公式、数值或系统算例、工程排查、自测答案和一手资料。
 
 本地站点入口：[LLM RL 后训练](http://localhost:4321/AIInfraGuide/rl/)。Markdown 源文档位于 [模块五目录](docs/guides/模块五-LLM-RL后训练/)。
 
@@ -292,6 +322,7 @@ npm run lab:ddp
 | 第 8 章 训练推理协同与性能优化 | 混合部署、权重同步、异步 rollout、吞吐与显存 |
 | 第 9 章 可靠训练与故障排查 | Checkpoint、恢复、可复现性、故障定位 |
 | 第 10 章 数值实验与学习验收 | 手算目标、CPU RL 闭环、梯度校验、精确恢复 |
+| [第11章：长上下文与异步RL工程](docs/guides/模块五-LLM-RL后训练/第11章-长上下文与异步RL工程.md) | 工具轨迹Mask、CP/DP loss、GSPO序列ratio、取消/超时/reward版本与环境吞吐 |
 
 配套 [CPU 数值实验](labs/llm_rl/README.md) 无需下载模型或安装 GPU 依赖：
 
@@ -302,26 +333,71 @@ npm run lab:rl
 
 实验使用四上下文、四动作策略表，验证数学与状态流转；完整 GPU 框架训练和多机性能未作为已验证结果。
 
+## 📊 模块六：性能工程与生产实践
+
+用同一套方法分析训练与推理：固定工作量，测量时间线，建立资源模型，再用数值和质量护栏验证优化。
+
+| 章节 | 网页教程 |
+|---|---|
+| 1 性能模型与实验方法 | [Roofline与关键路径](docs/guides/模块六-性能工程与生产实践/1.1-跨训练推理的Roofline与关键路径.md)、[统计测量与归因](docs/guides/模块六-性能工程与生产实践/1.2-统计测量基准设计与性能归因.md) |
+| 2 GPU算子编译与调优 | [微架构瓶颈](docs/guides/模块六-性能工程与生产实践/2.1-从GPU时间线到微架构瓶颈.md)、[编译/Graph/动态Shape](docs/guides/模块六-性能工程与生产实践/2.2-编译CUDA图与动态Shape工程.md) |
+| 3 通信存储与主机协同 | [NCCL与RDMA](docs/guides/模块六-性能工程与生产实践/3.1-NCCL与RDMA网络性能工程.md)、[NUMA与异步IO](docs/guides/模块六-性能工程与生产实践/3.2-NUMA数据加载与异步IO流水.md) |
+| 4 正确性与优化项目 | [低精度Kernel门禁](docs/guides/模块六-性能工程与生产实践/4.1-低精度Kernel正确性与发布门禁.md)、[综合实验](docs/guides/模块六-性能工程与生产实践/4.2-AIInfra性能项目与综合实验.md) |
+
+## 🐋 模块七：DeepSeek 开放技术详解
+
+按模型、训练、推理、算子、存储与生态分层阅读。每篇区分论文报告、开放权重、公开源码、独立oracle和未验证的部署条件。
+
+| 章节 | 阅读入口 |
+|---|---|
+| 1 版图与证据 | [开放技术版图与版本](docs/guides/模块七-DeepSeek开放技术详解/第1章-开放技术版图与版本证据.md) |
+| 2 架构与长上下文 | [MLA/MoE/稀疏Attention/mHC/CED/Engram](docs/guides/模块七-DeepSeek开放技术详解/第2章-模型架构与长上下文.md) |
+| 3 预训练 | [FP8/DualPipe/Muon/MTP与DSpark目标](docs/guides/模块七-DeepSeek开放技术详解/第3章-预训练数值与并行系统.md) |
+| 4 后训练 | [GRPO/R1/Agent/数学/蒸馏](docs/guides/模块七-DeepSeek开放技术详解/第4章-RL推理与Agent后训练.md) |
+| 5 推理执行 | [FlashMLA/DeepInfer/DSpark](docs/guides/模块七-DeepSeek开放技术详解/第5章-推理算子与DeepInfer运行时.md) |
+| 6 算子与通信 | [DeepGEMM/DeepEP/EPLB/DeepSelect/DeepJIT/Ascend](docs/guides/模块七-DeepSeek开放技术详解/第6章-算子通信与跨硬件工程.md) |
+| 7 存储与集群 | [3FS/smallpond/FireFlyer/DSec](docs/guides/模块七-DeepSeek开放技术详解/第7章-存储数据与集群基础设施.md) |
+| 8 多模态与Agent生态 | [VL/Janus/OCR/Harness/Recipe](docs/guides/模块七-DeepSeek开放技术详解/第8章-多模态与Agent开放生态.md) |
+| 9 实验与复现 | [本地数学、状态与MLA实验](docs/guides/模块七-DeepSeek开放技术详解/第9章-本地实验与复现验收.md) |
+
+配套[实验说明](labs/deepseek/README.md)区分CPU数学、官方EPLB CPU规划和普通PyTorch MLA GPU验证；没有把它们称为官方kernel或完整模型性能复现。
+
 ## 💻 本地浏览
 
-本地站点展示当前仓库中已发布的学习文章、面试题和博客，也包含本 fork 补充的 RL 后训练与分布式训练专题。配套实验按 `labs/` 中的说明在终端运行。
+**教程正文都通过本地网站阅读；源码和实验在终端运行。** 浏览器会展示目录、正文、公式、图示、代码示例和自测答案，不会自动执行代码、启动模型或安装CUDA依赖。
 
-需要 Node.js（建议使用当前受支持的 LTS）和 npm；数值实验另需 Python 3.10+。从仓库根目录运行：
+准备Node.js与npm，在仓库根目录运行：
 
 ```bash
 npm ci
 npm run site:local
 ```
 
-打开 **[http://localhost:4321/AIInfraGuide/](http://localhost:4321/AIInfraGuide/)**，新模块为 **[http://localhost:4321/AIInfraGuide/rl/](http://localhost:4321/AIInfraGuide/rl/)**。`site:local` 会依次检查 Astro 类型、构建页面、生成 Pagefind 搜索索引并启动预览；启动期间请等待构建完成。按 `Ctrl+C` 停止。
+构建完成后打开[本地首页](http://localhost:4321/AIInfraGuide/)。七个模块分别位于：
 
-在 WSL 中启动后，可从 Windows 浏览器访问同一个 localhost 地址。端口 4321 已占用时，先看终端输出的实际端口，或用 `npm run preview -- --host 0.0.0.0 --port 4322` 预览已构建内容。服务绑定 `0.0.0.0`，便于 WSL/主机访问。
+| 模块 | 本地入口 |
+|---|---|
+| 前置知识 | [prerequisites](http://localhost:4321/AIInfraGuide/prerequisites/) |
+| CUDA与算子 | [cuda](http://localhost:4321/AIInfraGuide/cuda/) |
+| 分布式训练 | [distributed](http://localhost:4321/AIInfraGuide/distributed/) |
+| 推理优化 | [inference](http://localhost:4321/AIInfraGuide/inference/) |
+| LLM RL | [rl](http://localhost:4321/AIInfraGuide/rl/) |
+| 性能工程 | [performance](http://localhost:4321/AIInfraGuide/performance/) |
+| DeepSeek | [deepseek](http://localhost:4321/AIInfraGuide/deepseek/) |
 
-日常修改 Markdown 时用 `npm run dev:local` 热更新。搜索索引由构建生成，修改后要执行 `npm run build` 更新搜索；预览模式下修改内容也需要重新构建。URL 必须保留已有 `/AIInfraGuide/` 前缀。
+WSL启动后可从Windows浏览器访问同一localhost地址。端口以终端实际输出为准；URL保留`/AIInfraGuide/`前缀。`Ctrl+C`停止服务。
 
-构建后可用 `npm run check:rl-site` 检查新模块的页面覆盖、链接、锚点与公式；详见[交付验证记录](labs/llm_rl/VALIDATION.md)。
+日常编辑使用`npm run dev:local`。搜索索引由构建生成，修改后需重新运行`npm run build`；预览模式也需重新构建才能看到更新。
 
-<br>
+构建后的内容检查入口是`npm run check:content`。实验命令及Python/PyTorch条件分别见[分布式labs](labs/distributed/README.md)、[RL labs](labs/llm_rl/README.md)、[DeepSeek labs](labs/deepseek/README.md)。外部论文和GitHub链接仍跳转到对应来源。
+
+### 来源与覆盖记录
+
+三份参考分别为训练Infra综述（2026-08-24）、Megatron源码报告（2026-08-29）和推理工程师宝典（2026-08-30）。输入文件SHA与章节映射见[参考清单](docs/expansion-2026/reference-manifest.json)；主要章节按主题重组，未笼统声称全部研究方法、每个参考问题或所有硬件路径已完整实现。
+
+- [网页阅读版：资料来源与覆盖边界](docs/guides/资料来源版本与覆盖边界.md)。
+- [训练覆盖审计](docs/expansion-2026/TRAINING_COVERAGE_AUDIT.md)与[推理覆盖审计](docs/expansion-2026/INFERENCE_COVERAGE_AUDIT.md)。
+- [工作包与交付记录](docs/expansion-2026/PLAN.md)与[文章更新日志](docs/posts/update-log.md)。
 
 ## 🎯 面试宝典
 
@@ -344,7 +420,7 @@ npm run site:local
 | **T4 自动驾驶/车企** | 小鹏汽车、蔚来、理想、卓驭(大疆车载)、小马智行、元戎启行 | AI Infra、高性能计算、大模型推理优化、AI 平台 |
 | **T5 其他** | 科大讯飞、网易、海康威视、联想、猿辅导、好未来等 | AI Infra、高性能计算、推理引擎开发、大模型算法 |
 
-> 注：分布式训练相关的岗位特别少，一般只有做大模型的大厂才有，所以大家在求职准备过程中，可以重点关注算子优化、推理优化、推理框架这类岗位，训练相关的技术点了解即可，不必深钻。
+> 学习侧重点按目标岗位选择：训练岗位重点掌握数据、并行、更新与恢复；Serving岗位重点掌握请求、KV、调度和SLO；算子岗位重点掌握硬件、数值与性能证据。可使用进阶导航与分岗模拟路线安排练习。
 
 <br>
 

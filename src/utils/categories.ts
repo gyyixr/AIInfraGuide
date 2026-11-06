@@ -5,7 +5,8 @@ export const GUIDE_CATEGORIES = {
   'distributed-training': { label: '分布式训练', icon: '🌐', order: 4 },
   'inference-optimization': { label: '推理优化', icon: '🚀', order: 5 },
   'llm-rl': { label: 'LLM RL后训练', icon: '🧠', order: 6 },
-  'performance-analysis': { label: '性能分析', icon: '📊', order: 7 },
+  'performance-analysis': { label: '性能工程', icon: '📊', order: 7 },
+  'deepseek-open': { label: 'DeepSeek 开放技术', icon: '🐋', order: 8 },
 } as const;
 
 export type CategorySlug = keyof typeof GUIDE_CATEGORIES;

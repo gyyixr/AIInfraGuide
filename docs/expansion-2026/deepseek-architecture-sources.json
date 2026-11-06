@@ -1,0 +1,360 @@
+{
+  "checked": "2026-11-07",
+  "scope": "DeepSeek chapters 1-4, 7.3-7.4 and 8; source and semantic verification only; no large model weights or production benchmark executed",
+  "repositories": [
+    {
+      "repository": "deepseek-ai/DeepSeek-V3",
+      "commit": "9b4e9788e4a3a731f7567338ed15d3ec549ce03b",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3/tree/9b4e9788e4a3a731f7567338ed15d3ec549ce03b",
+      "read_paths": [
+        "inference/model.py",
+        "inference/configs/config_671B.json",
+        "inference/kernel.py",
+        "README.md"
+      ],
+      "notes": "代码MIT；初始模型单独LICENSE-MODEL"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-V3.2-Exp",
+      "commit": "87e509a2e5a100d221c97df52c6e8be7835f0057",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/tree/87e509a2e5a100d221c97df52c6e8be7835f0057",
+      "read_paths": [
+        "inference/model.py",
+        "README.md"
+      ],
+      "notes": "包含Indexer RoPE布局修复"
+    },
+    {
+      "repository": "deepseek-ai/Engram",
+      "commit": "fb7f84a21f91223715394a33a1dc24bbfb7f788e",
+      "url": "https://github.com/deepseek-ai/Engram/tree/fb7f84a21f91223715394a33a1dc24bbfb7f788e",
+      "read_paths": [
+        "README.md",
+        "engram_demo_v1.py"
+      ],
+      "notes": "Apache-2.0；演示省略或mock标准模块"
+    },
+    {
+      "repository": "deepseek-ai/DualPipe",
+      "commit": "030ce4325f4ebeb437da4ebc6d00a70469dd58ae",
+      "url": "https://github.com/deepseek-ai/DualPipe/tree/030ce4325f4ebeb437da4ebc6d00a70469dd58ae",
+      "read_paths": [
+        "README.md",
+        "dualpipe/dualpipe.py"
+      ],
+      "notes": "MIT；DualPipeV注明Sea AI Lab cut-in-half来源"
+    },
+    {
+      "repository": "deepseek-ai/DeepSpec",
+      "commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+      "url": "https://github.com/deepseek-ai/DeepSpec/tree/005e03b81cec38b7da6399833d609ee89a2587f2",
+      "read_paths": [
+        "README.md",
+        "deepspec/modeling/dspark/loss.py",
+        "config/dspark/dspark_qwen3_4b.py"
+      ],
+      "notes": "draft训练框架，不是全部主模型trainer"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-Math-V2",
+      "commit": "665c840782baf7faae8a8b244ea313f3cfcc346f",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Math-V2/tree/665c840782baf7faae8a8b244ea313f3cfcc346f",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ],
+      "notes": "Apache-2.0；模型/报告/outputs不等于全部训练闭环"
+    },
+    {
+      "repository": "deepseek-ai/profile-data",
+      "commit": "449602428a1b023acb8a505d4f34fef536535db6",
+      "url": "https://github.com/deepseek-ai/profile-data/tree/449602428a1b023acb8a505d4f34fef536535db6",
+      "read_paths": [
+        "README.md"
+      ],
+      "notes": "历史V3/R1 profile；人为平衡MoE且训练trace省略PP通信"
+    },
+    {
+      "repository": "HFAiLab/hai-platform",
+      "commit": "f9119b1f437039e3969a1dd5beaa8898a1cb6b02",
+      "url": "https://github.com/HFAiLab/hai-platform/tree/f9119b1f437039e3969a1dd5beaa8898a1cb6b02",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ],
+      "notes": "GNU LGPL v3；HFAiLab归属，不是deepseek-ai仓库"
+    },
+    {
+      "repository": "deepseek-ai/Janus",
+      "commit": "1daa72fa409002d40931bd7b36a9280362469ead",
+      "url": "https://github.com/deepseek-ai/Janus/tree/1daa72fa409002d40931bd7b36a9280362469ead",
+      "read_paths": [
+        "README.md",
+        "janus/models/modeling_vlm.py"
+      ],
+      "notes": "代码与模型许可分别检查；包含Janus/Pro/Flow入口"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-VL2",
+      "commit": "ef9f91e2b6426536b83294c11742c27be66361b1",
+      "url": "https://github.com/deepseek-ai/DeepSeek-VL2/tree/ef9f91e2b6426536b83294c11742c27be66361b1",
+      "read_paths": [
+        "README.md",
+        "deepseek_vl2/models/modeling_deepseek_vl_v2.py"
+      ],
+      "notes": "代码与模型许可分别检查；Tiny MHA/Small与主模型MLA"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-OCR",
+      "commit": "09eaf526153e7a01ed16c9dea8c96282aaea29c0",
+      "url": "https://github.com/deepseek-ai/DeepSeek-OCR/tree/09eaf526153e7a01ed16c9dea8c96282aaea29c0",
+      "read_paths": [],
+      "notes": "仅固定仓库HEAD；机制依据官方论文，未完整审计全部代码"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-OCR-2",
+      "commit": "2f3699ebbb96fa8af32212e8c170f2cc28730fad",
+      "url": "https://github.com/deepseek-ai/DeepSeek-OCR-2/tree/2f3699ebbb96fa8af32212e8c170f2cc28730fad",
+      "read_paths": [
+        "README.md",
+        "DeepSeek-OCR2-master/DeepSeek-OCR2-vllm/deepencoderv2/qwen2_d2e.py"
+      ],
+      "notes": "定制视觉mask与144/256 query配置"
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/tree/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "read_paths": [
+        "README.md",
+        "docs/architecture.md",
+        "packages/core/agent-loop/src/agent.ts",
+        "packages/core/tools/src/index.ts"
+      ],
+      "notes": "MIT；developer preview；agent harness而非RL trainer"
+    },
+    {
+      "repository": "deepseek-ai/deepseek-recipe",
+      "commit": "935817c66f5d6e64838f419692545f06787e485f",
+      "url": "https://github.com/deepseek-ai/deepseek-recipe/tree/935817c66f5d6e64838f419692545f06787e485f",
+      "read_paths": [
+        "README.md",
+        "Cargo.toml",
+        "docs/streaming.md",
+        "docs/tokenizer.md",
+        "deepseek-recipe-encoding/src/v4/dsv41.rs"
+      ],
+      "notes": "MIT；workspace0.2.0；协议/编码/解析，推理与HTTP由调用方提供"
+    }
+  ],
+  "model_revisions": [
+    {
+      "model": "deepseek-ai/DeepSeek-V4-Flash",
+      "revision": "60d8d70770c6776ff598c94bb586a859a38244f1",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/tree/60d8d70770c6776ff598c94bb586a859a38244f1",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "inference/model.py",
+        "inference/config.json",
+        "inference/README.md"
+      ]
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "revision": "314113f8a7dadb388215396ba5fbee2c610a04d6",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/tree/314113f8a7dadb388215396ba5fbee2c610a04d6",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "inference/model.py",
+        "inference/config.json",
+        "inference/README.md"
+      ]
+    },
+    {
+      "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "inference/model.py",
+        "inference/config.json",
+        "inference/README.md"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "title": "DeepSeekMoE",
+      "url": "https://arxiv.org/abs/2401.06066"
+    },
+    {
+      "title": "DeepSeekMath",
+      "url": "https://arxiv.org/abs/2402.03300"
+    },
+    {
+      "title": "DeepSeek-V2",
+      "url": "https://arxiv.org/abs/2405.04434"
+    },
+    {
+      "title": "Fire-Flyer",
+      "url": "https://arxiv.org/abs/2408.14158v1"
+    },
+    {
+      "title": "DeepSeek-Prover-V1.5",
+      "url": "https://arxiv.org/abs/2408.08152"
+    },
+    {
+      "title": "Janus",
+      "url": "https://arxiv.org/abs/2410.13848"
+    },
+    {
+      "title": "JanusFlow",
+      "url": "https://arxiv.org/abs/2411.07975"
+    },
+    {
+      "title": "DeepSeek-VL2",
+      "url": "https://arxiv.org/abs/2412.10302"
+    },
+    {
+      "title": "DeepSeek-V3",
+      "url": "https://arxiv.org/abs/2412.19437"
+    },
+    {
+      "title": "DeepSeek-R1 original",
+      "url": "https://arxiv.org/abs/2501.12948v1"
+    },
+    {
+      "title": "NSA",
+      "url": "https://arxiv.org/abs/2502.11089"
+    },
+    {
+      "title": "DeepSeek-Prover-V2",
+      "url": "https://arxiv.org/abs/2504.21801"
+    },
+    {
+      "title": "DeepSeek-OCR",
+      "url": "https://arxiv.org/abs/2510.18234"
+    },
+    {
+      "title": "DeepSeekMath-V2",
+      "url": "https://arxiv.org/abs/2511.22570"
+    },
+    {
+      "title": "DeepSeek-V3.2",
+      "url": "https://arxiv.org/abs/2512.02556"
+    },
+    {
+      "title": "mHC",
+      "url": "https://arxiv.org/abs/2512.24880v1"
+    },
+    {
+      "title": "DeepSeek-OCR 2",
+      "url": "https://arxiv.org/abs/2601.20552"
+    },
+    {
+      "title": "DeepSeek-V4",
+      "url": "https://arxiv.org/abs/2606.19348v1"
+    },
+    {
+      "title": "DSpark",
+      "url": "https://arxiv.org/abs/2607.05147"
+    },
+    {
+      "title": "DSec",
+      "url": "https://arxiv.org/abs/2609.22978v1"
+    }
+  ],
+  "additional_primary_sources": [
+    {
+      "title": "V4.1 technical report",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/314113f8a7dadb388215396ba5fbee2c610a04d6/DeepSeek_V41_Tech_Report.pdf"
+    },
+    {
+      "title": "V4.1-Flash-1017 official release",
+      "url": "https://api-docs.deepseek.com/news/news261017/"
+    }
+  ],
+  "important_boundaries": [
+    "V4.1 reference model.py/config.json are byte-identical across checked base and1017 revisions; weights not compared",
+    "SWA Bounded Replay is approximate and cache-hit-position dependent",
+    "Reference hierarchical indexer computes full einsum then masks; not a performance proof of candidate-only execution",
+    "890 bytes/token includes logical main global KV and index K across actual owners, not all serving memory",
+    "DSec server repository not located in current official organization search; paper disclosure does not imply a full open server",
+    "HFAiLab HAI Platform has independent public source and GNU LGPL v3 license"
+  ],
+  "downloaded_paper_checksums": [
+    {
+      "name": "dsec.pdf",
+      "bytes": 786319,
+      "sha256": "649edc87e70b8e57f9515360b15ed5576c6c8afb3c46a3763e83c22a85a660e2"
+    },
+    {
+      "name": "dspark.pdf",
+      "bytes": 1055890,
+      "sha256": "522036b0cc16ad4678bd7c278dd0a0ab4da31170af7b97c2041067cc09a8289a"
+    },
+    {
+      "name": "fireflyer.pdf",
+      "bytes": 3601294,
+      "sha256": "929922c71b1f460dfad4fd741f67d879e84b7198996641cc7791dee99659972a"
+    },
+    {
+      "name": "janus.pdf",
+      "bytes": 6020079,
+      "sha256": "b926b698b546f3f6eb75e21158ee96b9a6d84ebbfe80375b79d54e4022c462f3"
+    },
+    {
+      "name": "math.pdf",
+      "bytes": 1844642,
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b"
+    },
+    {
+      "name": "math2.pdf",
+      "bytes": 386488,
+      "sha256": "20ffcdebcbb88f24a7f84369fa1d71e2ec584b4d4a0e2e53c958d419103d6c11"
+    },
+    {
+      "name": "ocr.pdf",
+      "bytes": 7631170,
+      "sha256": "a7297788968f8ad9ed21bcd273110814e4889efbbc99bfea86dca12205797a90"
+    },
+    {
+      "name": "ocr2.pdf",
+      "bytes": 976522,
+      "sha256": "7c8aceb1dbe0845b9e1a0c5afd761925913662e2e2c4c79b482198f3e5e1a96b"
+    },
+    {
+      "name": "r1.pdf",
+      "bytes": 5034998,
+      "sha256": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4"
+    },
+    {
+      "name": "v3.pdf",
+      "bytes": 1887366,
+      "sha256": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330"
+    },
+    {
+      "name": "v32.pdf",
+      "bytes": 980616,
+      "sha256": "2bec0671778769c159ec389412727d1f3d4889fe1c71564b61edaa24705bd17b"
+    },
+    {
+      "name": "v4.pdf",
+      "bytes": 4713349,
+      "sha256": "55b2d72f772ac00de2e470b3ee08443c648d971c7f57c52d6202895665e5978d"
+    },
+    {
+      "name": "v41.pdf",
+      "bytes": 1809802,
+      "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d"
+    },
+    {
+      "name": "vl2.pdf",
+      "bytes": 6007241,
+      "sha256": "cff2bd0ad1656769d7447f0e3cf3a1885902333894f123bdac27fce05c97459e"
+    }
+  ]
+}

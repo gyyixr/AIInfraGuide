@@ -8,6 +8,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeTableWrap from './src/utils/rehype-table-wrap.mjs';
 import rehypeReferences from './src/utils/rehype-references.mjs';
+import remarkLocalLinks from './src/utils/remark-local-links.mjs';
 
 export default defineConfig({
   site: 'https://caomaolufei.github.io',
@@ -25,7 +26,7 @@ export default defineConfig({
       defaultColor: 'light',
       wrap: false,
     },
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, [remarkLocalLinks, { base: '/AIInfraGuide' }]],
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],

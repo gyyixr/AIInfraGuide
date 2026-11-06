@@ -1,0 +1,202 @@
+[
+  {
+    "file": "docs/guides/模块四-推理优化/6.1-分布式推理的容量与并行设计.md",
+    "lines": 365,
+    "fences": 6,
+    "math_delimiters": 30,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "8192 32.6 10.0 50.6\n16384 32.6 20.0 60.6\ntail_waste_tokens 31\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/6.2-MoE推理WideEP与负载均衡.md",
+    "lines": 361,
+    "fences": 10,
+    "math_delimiters": 14,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "before [600, 220, 140, 64]\nafter  [424, 240, 180, 180]\nmax_load_ratio 1.4150943396226414\ncross_node_MiB 168.0\nshared_link_lower_bound_ms 6.5625\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/6.3-多节点部署与权重加载一致性.md",
+    "lines": 360,
+    "fences": 10,
+    "math_delimiters": 2,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "mixed artifact, stale epoch, incomplete warmup rejected\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/7.1-PD解耦的成本模型与调度.md",
+    "lines": 351,
+    "fences": 10,
+    "math_delimiters": 22,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "replicas 2 6 gpus 20\n8192 1.0 53.0\n32768 4.0 203.0\nserial_ms 213\nideal_overlap_lower_bound_ms 160\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/7.2-KVConnector与HiCache分层缓存.md",
+    "lines": 367,
+    "fences": 18,
+    "math_delimiters": 12,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "45.667 280.0 180\nA 452.383 B 200.0\nonly complete, continuous prefix blocks reused\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/7.3-KV传输取消重试与生命周期.md",
+    "lines": 364,
+    "fences": 14,
+    "math_delimiters": 2,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "drain, dedup, local completion and generation checks passed\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/8.1-推理Benchmark指标与负载模型.md",
+    "lines": 367,
+    "fences": 14,
+    "math_delimiters": 22,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "{'ttft': 0.5, 'tpot': 0.13333333333333333, 'itl': [0.040000000000000036, 0.039999999999999925, 0.32000000000000006], 'e2e': 0.93}\nA {'rps': 9.8, 'output_tps': 980.0, 'goodput': 7.0, 'attainment': 0.7, 'failure_rate': 0.02}\nB {'rps': 9.5, 'output_tps': 950.0, 'goodput': 9.0, 'attainment': 0.9, 'failure_rate': 0.05}\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/8.2-从端到端Trace到GPUKernel定位.md",
+    "lines": 373,
+    "fences": 14,
+    "math_delimiters": 10,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "prefill_2x_total 1.16\nqueue_change_total 1.9333333333333333\n4_percent_kernel_2x 1.0204081632653061\nAI 500.0\ntime_lower_bound_ms 40.0\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/8.3-性能回归质量护栏与成本优化.md",
+    "lines": 370,
+    "fences": 16,
+    "math_delimiters": 10,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "A 41.667 B 32.536\nsaving_percent 21.914\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/9.1-流式服务背压与多租户隔离.md",
+    "lines": 351,
+    "fences": 14,
+    "math_delimiters": 4,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "atomic quota check passed\nbuffer_fill_s 102.4\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/9.2-路由Autoscaling与冷启动治理.md",
+    "lines": 354,
+    "fences": 12,
+    "math_delimiters": 16,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "replicas 8 gpus 32\nstartup_backlog 1800 drain_seconds 90.0\n[(3, 'consider drain one replica')]\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/9.3-生产故障演练与推理系统设计.md",
+    "lines": 376,
+    "fences": 14,
+    "math_delimiters": 4,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "capacity 10\ngroup {0: 'ABORT_REQUESTED', 1: 'ABORT_REQUESTED', 2: 'FAILED', 3: 'ABORT_REQUESTED'}\n",
+        "stderr": ""
+      }
+    ],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第6章-分布式推理.md",
+    "lines": 137,
+    "fences": 2,
+    "math_delimiters": 2,
+    "python": [],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第7章-PD解耦架构.md",
+    "lines": 149,
+    "fences": 6,
+    "math_delimiters": 2,
+    "python": [],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第8章-性能分析与Benchmark.md",
+    "lines": 152,
+    "fences": 4,
+    "math_delimiters": 6,
+    "python": [],
+    "broken_local_links": []
+  },
+  {
+    "file": "docs/guides/模块四-推理优化/第9章-生产部署与运维.md",
+    "lines": 149,
+    "fences": 4,
+    "math_delimiters": 0,
+    "python": [],
+    "broken_local_links": []
+  }
+]

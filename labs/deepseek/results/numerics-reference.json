@@ -1,0 +1,225 @@
+{
+  "scope": "CPU mathematical and state oracles; not official DeepSeek accelerator execution",
+  "block_scaled_gemm": [
+    [
+      10.0,
+      15.5
+    ],
+    [
+      9.5,
+      5.0
+    ]
+  ],
+  "moe": {
+    "expanded_rows": [
+      {
+        "token": 0,
+        "expert": 0,
+        "gate": 0.25,
+        "expert_output": 2.0,
+        "weighted_output": 0.5
+      },
+      {
+        "token": 0,
+        "expert": 2,
+        "gate": 0.75,
+        "expert_output": 6.0,
+        "weighted_output": 4.5
+      },
+      {
+        "token": 1,
+        "expert": 1,
+        "gate": 0.6,
+        "expert_output": 6.0,
+        "weighted_output": 3.5999999999999996
+      },
+      {
+        "token": 1,
+        "expert": 2,
+        "gate": 0.4,
+        "expert_output": 9.0,
+        "weighted_output": 3.6
+      }
+    ],
+    "output": [
+      5.0,
+      7.199999999999999
+    ],
+    "input_gradient": [
+      2.5,
+      2.4000000000000004
+    ]
+  },
+  "expanded_ranges": [
+    [
+      0,
+      3
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      12,
+      12
+    ],
+    [
+      12,
+      14
+    ]
+  ],
+  "topk": {
+    "values_and_indices": [
+      [
+        12,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        9,
+        8
+      ]
+    ],
+    "compact_work": 17
+  },
+  "sinkhorn": {
+    "matrix": [
+      [
+        0.17123651608458373,
+        0.4524950411579975,
+        0.3762684427574187
+      ],
+      [
+        0.5423751946880997,
+        0.35830863015549813,
+        0.09931617515640213
+      ],
+      [
+        0.2863882892273166,
+        0.18919632868650438,
+        0.5244153820861791
+      ]
+    ],
+    "row_sums": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "column_sums": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "physical_indices": [
+    9,
+    20,
+    21
+  ],
+  "fp4": [
+    0.5,
+    2.0
+  ],
+  "attention_sink": {
+    "output": 3.3333333333333335,
+    "lse_without_sink": 1.3862943611198906
+  },
+  "speculative_sampling": {
+    "accepted_mass": [
+      0.5,
+      0.4
+    ],
+    "rejection_probability": 0.09999999999999998,
+    "output_distribution": [
+      0.6,
+      0.4
+    ]
+  },
+  "selection_bias_counterexample": {
+    "target": [
+      0.6,
+      0.4
+    ],
+    "wrong_output": [
+      0.8,
+      0.2
+    ]
+  },
+  "prefix_plan": {
+    "lengths": [
+      1,
+      1
+    ],
+    "trace": [
+      {
+        "lengths": [
+          0,
+          0
+        ],
+        "expected": 2.0,
+        "throughput": 200.0
+      },
+      {
+        "lengths": [
+          1,
+          0
+        ],
+        "expected": 2.9,
+        "throughput": 261.0
+      },
+      {
+        "lengths": [
+          1,
+          1
+        ],
+        "expected": 3.5999999999999996,
+        "throughput": 288.0
+      }
+    ]
+  },
+  "cache_key": "1e1507bbfe24cd062e8228277518e300f53816e4b79fdc11010eabf905f1f00a",
+  "chain_visibility": {
+    "tail_committed": [
+      {
+        "status": "retry"
+      },
+      {
+        "status": "retry"
+      },
+      {
+        "status": "ok",
+        "value": [
+          1,
+          "new"
+        ]
+      }
+    ],
+    "all_acked": [
+      {
+        "status": "ok",
+        "value": [
+          1,
+          "new"
+        ]
+      },
+      {
+        "status": "ok",
+        "value": [
+          1,
+          "new"
+        ]
+      },
+      {
+        "status": "ok",
+        "value": [
+          1,
+          "new"
+        ]
+      }
+    ],
+    "scope": "single-process state illustration; not a storage protocol proof"
+  }
+}

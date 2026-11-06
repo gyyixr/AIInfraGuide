@@ -1,0 +1,51 @@
+{
+  "scope": "synthetic MLA algebra + separate RoPE; ordinary PyTorch forward/backward; not official model/kernel execution",
+  "torch": "2.13.0+cu132",
+  "device": "cuda",
+  "hardware": "NVIDIA GeForce RTX 3090",
+  "capability": [
+    8,
+    6
+  ],
+  "dtype": "float64",
+  "input_shapes": [
+    [
+      2,
+      8,
+      4
+    ],
+    [
+      2,
+      4,
+      6
+    ],
+    [
+      2,
+      4,
+      5
+    ],
+    [
+      2,
+      3,
+      2,
+      6
+    ],
+    [
+      2,
+      3,
+      2,
+      4
+    ],
+    [
+      2,
+      8,
+      4
+    ]
+  ],
+  "seed": 7,
+  "logit_max_abs_error": 1.1102230246251565e-16,
+  "output_max_abs_error": 5.551115123125783e-17,
+  "gradient_max_abs_error": 2.6020852139652106e-18,
+  "omitted_rope_negative_control_error": 0.036131733053368476,
+  "checks": "passed"
+}

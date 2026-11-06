@@ -1,0 +1,1919 @@
+{
+  "reference_check_date": "2026-11-07",
+  "sources": [
+    {
+      "id": "training-infra",
+      "file": "LLM超大规模与超长上下文训练Infra技术综述_2026.md",
+      "local_reference": "/home/gyy/python/LLM算法学习/LLM超大规模与超长上下文训练Infra技术综述_2026.md",
+      "sha256": "c88a71265707a6ca32bfca10e83600803120834c9b8c236dd6cecb930c76c6f6",
+      "lines": 2352,
+      "characters": 83162,
+      "heading_map": [
+        {
+          "line": 1,
+          "heading": "# LLM 超大规模与超长上下文训练 Infra 技术综述（2026）"
+        },
+        {
+          "line": 10,
+          "heading": "## 目录"
+        },
+        {
+          "line": 23,
+          "heading": "## 摘要：训练 Infra 真正要解决的是什么"
+        },
+        {
+          "line": 48,
+          "heading": "## 1. 全景图：从数据到一次可恢复的训练迭代"
+        },
+        {
+          "line": 50,
+          "heading": "### 1.1 技术栈分层"
+        },
+        {
+          "line": 70,
+          "heading": "### 1.2 一次训练 step 的关键路径"
+        },
+        {
+          "line": 103,
+          "heading": "### 1.3 训练生命周期"
+        },
+        {
+          "line": 122,
+          "heading": "## 2. 先建立成本模型：FLOPs、显存、吞吐与时间"
+        },
+        {
+          "line": 124,
+          "heading": "### 2.1 Dense Transformer 的训练计算量"
+        },
+        {
+          "line": 154,
+          "heading": "### 2.2 Attention 显存直觉"
+        },
+        {
+          "line": 164,
+          "heading": "### 2.3 模型状态显存"
+        },
+        {
+          "line": 186,
+          "heading": "### 2.4 激活显存不是一个常数"
+        },
+        {
+          "line": 205,
+          "heading": "### 2.5 从理论算力到有效训练时间"
+        },
+        {
+          "line": 231,
+          "heading": "### 2.6 MoE 的计算与容量口径"
+        },
+        {
+          "line": 245,
+          "heading": "## 3. 模型与训练算法：Infra 必须理解到哪一层"
+        },
+        {
+          "line": 247,
+          "heading": "### 3.1 现代 Decoder block 的数据流"
+        },
+        {
+          "line": 277,
+          "heading": "### 3.2 优化器：默认答案仍常是 AdamW，但不应停止思考"
+        },
+        {
+          "line": 302,
+          "heading": "### 3.3 学习率与训练阶段"
+        },
+        {
+          "line": 313,
+          "heading": "### 3.4 Scaling laws 与超参数迁移"
+        },
+        {
+          "line": 327,
+          "heading": "### 3.5 稳定性：先找到首个异常张量"
+        },
+        {
+          "line": 352,
+          "heading": "### 3.6 多 Token 预测（MTP）"
+        },
+        {
+          "line": 372,
+          "heading": "## 4. MoE：从路由算法到跨节点 All-to-All"
+        },
+        {
+          "line": 374,
+          "heading": "### 4.1 基本算法"
+        },
+        {
+          "line": 390,
+          "heading": "### 4.2 完整数据流"
+        },
+        {
+          "line": 408,
+          "heading": "### 4.3 负载均衡"
+        },
+        {
+          "line": 427,
+          "heading": "### 4.4 Dropless、capacity 与 Grouped GEMM"
+        },
+        {
+          "line": 440,
+          "heading": "### 4.5 MoE 并行维度"
+        },
+        {
+          "line": 456,
+          "heading": "### 4.6 MoE 拓扑放置原则"
+        },
+        {
+          "line": 469,
+          "heading": "### 4.7 近期大规模 MoE 案例"
+        },
+        {
+          "line": 486,
+          "heading": "## 5. 多维并行：把模型、序列和集群拓扑对齐"
+        },
+        {
+          "line": 488,
+          "heading": "### 5.1 总体关系"
+        },
+        {
+          "line": 523,
+          "heading": "### 5.2 数据并行与梯度累积"
+        },
+        {
+          "line": 544,
+          "heading": "### 5.3 ZeRO、FSDP1、FSDP2 与 HSDP"
+        },
+        {
+          "line": 575,
+          "heading": "### 5.4 Tensor Parallel：列并行与行并行"
+        },
+        {
+          "line": 605,
+          "heading": "### 5.5 Sequence Parallel：与 TP 配套的激活分片"
+        },
+        {
+          "line": 616,
+          "heading": "### 5.6 Pipeline Parallel 与 bubble"
+        },
+        {
+          "line": 661,
+          "heading": "### 5.7 Context Parallel：真正切分长序列"
+        },
+        {
+          "line": 688,
+          "heading": "### 5.8 Ring Attention：在线 softmax 如何保持精确"
+        },
+        {
+          "line": 710,
+          "heading": "### 5.9 DeepSpeed Ulysses：sequence-to-head 的 All-to-All"
+        },
+        {
+          "line": 730,
+          "heading": "### 5.10 Unified Sequence Parallel（USP）与混合 CP"
+        },
+        {
+          "line": 744,
+          "heading": "### 5.11 通信量不等于通信时间"
+        },
+        {
+          "line": 764,
+          "heading": "### 5.12 如何选择并行配置"
+        },
+        {
+          "line": 795,
+          "heading": "## 6. 超长上下文：从位置编码到有效能力"
+        },
+        {
+          "line": 797,
+          "heading": "### 6.1 “支持 1M”至少有四种含义"
+        },
+        {
+          "line": 808,
+          "heading": "### 6.2 超长训练的五个瓶颈"
+        },
+        {
+          "line": 816,
+          "heading": "### 6.3 RoPE 的基本性质"
+        },
+        {
+          "line": 836,
+          "heading": "### 6.4 位置扩展方法谱系"
+        },
+        {
+          "line": 857,
+          "heading": "### 6.5 精确全 Attention：FlashAttention 1—4 的作用边界"
+        },
+        {
+          "line": 872,
+          "heading": "### 6.6 稀疏 Attention：真正改变二次计算量"
+        },
+        {
+          "line": 893,
+          "heading": "### 6.7 混合层与亚二次架构"
+        },
+        {
+          "line": 904,
+          "heading": "### 6.8 长数据：长度不等于依赖距离"
+        },
+        {
+          "line": 916,
+          "heading": "### 6.9 Packing、document boundary 与变长调度"
+        },
+        {
+          "line": 933,
+          "heading": "### 6.10 混合长度与动态 sequence parallel"
+        },
+        {
+          "line": 952,
+          "heading": "### 6.11 长上下文评测矩阵"
+        },
+        {
+          "line": 973,
+          "heading": "### 6.12 超长上下文技术决策树"
+        },
+        {
+          "line": 1000,
+          "heading": "## 7. 低精度训练：吞吐、显存和稳定性的三角平衡"
+        },
+        {
+          "line": 1002,
+          "heading": "### 7.1 精度层次"
+        },
+        {
+          "line": 1015,
+          "heading": "### 7.2 BF16、FP16 与 TF32"
+        },
+        {
+          "line": 1021,
+          "heading": "### 7.3 FP8：格式与缩放"
+        },
+        {
+          "line": 1045,
+          "heading": "### 7.4 MXFP8 与 NVFP4"
+        },
+        {
+          "line": 1056,
+          "heading": "### 7.5 低精度上线流程"
+        },
+        {
+          "line": 1076,
+          "heading": "## 8. 算子、编译与通信优化"
+        },
+        {
+          "line": 1078,
+          "heading": "### 8.1 Roofline：先判断算力受限还是带宽受限"
+        },
+        {
+          "line": 1094,
+          "heading": "### 8.2 必须重点优化的 kernel"
+        },
+        {
+          "line": 1117,
+          "heading": "### 8.3 编程与编译栈"
+        },
+        {
+          "line": 1129,
+          "heading": "### 8.4 通信集合与典型用途"
+        },
+        {
+          "line": 1142,
+          "heading": "### 8.5 通信—计算重叠"
+        },
+        {
+          "line": 1161,
+          "heading": "### 8.6 拓扑分层"
+        },
+        {
+          "line": 1184,
+          "heading": "### 8.7 性能诊断树"
+        },
+        {
+          "line": 1208,
+          "heading": "### 8.8 加速器与软件生态的选择"
+        },
+        {
+          "line": 1232,
+          "heading": "## 9. 数据 Infra：训练质量的上游系统"
+        },
+        {
+          "line": 1234,
+          "heading": "### 9.1 数据管线"
+        },
+        {
+          "line": 1251,
+          "heading": "### 9.2 来源、治理与可追溯性"
+        },
+        {
+          "line": 1264,
+          "heading": "### 9.3 解析与质量过滤"
+        },
+        {
+          "line": 1277,
+          "heading": "### 9.4 去重"
+        },
+        {
+          "line": 1293,
+          "heading": "### 9.5 数据混合与温度采样"
+        },
+        {
+          "line": 1309,
+          "heading": "### 9.6 Tokenizer 与词表"
+        },
+        {
+          "line": 1320,
+          "heading": "### 9.7 确定性数据加载与恢复"
+        },
+        {
+          "line": 1336,
+          "heading": "### 9.8 数据吞吐设计"
+        },
+        {
+          "line": 1358,
+          "heading": "## 10. Checkpoint、容错与大规模可靠性"
+        },
+        {
+          "line": 1360,
+          "heading": "### 10.1 为什么故障是正常路径"
+        },
+        {
+          "line": 1377,
+          "heading": "### 10.2 一个完整 checkpoint 包含什么"
+        },
+        {
+          "line": 1394,
+          "heading": "### 10.3 分布式 checkpoint 的写入协议"
+        },
+        {
+          "line": 1424,
+          "heading": "### 10.4 拓扑无关与重分片"
+        },
+        {
+          "line": 1436,
+          "heading": "### 10.5 Checkpoint 间隔"
+        },
+        {
+          "line": 1457,
+          "heading": "### 10.6 自动恢复状态机"
+        },
+        {
+          "line": 1481,
+          "heading": "### 10.7 Fail-slow：比 crash 更昂贵"
+        },
+        {
+          "line": 1493,
+          "heading": "### 10.8 Silent Data Corruption（SDC）"
+        },
+        {
+          "line": 1509,
+          "heading": "### 10.9 训练可观测性"
+        },
+        {
+          "line": 1545,
+          "heading": "### 10.10 调度与集群管理"
+        },
+        {
+          "line": 1561,
+          "heading": "### 10.11 大规模系统案例能教什么"
+        },
+        {
+          "line": 1572,
+          "heading": "## 11. 训练框架与运行时版图"
+        },
+        {
+          "line": 1574,
+          "heading": "### 11.1 核心框架对比"
+        },
+        {
+          "line": 1593,
+          "heading": "### 11.2 不要混淆不同层级"
+        },
+        {
+          "line": 1604,
+          "heading": "### 11.3 选型问题清单"
+        },
+        {
+          "line": 1617,
+          "heading": "### 11.4 版本与可复现 contract"
+        },
+        {
+          "line": 1632,
+          "heading": "### 11.5 前沿抽象：Device Mesh、DTensor 与广义 TP"
+        },
+        {
+          "line": 1645,
+          "heading": "## 12. 后训练与 RL Infra：训练系统正在与推理系统合流"
+        },
+        {
+          "line": 1647,
+          "heading": "### 12.1 SFT 与偏好优化"
+        },
+        {
+          "line": 1668,
+          "heading": "### 12.2 在线 RL 的组件"
+        },
+        {
+          "line": 1694,
+          "heading": "### 12.3 PPO、GRPO 类方法的系统含义"
+        },
+        {
+          "line": 1715,
+          "heading": "### 12.4 共置与解耦"
+        },
+        {
+          "line": 1725,
+          "heading": "### 12.5 同步与异步 RL"
+        },
+        {
+          "line": 1739,
+          "heading": "### 12.6 主流后训练系统"
+        },
+        {
+          "line": 1749,
+          "heading": "### 12.7 长上下文 RL 的额外问题"
+        },
+        {
+          "line": 1763,
+          "heading": "## 13. 从零设计一次超大训练：工程方法论"
+        },
+        {
+          "line": 1765,
+          "heading": "### 13.1 第一步：写清“训练合同”"
+        },
+        {
+          "line": 1780,
+          "heading": "### 13.2 第二步：容量下界"
+        },
+        {
+          "line": 1798,
+          "heading": "### 13.3 第三步：候选并行网格"
+        },
+        {
+          "line": 1856,
+          "heading": "### 13.4 第四步：Benchmark ladder"
+        },
+        {
+          "line": 1880,
+          "heading": "### 13.5 第五步：数值与恢复验收"
+        },
+        {
+          "line": 1894,
+          "heading": "### 13.6 第六步：配置搜索而不是拍脑袋"
+        },
+        {
+          "line": 1910,
+          "heading": "## 14. 五类代表性配置的思考方式"
+        },
+        {
+          "line": 1914,
+          "heading": "### 14.1 70B Dense，常规 8K—32K 预训练"
+        },
+        {
+          "line": 1930,
+          "heading": "### 14.2 70B Dense，128K 长上下文阶段"
+        },
+        {
+          "line": 1943,
+          "heading": "### 14.3 400B 级 Dense"
+        },
+        {
+          "line": 1957,
+          "heading": "### 14.4 1T 级 MoE、约 30—40B active"
+        },
+        {
+          "line": 1969,
+          "heading": "### 14.5 1M 上下文训练"
+        },
+        {
+          "line": 1982,
+          "heading": "### 14.6 选择结果如何记录"
+        },
+        {
+          "line": 1998,
+          "heading": "## 15. LLM 训练 Infra 从业者能力矩阵"
+        },
+        {
+          "line": 2000,
+          "heading": "### 15.1 P0：必须能独立完成"
+        },
+        {
+          "line": 2015,
+          "heading": "### 15.2 P1：大规模项目骨干应掌握"
+        },
+        {
+          "line": 2028,
+          "heading": "### 15.3 P2：前沿研发方向"
+        },
+        {
+          "line": 2040,
+          "heading": "### 15.4 建议的 12 周实操路线"
+        },
+        {
+          "line": 2059,
+          "heading": "### 15.5 源码阅读顺序"
+        },
+        {
+          "line": 2076,
+          "heading": "## 16. 2025—2026 的前沿趋势与判断"
+        },
+        {
+          "line": 2078,
+          "heading": "### 16.1 公开模型信号"
+        },
+        {
+          "line": 2095,
+          "heading": "### 16.2 八个明确方向"
+        },
+        {
+          "line": 2129,
+          "heading": "### 16.3 仍未解决的问题"
+        },
+        {
+          "line": 2143,
+          "heading": "## 17. 生产检查清单"
+        },
+        {
+          "line": 2145,
+          "heading": "### 17.1 开跑前"
+        },
+        {
+          "line": 2162,
+          "heading": "### 17.2 运行中"
+        },
+        {
+          "line": 2175,
+          "heading": "### 17.3 结束后"
+        },
+        {
+          "line": 2188,
+          "heading": "## 18. 故障与优化速查表"
+        },
+        {
+          "line": 2203,
+          "heading": "### OOM 的建议处理顺序"
+        },
+        {
+          "line": 2215,
+          "heading": "## 19. 术语表"
+        },
+        {
+          "line": 2242,
+          "heading": "## 20. 一手资料与继续阅读"
+        },
+        {
+          "line": 2244,
+          "heading": "### 20.1 Scaling、模型与优化"
+        },
+        {
+          "line": 2259,
+          "heading": "### 20.2 并行、MoE 与长上下文"
+        },
+        {
+          "line": 2279,
+          "heading": "### 20.3 Attention、位置与长上下文评测"
+        },
+        {
+          "line": 2300,
+          "heading": "### 20.4 低精度、算子与通信"
+        },
+        {
+          "line": 2311,
+          "heading": "### 20.5 数据、checkpoint 与可靠性"
+        },
+        {
+          "line": 2332,
+          "heading": "### 20.6 后训练系统"
+        },
+        {
+          "line": 2344,
+          "heading": "## 结语"
+        }
+      ]
+    },
+    {
+      "id": "megatron-source",
+      "file": "ANALYSIS_REPORT.md",
+      "local_reference": "/home/gyy/python/LLM算法学习/Megatron-LM-20260829/ANALYSIS_REPORT.md",
+      "sha256": "8d460d0a5256cd15ea5d5c5a365ca1549b4167ef8ee931dad6f8086b1635e467",
+      "lines": 4319,
+      "characters": 238899,
+      "heading_map": [
+        {
+          "line": 1,
+          "heading": "# Megatron / Megatron-Core 源码级面试宝典（2026）"
+        },
+        {
+          "line": 6,
+          "heading": "## 快速阅读导航"
+        },
+        {
+          "line": 18,
+          "heading": "## 0. 先读：本书的版本与确定性"
+        },
+        {
+          "line": 20,
+          "heading": "### 0.1 六层证据模型（冻结于 2026-08-29）"
+        },
+        {
+          "line": 33,
+          "heading": "### 0.2 证据标签"
+        },
+        {
+          "line": 44,
+          "heading": "## 1. 这类岗位究竟在考什么"
+        },
+        {
+          "line": 67,
+          "heading": "### 1.1 五类真正的面试能力"
+        },
+        {
+          "line": 77,
+          "heading": "### 1.2 考试不会只有问答"
+        },
+        {
+          "line": 88,
+          "heading": "## 2. 生态边界：不要把所有 NVIDIA 训练代码都叫 Megatron"
+        },
+        {
+          "line": 102,
+          "heading": "### 2.1 Megatron-LM"
+        },
+        {
+          "line": 106,
+          "heading": "### 2.2 Megatron Core"
+        },
+        {
+          "line": 110,
+          "heading": "### 2.3 Transformer Engine"
+        },
+        {
+          "line": 114,
+          "heading": "### 2.4 Megatron Bridge"
+        },
+        {
+          "line": 118,
+          "heading": "### 2.5 Megatron RL / NeMo RL"
+        },
+        {
+          "line": 122,
+          "heading": "## 3. 全书的五个不变量"
+        },
+        {
+          "line": 142,
+          "heading": "## 4. 一个 training iteration 的全景"
+        },
+        {
+          "line": 176,
+          "heading": "## 模块 A：Megatron/Megatron-Core 训练编排、并行拓扑与流水线调度面试宝典"
+        },
+        {
+          "line": 185,
+          "heading": "### 1. 模块定位：先把控制面与算子面分开"
+        },
+        {
+          "line": 215,
+          "heading": "### 2. 端到端真实调用链"
+        },
+        {
+          "line": 280,
+          "heading": "### 3. Rank topology：不是“几个数字相乘”"
+        },
+        {
+          "line": 386,
+          "heading": "### 4. Tensor Parallel 与 Sequence Parallel：从 layout 推 collective"
+        },
+        {
+          "line": 472,
+          "heading": "### 5. Context Parallel：全层切 sequence，attention 处补全上下文"
+        },
+        {
+          "line": 528,
+          "heading": "### 6. Microbatch：它同时决定数学 batch、bubble 与显存"
+        },
+        {
+          "line": 569,
+          "heading": "### 7. Pipeline schedules：选择逻辑、三阶段与 P2P 协议"
+        },
+        {
+          "line": 707,
+          "heading": "### 8. 常见故障与可复用诊断顺序"
+        },
+        {
+          "line": 734,
+          "heading": "### 9. 源码型面试题库"
+        },
+        {
+          "line": 1002,
+          "heading": "### 10. Coding / 计算题（含确诊解答）"
+        },
+        {
+          "line": 1105,
+          "heading": "### 11. 系统设计与取舍题"
+        },
+        {
+          "line": 1177,
+          "heading": "### 12. 可落地的面试项目"
+        },
+        {
+          "line": 1231,
+          "heading": "### 13. 一页式复习清单"
+        },
+        {
+          "line": 1245,
+          "heading": "### 14. 源文件 / 函数覆盖表"
+        },
+        {
+          "line": 1285,
+          "heading": "### 15. 与后续 Transformer/MoE 模块的交叉边界"
+        },
+        {
+          "line": 1303,
+          "heading": "## Megatron / Megatron-Core 面试宝典：Transformer 构造、TE、MoE、MLA 与 MTP"
+        },
+        {
+          "line": 1307,
+          "heading": "### 0. 定位：这一层到底负责什么"
+        },
+        {
+          "line": 1329,
+          "heading": "### 1. GPTModel 端到端构造链与 shape ledger"
+        },
+        {
+          "line": 1383,
+          "heading": "### 2. ModuleSpec：把组合问题变成模块树"
+        },
+        {
+          "line": 1407,
+          "heading": "### 3. TransformerConfig：按不变量而不是 flag 百科记忆"
+        },
+        {
+          "line": 1437,
+          "heading": "### 4. Dense Transformer：真实 forward 数据流"
+        },
+        {
+          "line": 1526,
+          "heading": "### 5. Transformer Engine adapter 与精度边界"
+        },
+        {
+          "line": 1567,
+          "heading": "### 6. MoE：从 router 到 expert 再回原 token"
+        },
+        {
+          "line": 1684,
+          "heading": "### 7. MLA：低秩 latent 与 absorption 不是一句“压 KV cache”"
+        },
+        {
+          "line": 1734,
+          "heading": "### 8. MTP：训练辅助目标与 speculative decoding 必须分开"
+        },
+        {
+          "line": 1780,
+          "heading": "### 9. 统一调优与排障剧本"
+        },
+        {
+          "line": 1802,
+          "heading": "### 10. 高频面试题：确诊答案、追问与误区"
+        },
+        {
+          "line": 2044,
+          "heading": "### 11. Shape / 参数 / 通信计算题"
+        },
+        {
+          "line": 2100,
+          "heading": "### 12. 综合设计题"
+        },
+        {
+          "line": 2135,
+          "heading": "### 13. 源码覆盖表与证据边界"
+        },
+        {
+          "line": 2189,
+          "heading": "### 14. 一页复习顺序"
+        },
+        {
+          "line": 2204,
+          "heading": "## 模块 C：Megatron / Megatron-Core 状态生命周期面试宝典"
+        },
+        {
+          "line": 2208,
+          "heading": "### 0. 定位：把一个 shard 闭合成可训练、可保存、可恢复的 step"
+        },
+        {
+          "line": 2255,
+          "heading": "### 1. Gradient 生命周期：从 autograd tensor 到可更新 shard"
+        },
+        {
+          "line": 2342,
+          "heading": "### 2. Optimizer：从 loss scale 到 sharded update"
+        },
+        {
+          "line": 2480,
+          "heading": "### 3. DistOpt、Megatron-FSDP、FSDP2 与 ZeRO 的边界"
+        },
+        {
+          "line": 2510,
+          "heading": "### 4. Checkpoint：一个跨拓扑恢复协议"
+        },
+        {
+          "line": 2616,
+          "heading": "### 5. Data：document/sample/shuffle index 是训练状态的一部分"
+        },
+        {
+          "line": 2689,
+          "heading": "### 6. Rerun、checkpoint、NVRx 与 in-process restart"
+        },
+        {
+          "line": 2754,
+          "heading": "### 7. 综合性能与排障框架"
+        },
+        {
+          "line": 2779,
+          "heading": "### 8. 高频面试题：确诊答案 + 追问 + 误区"
+        },
+        {
+          "line": 2998,
+          "heading": "### 9. 容量、带宽、故障计算与 coding"
+        },
+        {
+          "line": 3065,
+          "heading": "### 10. 系统设计题（含取舍与验收）"
+        },
+        {
+          "line": 3109,
+          "heading": "### 11. 源码覆盖与证据审计"
+        },
+        {
+          "line": 3178,
+          "heading": "## 模块 D：0.19 stable 与 2026 前沿能力"
+        },
+        {
+          "line": 3182,
+          "heading": "### 1. 读 release notes 的正确姿势"
+        },
+        {
+          "line": 3203,
+          "heading": "### 2. GPTModel → HybridModel：模型抽象和 checkpoint 协议一起迁"
+        },
+        {
+          "line": 3252,
+          "heading": "### 3. Generalized Tensor Parallelism：TP 上叠一层 per-weight ZeRO-3-like 合约"
+        },
+        {
+          "line": 3312,
+          "heading": "### 4. known issues：官方支持不等于默认安全"
+        },
+        {
+          "line": 3331,
+          "heading": "### 5. 前沿高频问答"
+        },
+        {
+          "line": 3404,
+          "heading": "### 6. 前沿系统设计题"
+        },
+        {
+          "line": 3418,
+          "heading": "### 7. 可做成简历项目的前沿实验"
+        },
+        {
+          "line": 3439,
+          "heading": "### 8. 本章证据边界"
+        },
+        {
+          "line": 3448,
+          "heading": "## Megatron 面试公式底稿（统一口径）"
+        },
+        {
+          "line": 3450,
+          "heading": "### 0. 符号和计数口径"
+        },
+        {
+          "line": 3469,
+          "heading": "### 1. Batch 与 token"
+        },
+        {
+          "line": 3491,
+          "heading": "### 2. Dense/MoE 参数粗算"
+        },
+        {
+          "line": 3529,
+          "heading": "### 3. FLOPs 与 Attention 二次项"
+        },
+        {
+          "line": 3553,
+          "heading": "### 4. Ring collective 的 α-β 模型"
+        },
+        {
+          "line": 3571,
+          "heading": "### 5. TP/SP 通信粒度"
+        },
+        {
+          "line": 3587,
+          "heading": "### 6. CP KV 通信"
+        },
+        {
+          "line": 3603,
+          "heading": "### 7. PP bubble 与边界 activation"
+        },
+        {
+          "line": 3631,
+          "heading": "### 8. MoE capacity、A2A 与尾延迟"
+        },
+        {
+          "line": 3654,
+          "heading": "### 9. Optimizer state bytes/param"
+        },
+        {
+          "line": 3666,
+          "heading": "### 10. Throughput/MFU 与 wall time"
+        },
+        {
+          "line": 3678,
+          "heading": "### 11. Checkpoint interval（只作设计近似）"
+        },
+        {
+          "line": 3690,
+          "heading": "## Megatron 面试高频陷阱底稿"
+        },
+        {
+          "line": 3692,
+          "heading": "### 拓扑与并行"
+        },
+        {
+          "line": 3703,
+          "heading": "### Tensor Parallel/Transformer"
+        },
+        {
+          "line": 3713,
+          "heading": "### Pipeline/Context Parallel"
+        },
+        {
+          "line": 3724,
+          "heading": "### MoE"
+        },
+        {
+          "line": 3737,
+          "heading": "### DDP/Optimizer/FSDP"
+        },
+        {
+          "line": 3749,
+          "heading": "### Checkpoint/Data/Reliability"
+        },
+        {
+          "line": 3760,
+          "heading": "### 性能与综合设计"
+        },
+        {
+          "line": 3773,
+          "heading": "## Coding、系统设计与项目题底稿"
+        },
+        {
+          "line": 3775,
+          "heading": "### 1. Coding/计算题矩阵"
+        },
+        {
+          "line": 3817,
+          "heading": "### 2. 系统设计题"
+        },
+        {
+          "line": 3846,
+          "heading": "### 3. 逐级实战项目"
+        },
+        {
+          "line": 3896,
+          "heading": "### 4. 项目答辩八问"
+        },
+        {
+          "line": 3909,
+          "heading": "## 跨模块洞察：从会用 Megatron 到会设计训练框架"
+        },
+        {
+          "line": 3911,
+          "heading": "### 1. Megatron 的核心抽象不是“5D flags”，而是 ownership contract"
+        },
+        {
+          "line": 3915,
+          "heading": "### 2. rank algebra 与物理 topology 是两层问题"
+        },
+        {
+          "line": 3919,
+          "heading": "### 3. collective 由 layout 推出，而不是由模块名字背出"
+        },
+        {
+          "line": 3923,
+          "heading": "### 4. overlap 是生命周期优化，不是布尔开关"
+        },
+        {
+          "line": 3927,
+          "heading": "### 5. 稀疏模型要同时优化平均量和尾部量"
+        },
+        {
+          "line": 3931,
+          "heading": "### 6. 训练正确性至少有三种等级"
+        },
+        {
+          "line": 3939,
+          "heading": "### 7. local backend 是生产优化的 oracle"
+        },
+        {
+          "line": 3943,
+          "heading": "### 8. feature support 是一张 capability matrix"
+        },
+        {
+          "line": 3947,
+          "heading": "### 9. 新模型抽象会穿透 checkpoint 和 pipeline"
+        },
+        {
+          "line": 3951,
+          "heading": "### 10. 高分系统设计答案必须可证伪"
+        },
+        {
+          "line": 3958,
+          "heading": "## 模拟面试与 10 周备战计划"
+        },
+        {
+          "line": 3960,
+          "heading": "### 1. 四套模拟面试"
+        },
+        {
+          "line": 4012,
+          "heading": "### 2. 10 周学习路线"
+        },
+        {
+          "line": 4074,
+          "heading": "### 3. 面试前 48 小时"
+        },
+        {
+          "line": 4084,
+          "heading": "## 外部一手证据底稿（2026-08-29 核对）"
+        },
+        {
+          "line": 4086,
+          "heading": "### 1. 版本与新能力"
+        },
+        {
+          "line": 4124,
+          "heading": "### 2. 官方架构与边界"
+        },
+        {
+          "line": 4131,
+          "heading": "### 3. 当前岗位证据推导的考察矩阵"
+        },
+        {
+          "line": 4143,
+          "heading": "### 4. 面试形式证据"
+        },
+        {
+          "line": 4148,
+          "heading": "### 5. 核心原始论文"
+        },
+        {
+          "line": 4156,
+          "heading": "### 6. 官方工程事实索引"
+        },
+        {
+          "line": 4168,
+          "heading": "### 7. 已发现的文档冲突（必须回源码确诊）"
+        },
+        {
+          "line": 4175,
+          "heading": "## 交叉验证记录"
+        },
+        {
+          "line": 4179,
+          "heading": "### A. 训练编排、拓扑与调度"
+        },
+        {
+          "line": 4211,
+          "heading": "### B. Transformer、TE、MoE、MLA 与 MTP"
+        },
+        {
+          "line": 4243,
+          "heading": "### C. 状态生命周期"
+        },
+        {
+          "line": 4277,
+          "heading": "## 全局覆盖与质量说明"
+        },
+        {
+          "line": 4279,
+          "heading": "### 1. 源码模块覆盖"
+        },
+        {
+          "line": 4292,
+          "heading": "### 2. 主线二次交叉验证"
+        },
+        {
+          "line": 4296,
+          "heading": "### 3. 确定性等级"
+        },
+        {
+          "line": 4306,
+          "heading": "### 4. 明确未完成的运行验证"
+        },
+        {
+          "line": 4313,
+          "heading": "### 5. 交付前机器审计"
+        }
+      ]
+    },
+    {
+      "id": "inference-engineering",
+      "file": "LLM推理工程师面试宝典_2026.md",
+      "local_reference": "/home/gyy/python/sglang/llm_inference_interview_guide_2026/LLM推理工程师面试宝典_2026.md",
+      "sha256": "8992fefc4fe141f2a0fcfb31df8f78bc4b2b254ea567ddc43aea0f0c02fd4a0d",
+      "lines": 1997,
+      "characters": 102941,
+      "heading_map": [
+        {
+          "line": 1,
+          "heading": "# LLM 推理工程师面试宝典（2026 核验版）"
+        },
+        {
+          "line": 9,
+          "heading": "## 0. 怎样使用这份宝典"
+        },
+        {
+          "line": 11,
+          "heading": "### 0.1 它解决什么，不解决什么"
+        },
+        {
+          "line": 28,
+          "heading": "### 0.2 证据等级与“确诊答案”规则"
+        },
+        {
+          "line": 47,
+          "heading": "### 0.3 岗位能力地图"
+        },
+        {
+          "line": 59,
+          "heading": "### 0.4 面试回答的三个时间尺度"
+        },
+        {
+          "line": 67,
+          "heading": "### 0.5 2025–2026 必须跟进的新主题"
+        },
+        {
+          "line": 88,
+          "heading": "## 一、推理基础与端到端数据流"
+        },
+        {
+          "line": 90,
+          "heading": "### FND-001：从 tokenizer 到流式输出，请求经历什么？"
+        },
+        {
+          "line": 124,
+          "heading": "### FND-002：Prefill 与 Decode 有什么本质差异？"
+        },
+        {
+          "line": 139,
+          "heading": "### FND-003/004/016：Decoder-only 一层的数据流与因果性"
+        },
+        {
+          "line": 152,
+          "heading": "### FND-005/013：为什么缩放 attention，为什么 softmax 减最大值？"
+        },
+        {
+          "line": 162,
+          "heading": "### FND-006/007：Norm 与 SwiGLU 的推理关注点"
+        },
+        {
+          "line": 169,
+          "heading": "### FND-008：MHA、MQA、GQA、MLA 如何比较？"
+        },
+        {
+          "line": 184,
+          "heading": "### FND-009/014/018/019：常见语义陷阱"
+        },
+        {
+          "line": 191,
+          "heading": "## 二、性能模型、指标与容量"
+        },
+        {
+          "line": 193,
+          "heading": "### PERF-001：指标的精确定义"
+        },
+        {
+          "line": 206,
+          "heading": "### PERF-002/003/018：Throughput、latency、goodput 与 Pareto"
+        },
+        {
+          "line": 216,
+          "heading": "### PERF-004/005/006：显存容量估算"
+        },
+        {
+          "line": 229,
+          "heading": "### PERF-007/008/009：Roofline 与 decode 上界"
+        },
+        {
+          "line": 239,
+          "heading": "### PERF-010/011：Prefill/Decode 成本如何增长？"
+        },
+        {
+          "line": 245,
+          "heading": "### PERF-012/013/014：Little's Law 与压测模型"
+        },
+        {
+          "line": 254,
+          "heading": "### PERF-015/016/017/020：可信 benchmark 最低要求"
+        },
+        {
+          "line": 264,
+          "heading": "## 三、Attention 与长上下文"
+        },
+        {
+          "line": 266,
+          "heading": "### ATTN-001/002：FlashAttention 为什么 exact，online softmax 如何合并？"
+        },
+        {
+          "line": 280,
+          "heading": "### ATTN-003：FlashAttention 代际怎样答才稳妥？"
+        },
+        {
+          "line": 286,
+          "heading": "### ATTN-004/005：为什么 prefill、decode、flash decoding 用不同 kernel？"
+        },
+        {
+          "line": 292,
+          "heading": "### ATTN-006/012：Context Parallel 与长 prefill"
+        },
+        {
+          "line": 298,
+          "heading": "### ATTN-007/008/011：改变语义的长上下文方案"
+        },
+        {
+          "line": 304,
+          "heading": "### ATTN-009/010：MLA 与 GQA 在并行中的关注点"
+        },
+        {
+          "line": 310,
+          "heading": "### ATTN-013/014/015：Grammar、Spec 与 Agentic workload"
+        },
+        {
+          "line": 316,
+          "heading": "## 四、量化与低精度"
+        },
+        {
+          "line": 318,
+          "heading": "### QUANT-001：先把五种概念分清"
+        },
+        {
+          "line": 328,
+          "heading": "### QUANT-002/003/004：基本公式与粒度"
+        },
+        {
+          "line": 346,
+          "heading": "### QUANT-005/006：Outlier 与 SmoothQuant"
+        },
+        {
+          "line": 354,
+          "heading": "### QUANT-007/008：GPTQ 与 AWQ 的核心区别"
+        },
+        {
+          "line": 361,
+          "heading": "### QUANT-009：为什么 W4A16 省显存却不一定快？"
+        },
+        {
+          "line": 374,
+          "heading": "### QUANT-010/011：INT8、FP8、MX 与 NVFP4；架构边界"
+        },
+        {
+          "line": 383,
+          "heading": "### QUANT-012/013/014/015：上线前的完整检查"
+        },
+        {
+          "line": 393,
+          "heading": "## 五、Speculative Decoding 与推理时计算"
+        },
+        {
+          "line": 395,
+          "heading": "### SPEC-001/002：标准 speculative sampling 的正确流程"
+        },
+        {
+          "line": 406,
+          "heading": "### SPEC-003：为什么接受率与残差能精确保持 target？"
+        },
+        {
+          "line": 422,
+          "heading": "### SPEC-004/008：什么时候有收益？"
+        },
+        {
+          "line": 430,
+          "heading": "### SPEC-005/006/007：路线比较"
+        },
+        {
+          "line": 439,
+          "heading": "### SPEC-009/010：系统集成最容易错在哪里？"
+        },
+        {
+          "line": 448,
+          "heading": "## 六、生产服务、可靠性、可观测性与成本"
+        },
+        {
+          "line": 450,
+          "heading": "### PROD-001/003：流式协议与重试语义"
+        },
+        {
+          "line": 458,
+          "heading": "### PROD-002：CPU 为什么会拖慢 GPU 服务？"
+        },
+        {
+          "line": 462,
+          "heading": "### PROD-004：Backpressure 必须是多层的"
+        },
+        {
+          "line": 471,
+          "heading": "### PROD-005/006/020：多租户配额与计费"
+        },
+        {
+          "line": 477,
+          "heading": "### PROD-007/008：Router 的三角取舍"
+        },
+        {
+          "line": 485,
+          "heading": "### PROD-009/010/011：Autoscaling 与冷启动"
+        },
+        {
+          "line": 491,
+          "heading": "### PROD-012：面试应能列出的最小可观测集合"
+        },
+        {
+          "line": 505,
+          "heading": "### PROD-013/017：隐私与 cache side channel"
+        },
+        {
+          "line": 509,
+          "heading": "### PROD-014：故障分类与恢复"
+        },
+        {
+          "line": 519,
+          "heading": "### PROD-015/016：灰度与性能回归"
+        },
+        {
+          "line": 525,
+          "heading": "### PROD-018/019：多模型、多 workload 是否共享资源池？"
+        },
+        {
+          "line": 531,
+          "heading": "## 七、编码、Debug 与项目追问的标准"
+        },
+        {
+          "line": 533,
+          "heading": "### CODE-001/003：Attention 与 sampler 手写题的验收点"
+        },
+        {
+          "line": 539,
+          "heading": "### CODE-005/006/007/019：状态与内存题的核心不变量"
+        },
+        {
+          "line": 546,
+          "heading": "### CODE-013/014/015/016/017：Kernel 题最低答题线"
+        },
+        {
+          "line": 555,
+          "heading": "### CODE-020：Collective hang 的检查顺序"
+        },
+        {
+          "line": 564,
+          "heading": "### PROJECT-001：优化项目的 3 分钟模板"
+        },
+        {
+          "line": 575,
+          "heading": "### PROJECT-002—010：高级候选人的共同特征"
+        },
+        {
+          "line": 587,
+          "heading": "## 八、Serving 与 Scheduler 源码级深答"
+        },
+        {
+          "line": 589,
+          "heading": "### SCH-001/002：Continuous batching 的准确心智模型"
+        },
+        {
+          "line": 613,
+          "heading": "### SCH-003/011：为什么要同时看 token、sequence 与 KV budgets？"
+        },
+        {
+          "line": 628,
+          "heading": "### SCH-004/005：Chunked prefill 的收益与代价"
+        },
+        {
+          "line": 638,
+          "heading": "### SCH-006：Recompute、swap/offload、reject 怎么选？"
+        },
+        {
+          "line": 650,
+          "heading": "### SCH-007—010：策略、公平与 head-of-line blocking"
+        },
+        {
+          "line": 660,
+          "heading": "### SCH-012/013：过载、取消与资源回收"
+        },
+        {
+          "line": 666,
+          "heading": "### SCH-014—017：Spec、LoRA、多模态与 mixed phase"
+        },
+        {
+          "line": 673,
+          "heading": "### SCH-018：何时从 aggregated 转向 PD？"
+        },
+        {
+          "line": 685,
+          "heading": "### SCH-019/020：分池与 Scheduler 回归测试"
+        },
+        {
+          "line": 698,
+          "heading": "### Serving 源码能力映射速查"
+        },
+        {
+          "line": 712,
+          "heading": "## 九、KV Cache、Prefix、HiCache 与路由"
+        },
+        {
+          "line": 714,
+          "heading": "### KV-001/002：缓存什么，为什么不缓存 Q？"
+        },
+        {
+          "line": 722,
+          "heading": "### KV-003—007：Paged KV 的本质和 correctness"
+        },
+        {
+          "line": 739,
+          "heading": "### KV-008—012：Prefix cache 命中、key 与驱逐"
+        },
+        {
+          "line": 755,
+          "heading": "### KV-013/014：KV quant 与窗口驱逐"
+        },
+        {
+          "line": 761,
+          "heading": "### KV-015：五层 KV 系统不要混为一谈"
+        },
+        {
+          "line": 773,
+          "heading": "### KV-016：Offload 的 break-even"
+        },
+        {
+          "line": 783,
+          "heading": "### KV-017：P→D、external cache、prefix cache、router 的区别"
+        },
+        {
+          "line": 792,
+          "heading": "### KV-018：Push、pull 与 layer-wise transfer"
+        },
+        {
+          "line": 800,
+          "heading": "### KV-019：传输中取消如何避免 UAF？"
+        },
+        {
+          "line": 812,
+          "heading": "### KV-020：Cache events 与最终一致路由"
+        },
+        {
+          "line": 820,
+          "heading": "## 十、分布式推理、MoE、Wide EP 与 PD"
+        },
+        {
+          "line": 822,
+          "heading": "### DIST-001：五种并行到底切什么？"
+        },
+        {
+          "line": 834,
+          "heading": "### DIST-002/003：Column/Row parallel 和拓扑"
+        },
+        {
+          "line": 840,
+          "heading": "### DIST-004/005/006：PP、推理 DP 与 CP"
+        },
+        {
+          "line": 848,
+          "heading": "### DIST-007/008：MoE 为什么是 All-to-All 类问题？"
+        },
+        {
+          "line": 854,
+          "heading": "### DIST-009：四层负载均衡不要混淆"
+        },
+        {
+          "line": 863,
+          "heading": "### DIST-010/011：DeepEP、Wide EP 与 Attention DP"
+        },
+        {
+          "line": 872,
+          "heading": "### DIST-012：四种 collective 的语义"
+        },
+        {
+          "line": 881,
+          "heading": "### DIST-013/014/015：通信算法、硬件层与软件职责"
+        },
+        {
+          "line": 894,
+          "heading": "### DIST-016：PD 能解决什么，不能保证什么？"
+        },
+        {
+          "line": 900,
+          "heading": "### DIST-017：P:D 副本比怎样估？"
+        },
+        {
+          "line": 910,
+          "heading": "### DIST-018/019：KV transfer break-even 与 layer-wise overlap"
+        },
+        {
+          "line": 918,
+          "heading": "### DIST-020：多 rank 失败如何避免全局 hang/UAF？"
+        },
+        {
+          "line": 928,
+          "heading": "### Wide EP 排障顺序"
+        },
+        {
+          "line": 932,
+          "heading": "## 十一、GPU、算子优化、编译与 Profiling"
+        },
+        {
+          "line": 934,
+          "heading": "### KERN-001/002：GPU 执行与存储层次"
+        },
+        {
+          "line": 947,
+          "heading": "### KERN-003：Coalescing 看地址事务，不看语法"
+        },
+        {
+          "line": 953,
+          "heading": "### KERN-004：Shared-memory bank conflict"
+        },
+        {
+          "line": 957,
+          "heading": "### KERN-005/006：Occupancy、ILP 与 divergence"
+        },
+        {
+          "line": 963,
+          "heading": "### KERN-007：同步原语保证什么？"
+        },
+        {
+          "line": 971,
+          "heading": "### KERN-008/009：Reduction 与 RMSNorm"
+        },
+        {
+          "line": 977,
+          "heading": "### KERN-010/011：RoPE 与 sampling 小算子"
+        },
+        {
+          "line": 983,
+          "heading": "### KERN-012/013：GEMM 的层级与 Tensor Core 条件"
+        },
+        {
+          "line": 989,
+          "heading": "### KERN-014：Grouped/persistent GEMM 为什么适合 MoE？"
+        },
+        {
+          "line": 993,
+          "heading": "### KERN-015/016：Fusion 与 persistent kernel 的反例"
+        },
+        {
+          "line": 999,
+          "heading": "### KERN-017：CUDA Graph 的准确收益与约束"
+        },
+        {
+          "line": 1005,
+          "heading": "### KERN-018：Streams/events 与 host sync"
+        },
+        {
+          "line": 1009,
+          "heading": "### KERN-019/020：Ampere 到 Blackwell 的原语边界"
+        },
+        {
+          "line": 1019,
+          "heading": "### KERN-021/022：CUDA、Triton、CUTLASS/CuTe、库怎样选？"
+        },
+        {
+          "line": 1025,
+          "heading": "### KERN-023/024：Nsys 与 NCU 的定位决策树"
+        },
+        {
+          "line": 1047,
+          "heading": "### KERN-025/026：Correctness 与计时"
+        },
+        {
+          "line": 1053,
+          "heading": "### KERN-027/028：`torch.compile`、Graph、手写 kernel 与 autotune"
+        },
+        {
+          "line": 1061,
+          "heading": "### KERN-029/030：RTX 3090 边界与 Amdahl"
+        },
+        {
+          "line": 1071,
+          "heading": "### 框架级 kernel 选择的六个等号禁区"
+        },
+        {
+          "line": 1077,
+          "heading": "## 十二、综合系统设计与取舍题"
+        },
+        {
+          "line": 1079,
+          "heading": "### 通用 12 步答题法"
+        },
+        {
+          "line": 1094,
+          "heading": "### DESIGN-001：设计 10 万用户、多模型、流式平台"
+        },
+        {
+          "line": 1102,
+          "heading": "### DESIGN-002：有限显存部署 70B/百亿模型"
+        },
+        {
+          "line": 1115,
+          "heading": "### DESIGN-003：为 32K–1M coding agent 多轮上下文设计缓存"
+        },
+        {
+          "line": 1121,
+          "heading": "### DESIGN-004：Base/Pro/Max 三档 TTFT/TPOT 服务"
+        },
+        {
+          "line": 1127,
+          "heading": "### DESIGN-005：Aggregated、chunked prefill、PD 怎样实验决策？"
+        },
+        {
+          "line": 1133,
+          "heading": "### DESIGN-006：多模型统一 gateway"
+        },
+        {
+          "line": 1139,
+          "heading": "### DESIGN-007：异构 GPU 集群调度"
+        },
+        {
+          "line": 1145,
+          "heading": "### DESIGN-008：多 Region 推理"
+        },
+        {
+          "line": 1151,
+          "heading": "### DESIGN-009：新模型 day-0 接入"
+        },
+        {
+          "line": 1165,
+          "heading": "### DESIGN-010：p99 TPOT 突增但平均 TPS 不变"
+        },
+        {
+          "line": 1171,
+          "heading": "### DESIGN-011：Prefix hit 从 70% 降到 10%"
+        },
+        {
+          "line": 1177,
+          "heading": "### DESIGN-012：MoE 某些 rank 长尾"
+        },
+        {
+          "line": 1181,
+          "heading": "### DESIGN-013：新 quant/kernel 的 benchmark 与发布"
+        },
+        {
+          "line": 1187,
+          "heading": "### DESIGN-014：数据中心 GPU 与消费级/边缘部署"
+        },
+        {
+          "line": 1193,
+          "heading": "### DESIGN-015：成本降 40%，质量不得显著下降"
+        },
+        {
+          "line": 1206,
+          "heading": "### 设计题评分锚点"
+        },
+        {
+          "line": 1220,
+          "heading": "## 十三、面试项目阶梯：从能跑到可答辩"
+        },
+        {
+          "line": 1222,
+          "heading": "### 所有项目都要交付的证据包"
+        },
+        {
+          "line": 1232,
+          "heading": "### P0：五个已提供、可直接运行的基础实验"
+        },
+        {
+          "line": 1254,
+          "heading": "### P1：Mini Serving Engine（综合岗位首选）"
+        },
+        {
+          "line": 1274,
+          "heading": "### P2：SGLang/vLLM 真实引擎 A/B"
+        },
+        {
+          "line": 1286,
+          "heading": "### P3：RTX 3090 算子优化"
+        },
+        {
+          "line": 1294,
+          "heading": "### P4：量化部署联合回归"
+        },
+        {
+          "line": 1300,
+          "heading": "### P5：Speculative decoding 正确性与收益"
+        },
+        {
+          "line": 1306,
+          "heading": "### P6：PD/Wide EP（没有大集群也能做）"
+        },
+        {
+          "line": 1312,
+          "heading": "### P7：生产化与故障注入"
+        },
+        {
+          "line": 1318,
+          "heading": "### P8：上游贡献"
+        },
+        {
+          "line": 1324,
+          "heading": "### 按岗位选择"
+        },
+        {
+          "line": 1336,
+          "heading": "## 十四、235 道面试题完整索引"
+        },
+        {
+          "line": 1342,
+          "heading": "### 一、推理基础与模型数据流"
+        },
+        {
+          "line": 1365,
+          "heading": "### 二、性能模型、指标与容量估算"
+        },
+        {
+          "line": 1388,
+          "heading": "### 三、KV Cache 与内存系统"
+        },
+        {
+          "line": 1411,
+          "heading": "### 四、Batching、Scheduler 与准入"
+        },
+        {
+          "line": 1434,
+          "heading": "### 五、Attention、长上下文与结构变化"
+        },
+        {
+          "line": 1452,
+          "heading": "### 六、量化与低精度"
+        },
+        {
+          "line": 1470,
+          "heading": "### 七、Speculative Decoding 与推理时计算"
+        },
+        {
+          "line": 1483,
+          "heading": "### 八、分布式推理、MoE 与解耦"
+        },
+        {
+          "line": 1506,
+          "heading": "### 九、GPU、Kernel、编译器与 Profiling"
+        },
+        {
+          "line": 1539,
+          "heading": "### 十、生产服务、可靠性与成本"
+        },
+        {
+          "line": 1562,
+          "heading": "### 十一、综合系统设计与取舍"
+        },
+        {
+          "line": 1580,
+          "heading": "### 十二、手写、笔试与 Debug"
+        },
+        {
+          "line": 1603,
+          "heading": "### 十三、项目深挖与行为综合"
+        },
+        {
+          "line": 1616,
+          "heading": "### 覆盖统计"
+        },
+        {
+          "line": 1634,
+          "heading": "## 十五、12 周学习、项目与模拟面试计划"
+        },
+        {
+          "line": 1636,
+          "heading": "### 总原则"
+        },
+        {
+          "line": 1640,
+          "heading": "### 第 1–2 周：推理数据流与容量"
+        },
+        {
+          "line": 1648,
+          "heading": "### 第 3–4 周：KV 与 Scheduler"
+        },
+        {
+          "line": 1657,
+          "heading": "### 第 5 周：Attention、长上下文与 Spec"
+        },
+        {
+          "line": 1665,
+          "heading": "### 第 6 周：量化与低精度"
+        },
+        {
+          "line": 1673,
+          "heading": "### 第 7–8 周：CUDA 与算子项目"
+        },
+        {
+          "line": 1682,
+          "heading": "### 第 9 周：分布式、MoE 与 PD"
+        },
+        {
+          "line": 1690,
+          "heading": "### 第 10 周：生产与可靠性"
+        },
+        {
+          "line": 1698,
+          "heading": "### 第 11 周：综合系统设计与项目包装"
+        },
+        {
+          "line": 1706,
+          "heading": "### 第 12 周：全真模拟与查漏"
+        },
+        {
+          "line": 1714,
+          "heading": "### 8 周冲刺版"
+        },
+        {
+          "line": 1718,
+          "heading": "## 十六、模拟面试评分表与过关线"
+        },
+        {
+          "line": 1743,
+          "heading": "### 一票否决式错误清单"
+        },
+        {
+          "line": 1756,
+          "heading": "### 每周 Mock 模板"
+        },
+        {
+          "line": 1765,
+          "heading": "## 十七、面试前最终检查表"
+        },
+        {
+          "line": 1785,
+          "heading": "## 十八、权威来源地图与复核边界"
+        },
+        {
+          "line": 1787,
+          "heading": "### 核心论文"
+        },
+        {
+          "line": 1796,
+          "heading": "### 官方工程资料"
+        },
+        {
+          "line": 1806,
+          "heading": "### 本次确诊与未运行边界"
+        },
+        {
+          "line": 1812,
+          "heading": "## 十九、逐题快答补全"
+        },
+        {
+          "line": 1816,
+          "heading": "### 基础 FND"
+        },
+        {
+          "line": 1834,
+          "heading": "### 性能 PERF"
+        },
+        {
+          "line": 1852,
+          "heading": "### KV 快答"
+        },
+        {
+          "line": 1867,
+          "heading": "### Scheduler 快答"
+        },
+        {
+          "line": 1883,
+          "heading": "### Attention 快答"
+        },
+        {
+          "line": 1896,
+          "heading": "### 量化快答"
+        },
+        {
+          "line": 1909,
+          "heading": "### Speculative 快答"
+        },
+        {
+          "line": 1919,
+          "heading": "### 分布式快答"
+        },
+        {
+          "line": 1932,
+          "heading": "### Kernel 快答"
+        },
+        {
+          "line": 1949,
+          "heading": "### 生产快答"
+        },
+        {
+          "line": 1963,
+          "heading": "### Coding / Debug 快答"
+        },
+        {
+          "line": 1984,
+          "heading": "### 项目/行为快答"
+        }
+      ]
+    }
+  ]
+}

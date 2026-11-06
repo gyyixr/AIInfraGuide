@@ -2,7 +2,7 @@
 title: "第5章：ZeRO 显存优化与 FSDP2"
 description: "从状态所有权推导 ZeRO-1/2/3 的显存和通信账本，进一步理解 FSDP2 的参数生命周期、预取、Offload 与分布式保存"
 pubDate: 2026-04-16
-updatedDate: 2026-10-30
+updatedDate: 2026-11-07
 category: "distributed-training"
 order: 50
 tags: ["ZeRO", "FSDP2", "DTensor", "显存优化", "Offload"]
@@ -22,6 +22,7 @@ tags: ["ZeRO", "FSDP2", "DTensor", "显存优化", "Offload"]
 |---|---|---|
 | [5.1 ZeRO 分片与显存通信账本](/AIInfraGuide/distributed/模块三-分布式训练/51-zero分片与显存通信账本/) | 每份状态由谁拥有、通信数据是什么 | 手算四参数更新和 7B/8 rank 账本 |
 | [5.2 FSDP2 与 Offload 工程实践](/AIInfraGuide/distributed/模块三-分布式训练/52-fsdp2与offload工程实践/) | 分片怎样映射到参数组和内存生命周期 | 解释 fully_shard、预取、CPU/NVMe 代价 |
+| 5.3 HSDP、HFSDP与多实例分布式优化器 | 如何利用inner/outer通信层次 | 手算d=D/I、两级RS/AR与状态复制代价 |
 
 建议先完成第 2 章 ReduceScatter/AllGather 和第 3 章优化器状态。已有 FSDP1 使用经验，也应先理解 FSDP2 的 DTensor 参数表示，再迁移代码。
 
@@ -106,3 +107,11 @@ CPU offload 可以搬走优化器状态及更新计算，参数 offload 则有�
 - [ZeRO](https://arxiv.org/abs/1910.02054)
 - [PyTorch FSDP2](https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
 - [DeepSpeed ZeRO 配置](https://deepspeed.readthedocs.io/en/latest/zero3.html)
+
+## 层级分片的补充入口
+
+5.3把HSDP、HFSDP和普通多实例DistOpt分开：前两者包含unit参数unshard，后者仍保留完整计算参数与grad buffer。
+
+阅读时先列inner/outer组，再计算有效分片大小d；不能用整个DP域大小替代它。示例同时解释SUM/AVG、专用communication stream以及uneven DTensor边界。
+
+本篇新增内容依据Megatron冻结48a887f实现和同提交官方M-FSDP文档，CPU oracle不替代多GPU验证。

@@ -1,0 +1,7 @@
+{
+  "date": "2026-11-07",
+  "base_url": "http://127.0.0.1:4321/AIInfraGuide/",
+  "html_routes_checked": 730,
+  "requirement": "HTTP 200 and exact match to each current built HTML file",
+  "errors": []
+}

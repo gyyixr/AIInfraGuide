@@ -16,6 +16,12 @@
     "test:distributed": "python3 -m unittest discover -s labs/distributed -p 'test_*.py' -v",
     "lab:ddp": "node scripts/run-ddp-lab.mjs",
     "check:distributed-site": "python3 scripts/check-rl-site.py --module distributed",
+    "lab:deepseek": "python3 labs/deepseek/numerics.py --output labs/deepseek/results/latest-numerics.json",
+    "test:deepseek": "python3 -m unittest discover -s labs/deepseek -p 'test_*.py' -v",
+    "check:deepseek-site": "python3 scripts/check-rl-site.py --module deepseek",
+    "check:inference-site": "python3 scripts/check-rl-site.py --module inference",
+    "check:performance-site": "python3 scripts/check-rl-site.py --module performance",
+    "check:content": "node scripts/check-content.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -27,6 +33,7 @@
     "@pagefind/default-ui": "^1.5.2",
     "@tailwindcss/typography": "^0.5.19",
     "astro": "^4.16.19",
+    "github-slugger": "2.0.0",
     "pagefind": "^1.5.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",

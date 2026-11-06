@@ -1,0 +1,102 @@
+[
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/1.1-跨训练推理的Roofline与关键路径.md",
+    "lines": 352,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "decode-like AI 0.9995119570522206\nlarge GEMM AI 1365.3333333333333\ncritical_path_ms 115 sum_of_work_ms 135\ncompute 80 total 90 speedup 1.2222222222222223\ncompute 95 total 105 speedup 1.0476190476190477\ncompute 105 total 115 speedup 0.9565217391304348\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/1.2-统计测量基准设计与性能归因.md",
+    "lines": 352,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "paired improvement ms 4 interval 3.625 4.375\nmean ratios 1.5 total ratio 1.0049751243781095\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/2.1-从GPU时间线到微架构瓶颈.md",
+    "lines": 352,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "sectors 4 32 5\nmax lanes per bank 32 1\nstride 1 modeled efficiency 1.0\nstride 8 modeled efficiency 0.125\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/2.2-编译CUDA图与动态Shape工程.md",
+    "lines": 353,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "padding_factor 1.5238095238095237\nbreak_even_calls 600000\ncaptured resource identity preserved\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/3.1-NCCL与RDMA网络性能工程.md",
+    "lines": 354,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "large_ms 35.07000000000001 small_us 70.14336\nuniform (120, 30, 30) hot (120, 30, 90)\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/3.2-NUMA数据加载与异步IO流水.md",
+    "lines": 356,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "serial 400 pipeline 220\nhost slot reuse waits for copy completion\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/4.1-低精度Kernel正确性与发布门禁.md",
+    "lines": 352,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "quant max error 0.05714285714285716\nRMSNorm analytic [0.2967631397316953, 0.3239171981810936, 0.10037652328816549] finite_difference [0.2967631397288173, 0.32391719817503883, 0.10037652331540414]\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/4.2-AIInfra性能项目与综合实验.md",
+    "lines": 351,
+    "python": [
+      {
+        "exit": 0,
+        "stdout": "bucket_only total_ms 112 speedup 1.0714285714285714\noverlap total_ms 115 speedup 1.0434782608695652\nkernel_only total_ms 110 speedup 1.0909090909090908\ncombined total_ms 106 speedup 1.1320754716981132\nindependent_product 1.1383399209486167\nmeasured_combination_model 1.1320754716981132\ncritical_rank 3 step_lower_bound 45\n"
+      }
+    ]
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/第1章-性能模型与实验方法.md",
+    "lines": 124,
+    "python": []
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/第2章-GPU算子编译与调优.md",
+    "lines": 124,
+    "python": []
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/第3章-通信存储与主机协同.md",
+    "lines": 122,
+    "python": []
+  },
+  {
+    "file": "docs/guides/模块六-性能工程与生产实践/第4章-正确性回归与优化项目.md",
+    "lines": 122,
+    "python": []
+  }
+]

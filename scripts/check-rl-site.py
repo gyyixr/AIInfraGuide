@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate built RL pages, local links/anchors, math, and content coverage.
+"""Validate built learning modules, local links/anchors, math, and coverage.
 
 Run after npm run build. External references are reviewed by the authors;
 this checker deliberately checks local delivery without network dependencies.
@@ -14,6 +14,15 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 BASE = "/AIInfraGuide"
+MODULES = {
+    "rl": ("模块五-LLM-RL后训练", True),
+    "distributed": ("模块三-分布式训练", True),
+    "inference": ("模块四-推理优化", True),
+    "performance": ("模块六-性能工程与生产实践", True),
+    "deepseek": ("模块七-DeepSeek开放技术详解", True),
+    "prerequisites": ("模块一-前置知识", False),
+    "cuda": ("模块二-CUDA编程与算子优化", False),
+}
 
 
 class Page(HTMLParser):
@@ -36,10 +45,10 @@ class Page(HTMLParser):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--module", choices=("rl", "distributed"), default="rl")
+    parser.add_argument("--module", choices=tuple(MODULES), default="rl")
     args = parser.parse_args()
     module = args.module
-    source_directory = "模块五-LLM-RL后训练" if module == "rl" else "模块三-分布式训练"
+    source_directory, require_children = MODULES[module]
     pages = sorted((DIST / module).rglob("*.html"))
     if not pages:
         raise SystemExit(f"No built {module} pages. Run npm run build first.")
@@ -52,8 +61,10 @@ def main():
             cache[path] = Page(path.read_text())
         return cache[path]
 
-    docs = list((ROOT / "docs/guides" / source_directory).glob("*.md"))
+    docs = [p for p in (ROOT / "docs/guides" / source_directory).rglob("*.md")
+            if not re.search(r"^draft:\s*true\s*$", p.read_text().split("---", 2)[1], re.M)]
     chapters, children = set(), {}
+    ungrouped = []
     for doc in docs:
         text = doc.read_text()
         title = re.search(r'^title:\s*"?(.*?)"?\s*$', text, re.M)
@@ -63,11 +74,14 @@ def main():
         else:
             chapter = re.search(r"^chapter:\s*(\d+)\s*$", text, re.M)
             if not chapter:
-                errors.append(f"{doc.name}: missing chapter metadata")
+                if require_children:
+                    errors.append(f"{doc.name}: missing chapter metadata")
+                else:
+                    ungrouped.append(doc.name)
             else:
                 children.setdefault(int(chapter[1]), []).append(doc.name)
     for chapter in chapters:
-        if not children.get(chapter):
+        if require_children and not children.get(chapter):
             errors.append(f"chapter {chapter}: no detailed articles")
     for chapter in children:
         if chapter not in chapters:
@@ -106,6 +120,7 @@ def main():
 
     result = {"module": module, "source_documents": len(docs), "chapters": len(chapters),
               "detailed_articles": sum(map(len, children.values())),
+              "ungrouped_documents": ungrouped,
               "built_pages": len(pages), "local_links_checked": checked_links,
               "errors": errors}
     print(json.dumps(result, ensure_ascii=False, indent=2))

@@ -1,0 +1,20 @@
+11.1-长轨迹Mask与分布式Loss归一化.md #0: 0
+global mean 3.8 wrong local mean 4.333333333333333
+
+11.1-长轨迹Mask与分布式Loss归一化.md #1: 0
+3.0 0.75 6.0
+
+11.2-GSPO序列比率与离策略校正.md #0: 0
+GSPO delta gradient [0.49999999990335553, 0.49999999990335553] clipped cases [2.4, 1.4, -1.6, -2.6]
+
+11.2-GSPO序列比率与离策略校正.md #1: 0
+0.8 0.8 0.6324555320336759 0.9486832980505138
+
+11.3-Agent环境吞吐与训练稳定性.md #0: 0
+accepted trajectories/s 3.0 3.0 6.0
+accepted action tokens/s [24000.0, 24000.0, 48000.0]
+
+11.3-Agent环境吞吐与训练稳定性.md #1: 0
+20 40 10.0
+60 120 30.0
+accepted task kinds ['easy', 'easy']

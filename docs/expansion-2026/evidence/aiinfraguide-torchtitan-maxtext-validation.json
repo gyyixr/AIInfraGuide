@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/home/gyy/python/AIInfraGuide/docs/guides/模块三-分布式训练/17.1-TorchTitan与原生PyTorch训练生态.md",
+    "lines": 408,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "world 32 state_GiB 8.382\ntokens_per_update 131072\n"
+      },
+      {
+        "returncode": 0,
+        "stdout": "complete state resumes; resetting RNG changes trajectory\n"
+      }
+    ],
+    "sha256": "661cba495eadbf87ea8937f1c6d2b19ae2a8527d00ebffc343b0f7ffe3735e12"
+  },
+  {
+    "path": "/home/gyy/python/AIInfraGuide/docs/guides/模块三-分布式训练/17.2-MaxText与JAX的分片和训练系统.md",
+    "lines": 408,
+    "python": [
+      {
+        "returncode": 0,
+        "stdout": "local W (2048, 4096) local X (2, 1024, 4096)\nglobal weighted loss 5.0 incorrect rank mean 8.75\n"
+      },
+      {
+        "returncode": 0,
+        "stdout": "break_even_steps 120000\nshort_job 500.0 610.0 long_job 10000.0 9920.0\n"
+      }
+    ],
+    "sha256": "345ce0bb375e4e0109923c6aaab7ff5e5bbac5a9741bfacd666ebcbbf105b035"
+  }
+]

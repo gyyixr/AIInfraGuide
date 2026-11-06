@@ -1,0 +1,125 @@
+{
+  "files": [
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/1.1-DeepSeek模型与开源项目演进.md",
+      "lines": 366
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/1.2-开源代码开放权重与论文披露边界.md",
+      "lines": 379
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.1-MLA低秩压缩解耦RoPE与矩阵吸收.md",
+      "lines": 408
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.2-DeepSeekMoE细粒度专家与共享专家.md",
+      "lines": 416
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.3-NSA与DSA稀疏注意力.md",
+      "lines": 371
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.4-V4混合注意力CSA与HCA.md",
+      "lines": 351
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.5-mHC残差流形约束与数值稳定性.md",
+      "lines": 369
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.6-V4点1架构更新与原生视觉.md",
+      "lines": 353
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.7-CED编解码解耦与PrefixReplay.md",
+      "lines": 363
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.8-Engram条件记忆与分层卸载.md",
+      "lines": 378
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/2.9-CSA2与分层稀疏索引.md",
+      "lines": 404
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/3.1-FP8细粒度缩放与训练数值链路.md",
+      "lines": 360
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/3.2-DualPipe与DualPipeV流水调度.md",
+      "lines": 355
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/3.3-Muon优化器与V4训练配方.md",
+      "lines": 353
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/3.4-MTP与DSpark训练目标.md",
+      "lines": 400
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/4.1-GRPO与R1Zero到R1的训练路线.md",
+      "lines": 357
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/4.2-V3点2与V4点1AgentRL和环境系统.md",
+      "lines": 368
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/4.3-DeepSeekMath与自验证推理.md",
+      "lines": 371
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/4.4-蒸馏合成数据与1017自反馈更新.md",
+      "lines": 361
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/7.3-FireFlyer集群与通信存储协同.md",
+      "lines": 354
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/7.4-DSec沙箱与Agent训练环境Infra.md",
+      "lines": 351
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/8.1-DeepSeekVL与Janus多模态路线.md",
+      "lines": 359
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/8.2-DeepSeekOCR与OCR2视觉压缩.md",
+      "lines": 358
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/8.3-DeepSeekHarness插件与Agent执行链.md",
+      "lines": 358
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/8.4-DeepSeekRecipe协议格式与可复现接入.md",
+      "lines": 361
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/第1章-开放技术版图与版本证据.md",
+      "lines": 142
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/第2章-模型架构与长上下文.md",
+      "lines": 145
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/第3章-预训练数值与并行系统.md",
+      "lines": 140
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/第4章-RL推理与Agent后训练.md",
+      "lines": 140
+    },
+    {
+      "file": "docs/guides/模块七-DeepSeek开放技术详解/第8章-多模态与Agent开放生态.md",
+      "lines": 142
+    }
+  ],
+  "executed_examples": 8
+}

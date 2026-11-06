@@ -1,0 +1,75 @@
+{
+  "checked_date": "2026-11-07",
+  "repos": {
+    "huggingface/nanotron": {
+      "sha": "a1d47c7ef0f2442a25871e9d5aa4105313d1c37a",
+      "date": "2026-10-08T08:18:53Z",
+      "message": "Fix checkpoint model config restoration (#433)"
+    },
+    "allenai/OLMo-core": {
+      "sha": "ccf4ef4b5f6552e92f933589e9e6377d16fafb40",
+      "date": "2026-10-23T22:49:21Z",
+      "message": "Add OLMo Core <-> MaxText checkpoint conversion (#920)"
+    },
+    "hpcaitech/ColossalAI": {
+      "sha": "da8f5c2dd56f97d3d23d3d222b114e1a3d4710f5",
+      "date": "2026-11-06T07:11:49Z",
+      "message": "Merge pull request #6506 from hpcaitech/feat/numerics-gaps"
+    },
+    "InternLM/InternEvo": {
+      "sha": "a5b3972be7cc3448563b4ddfbb0cee736bdea7ef",
+      "date": "2025-08-21T02:35:35Z",
+      "message": "fix(linear): remove linear op assert (#438)",
+      "archived_at_check": false,
+      "default_branch_at_check": "develop"
+    },
+    "mosaicml/llm-foundry": {
+      "sha": "0cdb2f42962fcf861e58b236e9bd1c9964ba99a4",
+      "date": "2026-03-25T17:22:01Z",
+      "message": "Remove GitHub Actions workflows and dependabot configuration (#1887)",
+      "archived_at_check": true
+    },
+    "flagos-ai/FlagScale": {
+      "sha": "d1032faf8ef63d496952f45919b6fec9ab2a172f",
+      "date": "2026-10-29T14:45:51Z",
+      "message": "[CICD] Unify test policy, affected routing and execution evidence gates (#1315)",
+      "previous_repository": "FlagOpen/FlagScale"
+    },
+    "pytorch/torchtitan": {
+      "sha": "6d9a92994be7942d82374592a5ebb42109648622",
+      "date": "2026-11-06",
+      "scope": "Python recipes, Trainer/TrainingEngine, declarative sharding, DCP; official source read by parallel author"
+    },
+    "AI-Hypercomputer/maxtext": {
+      "sha": "ab6280ceb0d3f7a8a8e2ba3dd6bcfcd82c5edeed",
+      "date": "2026-11-06",
+      "scope": "NNX train step, NamedSharding, Orbax v1, Grain iterator; official source read by parallel author"
+    }
+  },
+  "papers": [
+    {
+      "title": "AutoSP",
+      "id": "arXiv:2604.27089v1",
+      "date": "2026-04-29",
+      "read_sections": [
+        "3",
+        "4",
+        "Listing 1",
+        "Listing 2"
+      ]
+    },
+    {
+      "title": "HexiSeq",
+      "id": "arXiv:2605.07569v1",
+      "date": "2026-05-08",
+      "read_sections": [
+        "3",
+        "4",
+        "5",
+        "Appendix A",
+        "Appendix B",
+        "Appendix D"
+      ]
+    }
+  ]
+}

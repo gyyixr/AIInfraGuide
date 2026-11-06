@@ -27,16 +27,44 @@ export interface ModuleMeta {
 }
 
 export const MODULE_METADATA: Partial<Record<CategorySlug, ModuleMeta>> = {
+  'performance-analysis': {
+    title: '模块六：性能工程与生产实践',
+    description: '把 Roofline、请求排队、GPU 时间线、编译与算子选择、网络和存储放进同一个可测量的工程流程，建立从正确性到吞吐、尾延迟与成本的验证方法。',
+    color: '#F97316',
+    prerequisites: 'CUDA 基础、分布式训练与推理优化的基本数据流',
+    tips: [
+      '先固定工作负载、精度和计时边界，再比较性能数字',
+      '从端到端关键路径定位到具体算子或通信，避免只优化局部峰值',
+      '用数值 oracle、重复测量、质量护栏和回退条件评估每个优化',
+    ],
+  },
+  'deepseek-open': {
+    title: '模块七：DeepSeek 开放技术详解',
+    description: '按官方论文、开放权重与固定源码梳理 DeepSeek 的模型结构、训练与后训练、推理引擎、算子通信、存储数据和 Agent 生态；从 MLA、MoE 到 V4.1、DeepInfer、DeepGEMM、DeepEP 与 3FS，逐项说明机制和复现边界。',
+    color: '#2563EB',
+    prerequisites: 'Transformer、混合精度、分布式训练、KV Cache 和 RL 后训练基础',
+    tips: [
+      '先读开放版图与版本证据，区分代码开源、权重开放和论文披露',
+      '模型、训练、推理和底层算子沿同一条数据流交叉阅读',
+      '新旧版本的缓存格式、硬件要求和接口差异不可混用',
+      '性能数据注明报告环境，CPU 算例与真实大模型复现分别验收',
+    ],
+    resources: [
+      { type: '官方项目', title: 'DeepSeek GitHub', href: 'https://github.com/deepseek-ai', description: '官方模型、算子、通信、推理与数据基础设施项目' },
+      { type: '官方发布', title: 'DeepSeek 研究与发布', href: 'https://www.deepseek.com/en/news/', description: '模型发布与公开技术资料入口，具体证据版本见各篇正文' },
+    ],
+  },
   'llm-rl': {
     title: '模块五：LLM RL 后训练',
     description:
-      '从 SFT、RLHF 与 RLVR 的训练全景出发，逐步推导 PPO、GRPO、DPO，深入奖励工程、多轮 Agent、在线蒸馏、训练推理协同和故障排查，最后用可运行的数值实验串联完整数据流。',
+      '从 SFT、RLHF 与 RLVR 出发，推导 PPO、GRPO、DPO，深入奖励工程、多轮 Agent、在线蒸馏、训练推理协同和故障排查；通过数值实验、长轨迹归一化、GSPO 与离策略校正串联完整数据流。',
     color: '#E11D48',
     tips: [
       '先阅读第 1—3 章并手算一轮优势、概率比和裁剪，再进入框架实现',
       '第 4—6 章连接偏好数据、奖励评估、多轮环境与教师反馈',
       '第 7—9 章重点跟踪张量、进程、通信和权重版本，区分算法目标与系统实现',
       '第 10 章提供无需 GPU 或下载模型的实验；框架源码核对与大规模训练验证分别标明',
+      '第 11 章从长轨迹 mask、全局 loss 分母和策略版本进入 Agent RL 的稳定性问题',
     ],
     prerequisites: 'Transformer、自回归生成、概率与梯度、PyTorch；系统章节建议先学习分布式训练和推理优化',
     resources: [
@@ -87,26 +115,29 @@ export const MODULE_METADATA: Partial<Record<CategorySlug, ModuleMeta>> = {
   'distributed-training': {
     title: '模块三：分布式训练',
     description:
-      '从显存账本与通信原语出发，推导梯度累积、DDP、ZeRO/FSDP2、TP/SP、流水线、混合精度、CP、MoE 与多维拓扑，通过逐轮算例、源码入口和真实两进程 CPU/Gloo 实验建立可复查的训练系统知识。',
+      '从显存、梯度与通信原语逐步深入 DDP、ZeRO/FSDP、TP/PP/CP、MoE、低精度与超长上下文，再贯通数据治理、Megatron 源码、可靠恢复、训练预算和跨硬件框架；用逐轮算例与 CPU/Gloo 实验检验关键不变量。',
     color: '#10B981',
     tips: [
       '先读 1—4 章；用 2.2 的 Ring 逐轮表和 3.2 的不等 batch 推导校准通信与梯度语义',
       '第 4.3 节可在两进程 CPU/Gloo 环境运行，无需 GPU 或下载模型',
       '第 5—9 章按参数、激活和序列的切分方式深入，配合矩阵、时序与精度算例',
       '第 10—11 章将专家路由、rank 编排、性能建模与可靠恢复串起来；数学模拟和多卡实测分别说明',
+      '第 12—14 章跟踪数据索引、训练调用链、优化器所有权与 checkpoint 提交',
+      '第 15—17 章用预算、源码追问和框架对照设计可验证的训练方案',
     ],
     prerequisites: '前置知识模块（尤其是第6章 集合通信基础）',
   },
   'inference-optimization': {
     title: '模块四：推理优化',
     description:
-      '覆盖 LLM 推理基础、推理引擎核心技术、主流推理框架、量化、Speculative Decoding、PD 解耦架构、端侧推理，以及性能分析与端到端实战。',
+      '从推理与量化、投机解码深入分布式容量、MoE、PD 解耦、缓存传输和生产故障；沿 SGLang/vLLM 请求生命周期阅读源码，并通过 235 题、算例、项目验收与模拟面试复习。',
     color: '#8B5CF6',
     tips: [
       'LLM 推理基础章节帮助理解推理场景的独特挑战',
-      '量化和 Speculative Decoding 是当前最热门的推理优化方向',
-      '建议结合主流推理框架（如 vLLM）进行实际部署练习',
+      '量化与投机解码需要同时验证质量、目标分布、实际 kernel 和端到端收益',
+      '第 6—9 章重点跟踪并行容量、PD 成本、传输取消与生产故障边界',
       '端侧推理建议在真实设备上同时评估延迟、内存、功耗和精度',
+      '第 11 章对照固定源码理解请求、状态、缓存和执行；第 12 章用逐题速查与项目练习检验理解',
     ],
     prerequisites: '前置知识模块 + CUDA 编程基础',
   },
@@ -119,4 +150,6 @@ export const CATEGORY_URL_PREFIX: Partial<Record<CategorySlug, string>> = {
   'distributed-training': '/distributed',
   'inference-optimization': '/inference',
   'llm-rl': '/rl',
+  'performance-analysis': '/performance',
+  'deepseek-open': '/deepseek',
 };

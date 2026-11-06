@@ -15,6 +15,7 @@ const guides = defineCollection({
       'distributed-training',
       'inference-optimization',
       'llm-rl',
+      'deepseek-open',
       'performance-analysis',
       'course',
     ]),

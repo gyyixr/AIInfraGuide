@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "file": "README.md",
+      "localTargets": 150,
+      "websiteLinks": 0,
+      "routeChecks": 0
+    },
+    {
+      "file": "docs/guides/AI Infra学习路线.md",
+      "localTargets": 17,
+      "websiteLinks": 18,
+      "routeChecks": 18
+    },
+    {
+      "file": "docs/guides/训练推理与DeepSeek进阶学习导航.md",
+      "localTargets": 79,
+      "websiteLinks": 79,
+      "routeChecks": 79
+    },
+    {
+      "file": "docs/guides/资料来源版本与覆盖边界.md",
+      "localTargets": 35,
+      "websiteLinks": 35,
+      "routeChecks": 35
+    },
+    {
+      "file": "docs/expansion-2026/PLAN.md",
+      "localTargets": 28,
+      "websiteLinks": 0,
+      "routeChecks": 0
+    },
+    {
+      "file": "docs/posts/update-log.md",
+      "localTargets": 129,
+      "websiteLinks": 137,
+      "routeChecks": 137
+    }
+  ],
+  "errors": []
+}

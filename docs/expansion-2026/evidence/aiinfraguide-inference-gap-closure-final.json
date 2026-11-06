@@ -1,0 +1,50 @@
+{
+  "completed_articles": [
+    {
+      "path": "docs/guides/模块二-CUDA编程与算子优化/6.3-FlashAttention3与4的架构和流水线.md",
+      "lines": 362,
+      "sha256": "0139c0df04ae3bed72f8e235f998dab0e197866dd22ab70e85cb632d64ed9351",
+      "python": [
+        {
+          "returncode": 0,
+          "stdout": "result 2.9998577669409734 rescale_counts 3 1\nKV shared KiB for 2/3 stages 128.0 192.0\n"
+        }
+      ]
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.5-结构化输出与投机分支状态机.md",
+      "lines": 356,
+      "sha256": "79bcb71f781515a9d52a40461b821e016db9c7db844030179e5a1f43adb4d823",
+      "python": [
+        {
+          "returncode": 0,
+          "stdout": "temporary masks rolled back; committed state complete; mask_bytes 1280000\n"
+        }
+      ]
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.6-多模态处理Encoder与缓存生命周期.md",
+      "lines": 399,
+      "sha256": "57952a3f28cb3a35f10306ef72ff77e668205666a2aa96e486649231b9ff6225",
+      "python": [
+        {
+          "returncode": 0,
+          "stdout": "visual_tokens [196, 256] features_MiB 3.08984375\nshared references and lookahead retirement passed\n"
+        }
+      ]
+    }
+  ],
+  "navigation_files": [
+    "docs/guides/模块四-推理优化/第11章-SGLang与vLLM源码数据流.md",
+    "docs/guides/模块二-CUDA编程与算子优化/第6章-Attention算子.md"
+  ],
+  "audits": [
+    "docs/expansion-2026/INFERENCE_COVERAGE_AUDIT.md",
+    "docs/expansion-2026/inference-235-coverage.json"
+  ],
+  "G1": "closed and reread",
+  "G4": "three scoped mechanism/source tutorials added",
+  "G5": "31 supplementary article mappings, primary 235 entries preserved",
+  "site_check": "root final build/browser validation",
+  "runtime_boundary": "3 new CPU oracles passed; no GPU or model quality/performance run"
+}

@@ -11,6 +11,22 @@ tags: ["公告", "更新日志"]
 
 ## 2026-11-07
 
+### 七模块深度扩写与学习导航
+
+在保留原有教程和历史面试内容的基础上，新增模块六「性能工程与生产实践」和模块七「DeepSeek开放技术详解」，并扩展训练、推理及RL的源码与工程主线。
+
+- **训练**：[第12—17章入口](../guides/模块三-分布式训练/第12章-训练数据系统.md)串联数据、Megatron状态、可靠性、成本、源码项目与框架生态；补HSDP/多实例DistOpt、FP8/FP4、RoPE课程及AutoSP/HexiSeq。
+- **推理**：[第11章源码数据流](../guides/模块四-推理优化/第11章-SGLang与vLLM源码数据流.md)和[第12章题库项目](../guides/模块四-推理优化/第12章-推理源码题库与项目实战.md)衔接分布式、PD、评测与生产专题；[235题索引](../guides/模块四-推理优化/12.3-推理面试235题索引与逐题速查.md)保留题号、题干、分类和顺序，并提供重写要点与正文入口。
+- **RL**：[长上下文与异步RL工程](../guides/模块五-LLM-RL后训练/第11章-长上下文与异步RL工程.md)补充工具轨迹mask、CP/DP归约、GSPO几何ratio、环境队列与奖励版本。
+- **性能**：[模块六入口](../guides/模块六-性能工程与生产实践/第1章-性能模型与实验方法.md)覆盖Roofline、统计、微架构、编译/Graph、NCCL/RDMA、NUMA/IO和数值发布门禁。
+- **DeepSeek**：[模块七入口](../guides/模块七-DeepSeek开放技术详解/第1章-开放技术版图与版本证据.md)连接架构、预训练、RL、DeepInfer/DSpark、算子通信、存储集群、视觉与Agent生态，并附[本地实验与复现验收](../guides/模块七-DeepSeek开放技术详解/第9章-本地实验与复现验收.md)。
+
+新增[进阶学习导航](../guides/训练推理与DeepSeek进阶学习导航.md)和[资料来源、版本与覆盖边界](../guides/资料来源版本与覆盖边界.md)，对应三份参考材料的主要章节与固定源码。覆盖审计保留深度差异和后续研究边界，不宣称每个参考问题都有完整实现或所有系统已完成目标硬件复现。
+
+教程正文、公式、图示与答案通过本地网页阅读；`labs/`中的源码、模型和GPU/多机实验按运行条件在终端执行。新增相对Markdown链接会在站点构建时转换到对应文章路由。
+
+同时修复本日志的旧章号、大小写slug与失效入口；历史更新描述保留，链接指向现行承接内容。
+
 ### 同步上游更新
 
 同步原仓库至 `c09d316`，合入推理优化文章修订、手绘 SVG 插图、表格与参考资料排版，以及更新日志导航。保留本 fork 的 LLM RL 后训练模块、分布式训练深化专题、配套实验和本地预览/搜索构建脚本；README 的学习模块数量、快速导航和本地运行说明一并合并。
@@ -23,43 +39,43 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 3 章「nano-vllm 源码解读」6 篇文章修订：源码走读对齐 nano-vllm main 分支 2026-04-26 的提交，新增 3 张示意图，原有 8 张 Mermaid 图全部改为手绘风格 SVG，并修正了部分不准确的表述：
 
-- **文章：** [3.1 项目全景与四层架构](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/31-项目全景与四层架构/) | 项目信息表更新代码行数、版本与依赖、Star 数；四层架构图与请求生命周期图改为 SVG；补充 Prefill 与 Decode 不混批的说明
+- **文章：** [3.1 项目全景与四层架构](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.1-项目全景与四层架构.md>) | 项目信息表更新代码行数、版本与依赖、Star 数；四层架构图与请求生命周期图改为 SVG；补充 Prefill 与 Decode 不混批的说明
 
-- **文章：** [3.2 配置、入口与一次 generate 的全流程](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/32-配置入口与推理主循环/) | 补充 `tensor_parallel_size`、`ignore_eos` 等参数的约束；说明 nano-vllm 不支持贪心采样，以及 README 示例不套对话模板的问题；补充 `step` 返回的 `num_tokens` 用正负号区分阶段
+- **文章：** [3.2 配置、入口与一次 generate 的全流程](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.2-配置入口与推理主循环.md>) | 补充 `tensor_parallel_size`、`ignore_eos` 等参数的约束；说明 nano-vllm 不支持贪心采样，以及 README 示例不套对话模板的问题；补充 `step` 返回的 `num_tokens` 用正负号区分阶段
 
-- **文章：** [3.3 模型骨架与核心算子](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/33-模型与核心算子/) | 张量并行切分图改为 SVG；新增 Sampler 一节；补充每层 2 次 all_reduce 的来源，以及 KV 头数限制 TP 度的说明
+- **文章：** [3.3 模型骨架与核心算子](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.3-模型与核心算子.md>) | 张量并行切分图改为 SVG；新增 Sampler 一节；补充每层 2 次 all_reduce 的来源，以及 KV 头数限制 TP 度的说明
 
-- **文章：** [3.4 KV Cache 与 BlockManager](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/34-kvcache与blockmanager/) | 前缀缓存一节拆成哈希链、登记、匹配三部分；新增前缀命中分配示意图，匹配流程图改为 SVG；补充最后一块不查表、命中在用块与空闲块的区别，以及整块粒度带来的复用截断
+- **文章：** [3.4 KV Cache 与 BlockManager](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.4-KVCache与BlockManager.md>) | 前缀缓存一节拆成哈希链、登记、匹配三部分；新增前缀命中分配示意图，匹配流程图改为 SVG；补充最后一块不查表、命中在用块与空闲块的区别，以及整块粒度带来的复用截断
 
-- **文章：** [3.5 Scheduler 与连续批处理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/35-scheduler与连续批处理/) | 序列状态图与调度闭环图改为 SVG；逐条解释 prefill 分支的三处 `break`、严格先来先服务带来的队头阻塞；补充抢占走重计算、`while ... else` 的执行条件
+- **文章：** [3.5 Scheduler 与连续批处理](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.5-Scheduler与连续批处理.md>) | 序列状态图与调度闭环图改为 SVG；逐条解释 prefill 分支的三处 `break`、严格先来先服务带来的队头阻塞；补充抢占走重计算、`while ... else` 的执行条件
 
-- **文章：** [3.6 ModelRunner、CUDA Graph 与性能基准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/36-modelrunner引擎循环与性能/) | 新增 `slot_mapping` 计算图与 CUDA Graph 档位图，`run` 流程图与全章调用链图改为 SVG；补充 KV Cache 的 6 维布局、档位上限与 `max_num_seqs` 的关系；性能基准补充测试条件和结论的适用范围
+- **文章：** [3.6 ModelRunner、CUDA Graph 与性能基准](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.6-ModelRunner引擎循环与性能.md>) | 新增 `slot_mapping` 计算图与 CUDA Graph 档位图，`run` 流程图与全章调用链图改为 SVG；补充 KV Cache 的 6 维布局、档位上限与 `max_num_seqs` 的关系；性能基准补充测试条件和结论的适用范围
 
 **模块四 · 推理优化** 第 4 章「量化」6 篇文章修订：新增 7 张示意图，原有 4 张扁平风格插图重画为手绘风格，原有 Mermaid 图全部改为 SVG，并对照 vLLM v0.32.0 源码修正了部分表述：
 
-- **文章：** [4.1 量化基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/41-量化基础/) | 新增四种量化粒度图，重画对称/非对称量化数轴；补充 4-bit 对称量化的编码范围；PyTorch 量化参考资料改为 torchao 文档
+- **文章：** [4.1 量化基础](<../guides/模块四-推理优化/第4章-量化/4.1-量化基础.md>) | 新增四种量化粒度图，重画对称/非对称量化数轴；补充 4-bit 对称量化的编码范围；PyTorch 量化参考资料改为 torchao 文档
 
-- **文章：** [4.2 W8A8 与 SmoothQuant](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/42-w8a8与smoothquant/) | 重画配对缩放图，离线量化流程图改为 SVG
+- **文章：** [4.2 W8A8 与 SmoothQuant](<../guides/模块四-推理优化/第4章-量化/4.2-W8A8与SmoothQuant.md>) | 重画配对缩放图，离线量化流程图改为 SVG
 
-- **文章：** [4.3 Weight-only INT4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/43-weight-only-int4/) | 新增 W4A16 打包与片上反量化图、GPTQ/AWQ 对比图，Marlin 流水线图改为 SVG
+- **文章：** [4.3 Weight-only INT4](<../guides/模块四-推理优化/第4章-量化/4.3-Weight-only-INT4.md>) | 新增 W4A16 打包与片上反量化图、GPTQ/AWQ 对比图，Marlin 流水线图改为 SVG
 
-- **文章：** [4.4 KV Cache 量化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/44-kv-cache量化/) | 重画 KIVI 分组示意图；补充 Value 残留区按滑动窗口逐 Token 量化移出的说明
+- **文章：** [4.4 KV Cache 量化](<../guides/模块四-推理优化/第4章-量化/4.4-KV-Cache量化.md>) | 重画 KIVI 分组示意图；补充 Value 残留区按滑动窗口逐 Token 量化移出的说明
 
-- **文章：** [4.5 FP8 与 NVFP4/MXFP4](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/45-fp8与nvfp4-mxfp4/) | 新增 FP8 与 INT8 刻度分布对比图，重画 FP4 微块缩放图；在线 FP8 方案补充 `fp8_per_channel`
+- **文章：** [4.5 FP8 与 NVFP4/MXFP4](<../guides/模块四-推理优化/第4章-量化/4.5-FP8与NVFP4-MXFP4.md>) | 新增 FP8 与 INT8 刻度分布对比图，重画 FP4 微块缩放图；在线 FP8 方案补充 `fp8_per_channel`
 
-- **文章：** [4.6 量化选型与 vLLM 实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/46-量化选型与vllm实战/) | 选型流程图改为 SVG；修正在线 FP8 的加载方式（v0.32.0 先建在 meta 设备上逐层转换，不会整份载入 16-bit 权重）
+- **文章：** [4.6 量化选型与 vLLM 实战](<../guides/模块四-推理优化/第4章-量化/4.6-量化选型与vLLM实战.md>) | 选型流程图改为 SVG；修正在线 FP8 的加载方式（v0.32.0 先建在 meta 设备上逐层转换，不会整份载入 16-bit 权重）
 
 **模块四 · 推理优化** 第 5 章「Speculative Decoding」修订：新增 1 张示意图，原有 4 张 Mermaid 图全部改为手绘风格 SVG，并对照 vLLM v0.32.0 源码修正了部分表述：
 
-- **文章：** [5.1 投机解码核心原理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/51-投机解码核心原理/) | Draft + Verify 一轮流程图改为 SVG，按 γ = 4 标出接受、修正与作废的位置；新增残差采样保分布示意图，用第 7 节的数值演示两条路径相加等于 p
+- **文章：** [5.1 投机解码核心原理](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.1-投机解码核心原理.md>) | Draft + Verify 一轮流程图改为 SVG，按 γ = 4 标出接受、修正与作废的位置；新增残差采样保分布示意图，用第 7 节的数值演示两条路径相加等于 p
 
-- **文章：** [5.2 Draft 模型与无模型方案](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/52-draft模型与无模型方案/) | N-gram 查找流程图改为 SVG，标出 vLLM 取最长、最早匹配的规则；修正 `ngram_gpu` 的适用范围（V1、V2 Model Runner 都可用）；补充 Suffix 不设候选上限时的默认值
+- **文章：** [5.2 Draft 模型与无模型方案](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.2-Draft模型与无模型方案.md>) | N-gram 查找流程图改为 SVG，标出 vLLM 取最长、最早匹配的规则；修正 `ngram_gpu` 的适用范围（V1、V2 Model Runner 都可用）；补充 Suffix 不设候选上限时的默认值
 
-- **文章：** [5.3 Medusa、EAGLE 与 MTP](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/53-medusa与eagle/) | Draft Tree 图改为 SVG，与第 8 节实验同一棵树，画出树形 Mask 与按深度编号的 Position ID；补充 Block 验收只在 V2 Model Runner 中实现；修正 MTP 免版本错配的适用条件
+- **文章：** [5.3 Medusa、EAGLE 与 MTP](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.3-Medusa与EAGLE.md>) | Draft Tree 图改为 SVG，与第 8 节实验同一棵树，画出树形 Mask 与按深度编号的 Position ID；补充 Block 验收只在 V2 Model Runner 中实现；修正 MTP 免版本错配的适用条件
 
-- **文章：** [5.4 收益边界与限制](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/54-收益边界与限制/) | 调度循环图改为 SVG，补充同一 Batch 内不同请求步长不同的示例；修正 Adaptive Verification 的支持范围（不只 DSpark），以及 N-gram/Suffix 在高 QPS 下的收益描述
+- **文章：** [5.4 收益边界与限制](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.4-收益边界与限制.md>) | 调度循环图改为 SVG，补充同一 Batch 内不同请求步长不同的示例；修正 Adaptive Verification 的支持范围（不只 DSpark），以及 N-gram/Suffix 在高 QPS 下的收益描述
 
-- **文章：** [5.5 vLLM 投机解码实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/55-vllm投机解码实战/) | 逐位置接受指标改用实际暴露的 `..._per_pos_total` 名称并说明计数含义；补充 `--speculative-config` 的简写 `-sc`
+- **文章：** [5.5 vLLM 投机解码实战](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.5-vLLM投机解码实战.md>) | 逐位置接受指标改用实际暴露的 `..._per_pos_total` 名称并说明计数含义；补充 `--speculative-config` 的简写 `-sc`
 
 ---
 
@@ -87,15 +103,15 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 2 章「推理引擎核心技术」全面修订：5 篇文章新增 9 张示意图，参数默认值与源码走读对齐 vLLM v0.32.0，并修正了部分过时或不准确的表述：
 
-- **文章：** [2.1 PagedAttention：像操作系统管理内存一样管理 KV Cache](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/21-pagedattention/) | 新增 Block Table 映射图与碎片对比图；`gpu_memory_utilization` 默认值更新为 0.92；补充 V1 抢占只走重计算、不再使用 Copy-on-Write；修正 `free_blocks` 的空闲队列入队逻辑
+- **文章：** [2.1 PagedAttention：像操作系统管理内存一样管理 KV Cache](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.1-PagedAttention.md>) | 新增 Block Table 映射图与碎片对比图；`gpu_memory_utilization` 默认值更新为 0.92；补充 V1 抢占只走重计算、不再使用 Copy-on-Write；修正 `free_blocks` 的空闲队列入队逻辑
 
-- **文章：** [2.2 Continuous Batching：让 GPU 不再空等的动态批处理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/22-continuous-batching/) | 新增 Static 与 Continuous Batching 时间线对比图；用空转槽位算例和 Orca 论文数据替换无出处的利用率数字；抢占伪代码改为源码中的重试循环
+- **文章：** [2.2 Continuous Batching：让 GPU 不再空等的动态批处理](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.2-Continuous Batching.md>) | 新增 Static 与 Continuous Batching 时间线对比图；用空转槽位算例和 Orca 论文数据替换无出处的利用率数字；抢占伪代码改为源码中的重试循环
 
-- **文章：** [2.3 Prefix Cache 与 RadixAttention：复用共享前缀的 KV](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/23-prefix-cache-与-radixattention/) | 新增链式块哈希图与 Radix Tree 示例图；补充 `cache_salt`、哈希种子与 RadixAttention 的引用计数、先淘汰叶子的 LRU 和按缓存命中调度
+- **文章：** [2.3 Prefix Cache 与 RadixAttention：复用共享前缀的 KV](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.3-Prefix Cache 与 RadixAttention.md>) | 新增链式块哈希图与 Radix Tree 示例图；补充 `cache_salt`、哈希种子与 RadixAttention 的引用计数、先淘汰叶子的 LRU 和按缓存命中调度
 
-- **文章：** [2.4 Chunked Prefill 与统一 Token Budget 调度](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/24-chunked-prefill-与统一调度/) | 新增分块时间线图与 Token 预算装箱图；说明 vLLM 的块长由剩余预算决定；补充 `long_prefill_token_threshold` 与官方 `max_num_batched_tokens` 调优建议
+- **文章：** [2.4 Chunked Prefill 与统一 Token Budget 调度](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.4-Chunked Prefill 与统一调度.md>) | 新增分块时间线图与 Token 预算装箱图；说明 vLLM 的块长由剩余预算决定；补充 `long_prefill_token_threshold` 与官方 `max_num_batched_tokens` 调优建议
 
-- **文章：** [2.5 Attention 后端与图优化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/25-attention-后端与图优化/) | 新增 Kernel 启动与 CUDA Graph 对比图、Piecewise CUDA Graph 图；补充按 GPU 架构的默认后端；修正 CUDA Graph 的 Padding 规则与 V1 默认的 `FULL_AND_PIECEWISE` 模式
+- **文章：** [2.5 Attention 后端与图优化](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.5-Attention 后端与图优化.md>) | 新增 Kernel 启动与 CUDA Graph 对比图、Piecewise CUDA Graph 图；补充按 GPU 架构的默认后端；修正 CUDA Graph 的 Padding 规则与 V1 默认的 `FULL_AND_PIECEWISE` 模式
 
 ---
 
@@ -105,29 +121,29 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 4 章「量化」6 篇文章修订，框架相关内容对齐 vLLM v0.32.0，各篇补充信息时效说明，并重新组织章节结构：
 
-- **文章：** [4.1 量化基础：Scale、粒度与 PTQ/QAT](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/41-量化基础/) | 用"刻度有限的尺子"重写量化与反量化的讲解；位宽、矩阵轴与量化粒度拆成独立小节；校准单列一章，讲清量程选择与静态、动态校准
+- **文章：** [4.1 量化基础：Scale、粒度与 PTQ/QAT](<../guides/模块四-推理优化/第4章-量化/4.1-量化基础.md>) | 用"刻度有限的尺子"重写量化与反量化的讲解；位宽、矩阵轴与量化粒度拆成独立小节；校准单列一章，讲清量程选择与静态、动态校准
 
-- **文章：** [4.2 W8A8 量化：SmoothQuant 如何处理激活离群值](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/42-w8a8与smoothquant/) | 等价缩放补充公式与单个点积的直观推导；平滑系数一节改为讲迁移强度 α 的选择；补充离线流程、收益与适用条件，以及可动手验证的点积示例
+- **文章：** [4.2 W8A8 量化：SmoothQuant 如何处理激活离群值](<../guides/模块四-推理优化/第4章-量化/4.2-W8A8与SmoothQuant.md>) | 等价缩放补充公式与单个点积的直观推导；平滑系数一节改为讲迁移强度 α 的选择；补充离线流程、收益与适用条件，以及可动手验证的点积示例
 
-- **文章：** [4.3 Weight-only INT4：GPTQ、AWQ 与 Marlin](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/43-weight-only-int4/) | 补充 GPTQ 的代价与效果、AWQ 用缩放代替混合精度的思路；新增 vLLM 中的 Kernel 选择、量化工具选择与排查顺序
+- **文章：** [4.3 Weight-only INT4：GPTQ、AWQ 与 Marlin](<../guides/模块四-推理优化/第4章-量化/4.3-Weight-only-INT4.md>) | 补充 GPTQ 的代价与效果、AWQ 用缩放代替混合精度的思路；新增 vLLM 中的 Kernel 选择、量化工具选择与排查顺序
 
-- **文章：** [4.4 KV Cache 量化：KIVI 与 FP8 缓存](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/44-kv-cache量化/) | 新增 KV 占用估算；FP8 KV Cache 一节按 v0.32.0 重写，覆盖格式选择、Scale 校准、跳过敏感层，以及存储精度与计算精度的区别；注明旧版 `calculate_kv_scales` 参数已移除
+- **文章：** [4.4 KV Cache 量化：KIVI 与 FP8 缓存](<../guides/模块四-推理优化/第4章-量化/4.4-KV-Cache量化.md>) | 新增 KV 占用估算；FP8 KV Cache 一节按 v0.32.0 重写，覆盖格式选择、Scale 校准、跳过敏感层，以及存储精度与计算精度的区别；注明旧版 `calculate_kv_scales` 参数已移除
 
-- **文章：** [4.5 FP8 与 NVFP4/MXFP4：低比特浮点怎样工作](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/45-fp8与nvfp4-mxfp4/) | 补充 E2M1 的 8 个幅值、微块粒度的形状写法与 Scale 自身的格式；对比 NVFP4 两层 Scale 与 MXFP4 一层 Scale；新增在 vLLM v0.32.0 中的使用方式
+- **文章：** [4.5 FP8 与 NVFP4/MXFP4：低比特浮点怎样工作](<../guides/模块四-推理优化/第4章-量化/4.5-FP8与NVFP4-MXFP4.md>) | 补充 E2M1 的 8 个幅值、微块粒度的形状写法与 Scale 自身的格式；对比 NVFP4 两层 Scale 与 MXFP4 一层 Scale；新增在 vLLM v0.32.0 中的使用方式
 
-- **文章：** [4.6 量化选型与 vLLM 实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/46-量化选型与vllm实战/) | 区分量化方法、检查点格式与 Kernel 三层，补充 vLLM 各量化入口的含义；实验基准更新到 v0.32.0
+- **文章：** [4.6 量化选型与 vLLM 实战](<../guides/模块四-推理优化/第4章-量化/4.6-量化选型与vLLM实战.md>) | 区分量化方法、检查点格式与 Kernel 三层，补充 vLLM 各量化入口的含义；实验基准更新到 v0.32.0
 
 **模块四 · 推理优化** 第 5 章「Speculative Decoding」5 篇文章修订，配置基准从 vLLM v0.31.0 升级到 v0.32.0，并新增 MTP 相关内容：
 
-- **文章：** [5.1 投机解码核心原理：先猜一段，再让大模型验收](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/51-投机解码核心原理/) | 重写 Draft + Verify 一轮的完整流程；新增"Draft 只给 Token、不给概率"时的验证方式
+- **文章：** [5.1 投机解码核心原理：先猜一段，再让大模型验收](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.1-投机解码核心原理.md>) | 重写 Draft + Verify 一轮的完整流程；新增"Draft 只给 Token、不给概率"时的验证方式
 
-- **文章：** [5.2 Draft 模型与无模型方案：怎样便宜地猜得更准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/52-draft模型与无模型方案/) | 新增"与 Target 对得上比自身分数高更重要"和并行 Draft 两节；统一接受率、平均接受长度与候选覆盖三个指标的口径
+- **文章：** [5.2 Draft 模型与无模型方案：怎样便宜地猜得更准](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.2-Draft模型与无模型方案.md>) | 新增"与 Target 对得上比自身分数高更重要"和并行 Draft 两节；统一接受率、平均接受长度与候选覆盖三个指标的口径
 
-- **文章：** [5.3 Medusa、EAGLE 与 MTP：复用大模型信息生成更好的草稿](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/53-medusa与eagle/) | 新增第 7 节 MTP，覆盖它从预训练目标到推理加速的转变、实际效果、在 vLLM 中的形态，以及一次前向生成整块草稿的探索；EAGLE-2 补充置信度只用于分配预算的说明
+- **文章：** [5.3 Medusa、EAGLE 与 MTP：复用大模型信息生成更好的草稿](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.3-Medusa与EAGLE.md>) | 新增第 7 节 MTP，覆盖它从预训练目标到推理加速的转变、实际效果、在 vLLM 中的形态，以及一次前向生成整块草稿的探索；EAGLE-2 补充置信度只用于分配预算的说明
 
-- **文章：** [5.4 投机解码的收益边界：接受率高，为什么仍可能变慢](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/54-收益边界与限制/) | 补充加速条件与投机长度收益递减的推导；新增随负载调整的动态投机长度；结构化输出纳入停止条件的讨论
+- **文章：** [5.4 投机解码的收益边界：接受率高，为什么仍可能变慢](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.4-收益边界与限制.md>) | 补充加速条件与投机长度收益递减的推导；新增随负载调整的动态投机长度；结构化输出纳入停止条件的讨论
 
-- **文章：** [5.5 vLLM 投机解码实战：配置、接受率与性能一起测](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/55-vllm投机解码实战/) | 基准升级到 vLLM v0.32.0；新增第四组 EAGLE-3 实验与 MTP 接入条件；采集脚本改为逐请求接受指标，并补充常见现象的排查顺序与下一轮调参方向
+- **文章：** [5.5 vLLM 投机解码实战：配置、接受率与性能一起测](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.5-vLLM投机解码实战.md>) | 基准升级到 vLLM v0.32.0；新增第四组 EAGLE-3 实验与 MTP 接入条件；采集脚本改为逐请求接受指标，并补充常见现象的排查顺序与下一轮调参方向
 
 ---
 
@@ -137,21 +153,21 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 3 章「nano-vllm 源码解读」上线，以约 1200 行的极简推理引擎 [nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) 为主线，逐模块读懂连续批处理、PagedAttention、FlashAttention、张量并行与 CUDA Graph 在真实代码里的组织方式：
 
-- **文章：** [3.1 项目全景与四层架构](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/31-项目全景与四层架构/) | 认识 nano-vllm 的定位与目录结构，用一张四层架构图读懂从用户请求到 token 输出的完整数据流
+- **文章：** [3.1 项目全景与四层架构](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.1-项目全景与四层架构.md>) | 认识 nano-vllm 的定位与目录结构，用一张四层架构图读懂从用户请求到 token 输出的完整数据流
 
-- **文章：** [3.2 配置、入口与一次 generate 的全流程](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/32-配置入口与推理主循环/) | 从 example.py 出发拆解 Config/SamplingParams/LLM/LLMEngine，看懂 generate 主循环如何驱动 add_request、step 与 postprocess
+- **文章：** [3.2 配置、入口与一次 generate 的全流程](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.2-配置入口与推理主循环.md>) | 从 example.py 出发拆解 Config/SamplingParams/LLM/LLMEngine，看懂 generate 主循环如何驱动 add_request、step 与 postprocess
 
-- **文章：** [3.3 模型骨架与核心算子](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/33-模型与核心算子/) | 逐层拆解 Qwen3 实现：RMSNorm、RoPE、SwiGLU、并行 Linear 与张量并行切分、词表并行 Embedding/LMHead，以及 Attention 的 KV 写入与 FlashAttention 两条路径
+- **文章：** [3.3 模型骨架与核心算子](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.3-模型与核心算子.md>) | 逐层拆解 Qwen3 实现：RMSNorm、RoPE、SwiGLU、并行 Linear 与张量并行切分、词表并行 Embedding/LMHead，以及 Attention 的 KV 写入与 FlashAttention 两条路径
 
-- **文章：** [3.4 KV Cache 与 BlockManager](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/34-kvcache与blockmanager/) | 拆解分块 KV 管理：Block 结构、PagedAttention 的分块思想、基于 xxhash 的前缀缓存、块的分配回收，以及 Sequence 的状态机与 block_table
+- **文章：** [3.4 KV Cache 与 BlockManager](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.4-KVCache与BlockManager.md>) | 拆解分块 KV 管理：Block 结构、PagedAttention 的分块思想、基于 xxhash 的前缀缓存、块的分配回收，以及 Sequence 的状态机与 block_table
 
-- **文章：** [3.5 Scheduler 与连续批处理](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/35-scheduler与连续批处理/) | 读懂调度核心：Waiting/Running 双队列、Prefill/Decode 分离调度、Token Budget 预算、chunked prefill，以及显存不足时的抢占与重计算
+- **文章：** [3.5 Scheduler 与连续批处理](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.5-Scheduler与连续批处理.md>) | 读懂调度核心：Waiting/Running 双队列、Prefill/Decode 分离调度、Token Budget 预算、chunked prefill，以及显存不足时的抢占与重计算
 
-- **文章：** [3.6 ModelRunner、CUDA Graph 与性能基准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第3章-nano-vllm源码解读/36-modelrunner引擎循环与性能/) | 序列张量化、全局 Context 注入、KV Cache 显存切分、CUDA Graph 的捕获与回放，以及官方性能基准与 vLLM 对比
+- **文章：** [3.6 ModelRunner、CUDA Graph 与性能基准](<../guides/模块四-推理优化/第3章-nano-vllm源码解读/3.6-ModelRunner引擎循环与性能.md>) | 序列张量化、全局 Context 注入、KV Cache 显存切分、CUDA Graph 的捕获与回放，以及官方性能基准与 vLLM 对比
 
 ### 调整内容
 
-- 原《vLLM 快速入门》下沉至第 1 章，调整为 [1.2 vLLM 快速入门](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第1章-llm推理基础/12-vllm快速入门/)，作为推理基础的实操入门。
+- 原《vLLM 快速入门》下沉至第 1 章，调整为 [1.2 vLLM 快速入门](<../guides/模块四-推理优化/第1章-LLM推理基础/1.2-vLLM快速入门.md>)，作为推理基础的实操入门。
 
 ---
 
@@ -161,17 +177,17 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 4 章「量化」6 篇文章上线：
 
-- **文章：** [4.1 量化基础：Scale、粒度与 PTQ/QAT](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/41-量化基础/) | 从数值映射理解量化与反量化，讲清位宽、Scale、零点、量化粒度，以及校准和 PTQ/QAT 的区别
+- **文章：** [4.1 量化基础：Scale、粒度与 PTQ/QAT](<../guides/模块四-推理优化/第4章-量化/4.1-量化基础.md>) | 从数值映射理解量化与反量化，讲清位宽、Scale、零点、量化粒度，以及校准和 PTQ/QAT 的区别
 
-- **文章：** [4.2 W8A8 量化：SmoothQuant 如何处理激活离群值](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/42-w8a8与smoothquant/) | 从 Activation Outlier 出发推导 SmoothQuant 的等价缩放，理解平滑系数、INT8 GEMM 与离线部署流程
+- **文章：** [4.2 W8A8 量化：SmoothQuant 如何处理激活离群值](<../guides/模块四-推理优化/第4章-量化/4.2-W8A8与SmoothQuant.md>) | 从 Activation Outlier 出发推导 SmoothQuant 的等价缩放，理解平滑系数、INT8 GEMM 与离线部署流程
 
-- **文章：** [4.3 Weight-only INT4：GPTQ、AWQ 与 Marlin](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/43-weight-only-int4/) | 理解 GPTQ 的误差补偿、AWQ 的激活感知缩放，以及 Marlin 如何把 INT4 存储转化为推理收益
+- **文章：** [4.3 Weight-only INT4：GPTQ、AWQ 与 Marlin](<../guides/模块四-推理优化/第4章-量化/4.3-Weight-only-INT4.md>) | 理解 GPTQ 的误差补偿、AWQ 的激活感知缩放，以及 Marlin 如何把 INT4 存储转化为推理收益
 
-- **文章：** [4.4 KV Cache 量化：KIVI 与 FP8 缓存](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/44-kv-cache量化/) | 理解 KV Cache 量化的流式约束、KIVI 对 Key/Value 的不同分组，以及 vLLM FP8 KV Cache 的校准与收益边界
+- **文章：** [4.4 KV Cache 量化：KIVI 与 FP8 缓存](<../guides/模块四-推理优化/第4章-量化/4.4-KV-Cache量化.md>) | 理解 KV Cache 量化的流式约束、KIVI 对 Key/Value 的不同分组，以及 vLLM FP8 KV Cache 的校准与收益边界
 
-- **文章：** [4.5 FP8 与 NVFP4/MXFP4：低比特浮点怎样工作](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/45-fp8与nvfp4-mxfp4/) | 区分整数与浮点量化，理解 FP8 的范围与精度，以及 NVFP4、MXFP4 的微块缩放与硬件执行条件
+- **文章：** [4.5 FP8 与 NVFP4/MXFP4：低比特浮点怎样工作](<../guides/模块四-推理优化/第4章-量化/4.5-FP8与NVFP4-MXFP4.md>) | 区分整数与浮点量化，理解 FP8 的范围与精度，以及 NVFP4、MXFP4 的微块缩放与硬件执行条件
 
-- **文章：** [4.6 量化选型与 vLLM 实战](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第4章-量化/46-量化选型与vllm实战/) | 按瓶颈选择量化候选，理解 vLLM 量化格式与 Kernel 的关系，并完成 FP16 与 AWQ INT4 的吞吐和生成质量对照
+- **文章：** [4.6 量化选型与 vLLM 实战](<../guides/模块四-推理优化/第4章-量化/4.6-量化选型与vLLM实战.md>) | 按瓶颈选择量化候选，理解 vLLM 量化格式与 Kernel 的关系，并完成 FP16 与 AWQ INT4 的吞吐和生成质量对照
 
 ---
 
@@ -181,15 +197,15 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 5 章「Speculative Decoding」5 篇文章上线：
 
-- **文章：** [5.1 投机解码核心原理：先猜一段，再让大模型验收](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/51-投机解码核心原理/) | 从自回归串行瓶颈出发推导 Draft + Verify、接受概率与残差分布，证明最终输出服从 Target 分布
+- **文章：** [5.1 投机解码核心原理：先猜一段，再让大模型验收](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.1-投机解码核心原理.md>) | 从自回归串行瓶颈出发推导 Draft + Verify、接受概率与残差分布，证明最终输出服从 Target 分布
 
-- **文章：** [5.2 Draft 模型与无模型方案：怎样便宜地猜得更准](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/52-draft模型与无模型方案/) | 比较独立小模型、N-gram Prompt Lookup 与 Suffix Decoding，理解 Tokenizer 兼容、历史匹配、候选覆盖与接受率的权衡
+- **文章：** [5.2 Draft 模型与无模型方案：怎样便宜地猜得更准](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.2-Draft模型与无模型方案.md>) | 比较独立小模型、N-gram Prompt Lookup 与 Suffix Decoding，理解 Tokenizer 兼容、历史匹配、候选覆盖与接受率的权衡
 
-- **文章：** [5.3 Medusa 与 EAGLE：复用大模型信息生成更好的草稿](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/53-medusa与eagle/) | 讲清 Medusa 多头预测、EAGLE 特征级草稿、EAGLE-2 动态树与 EAGLE-3 训练改进，理解 Tree Attention 与路径提交
+- **文章：** [5.3 Medusa 与 EAGLE：复用大模型信息生成更好的草稿](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.3-Medusa与EAGLE.md>) | 讲清 Medusa 多头预测、EAGLE 特征级草稿、EAGLE-2 动态树与 EAGLE-3 训练改进，理解 Tree Attention 与路径提交
 
-- **文章：** [5.4 投机解码的收益边界：接受率高，为什么仍可能变慢](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/54-收益边界与限制/) | 建立平均提交长度与完整轮耗时的性能账本，分析批处理、长上下文、量化、调度与流式延迟的共同约束
+- **文章：** [5.4 投机解码的收益边界：接受率高，为什么仍可能变慢](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.4-收益边界与限制.md>) | 建立平均提交长度与完整轮耗时的性能账本，分析批处理、长上下文、量化、调度与流式延迟的共同约束
 
-- **文章：** [5.5 vLLM 投机解码实战：配置、接受率与性能一起测](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第5章-speculative-decoding/55-vllm投机解码实战/) | 以 vLLM v0.31.0 为基准，依次启动普通 Decode、N-gram 与独立 Draft，采集接受指标、质量输出与延迟吞吐
+- **文章：** [5.5 vLLM 投机解码实战：配置、接受率与性能一起测](<../guides/模块四-推理优化/第5章-Speculative-Decoding/5.5-vLLM投机解码实战.md>) | 以 vLLM v0.31.0 为基准，依次启动普通 Decode、N-gram 与独立 Draft，采集接受指标、质量输出与延迟吞吐
 
 ---
 
@@ -199,7 +215,7 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 新增第 12 章「端侧推理」：
 
-- **文章：** [12.1 端侧推理基础：从模型导出到异构硬件执行](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第12章-端侧推理/121-端侧推理基础/) | 系统理解端侧推理的硬件、模型格式、运行时、量化、内存与 Benchmark，并通过 ExecuTorch/XNNPACK 走通最小部署链路
+- **文章：** [12.1 端侧推理基础：从模型导出到异构硬件执行](<../guides/模块四-推理优化/第10章-端侧推理/10.1-端侧推理基础.md>) | 系统理解端侧推理的硬件、模型格式、运行时、量化、内存与 Benchmark，并通过 ExecuTorch/XNNPACK 走通最小部署链路
 
 ---
 
@@ -209,27 +225,27 @@ tags: ["公告", "更新日志"]
 
 **模块四 · 推理优化** 第 1、2 章文章上线：
 
-- **文章：** [1.1 LLM 推理基础](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第1章-llm推理基础/11-llm推理基础/) | 一篇讲透 LLM 推理的底层逻辑：Prefill/Decode 两阶段、KV Cache 显存账本、TTFT/TPOT 等性能指标，以及用 Roofline 解释为什么 Decode 是 Memory Bound
+- **文章：** [1.1 LLM 推理基础](<../guides/模块四-推理优化/第1章-LLM推理基础/1.1-LLM推理基础.md>) | 一篇讲透 LLM 推理的底层逻辑：Prefill/Decode 两阶段、KV Cache 显存账本、TTFT/TPOT 等性能指标，以及用 Roofline 解释为什么 Decode 是 Memory Bound
 
-- **文章：** [2.1 PagedAttention](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/21-pagedattention/) | 深入 vLLM 的核心技术 PagedAttention：借鉴虚拟内存分页思想，用 Block Table 消除 KV Cache 碎片化，并支持前缀共享与 Copy-on-Write
+- **文章：** [2.1 PagedAttention](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.1-PagedAttention.md>) | 深入 vLLM 的核心技术 PagedAttention：借鉴虚拟内存分页思想，用 Block Table 消除 KV Cache 碎片化，并支持前缀共享与 Copy-on-Write
 
-- **文章：** [2.2 Continuous Batching](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/22-continuous-batching/) | 深入 Continuous Batching 的原理：Iteration-level Scheduling 让请求随到随拼、完成即退，把 GPU 利用率从三成拉到八成以上
+- **文章：** [2.2 Continuous Batching](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.2-Continuous Batching.md>) | 深入 Continuous Batching 的原理：Iteration-level Scheduling 让请求随到随拼、完成即退，把 GPU 利用率从三成拉到八成以上
 
-- **文章：** [2.3 Prefix Cache 与 RadixAttention](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/23-prefix-cache-与-radixattention/) | 深入前缀缓存：vLLM 基于 Hash 的自动前缀缓存如何复用共享前缀的 KV 块，SGLang 的 RadixAttention 如何用 Radix Tree 做更高效的前缀共享
+- **文章：** [2.3 Prefix Cache 与 RadixAttention](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.3-Prefix Cache 与 RadixAttention.md>) | 深入前缀缓存：vLLM 基于 Hash 的自动前缀缓存如何复用共享前缀的 KV 块，SGLang 的 RadixAttention 如何用 Radix Tree 做更高效的前缀共享
 
-- **文章：** [2.4 Chunked Prefill 与统一调度](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/24-chunked-prefill-与统一调度/) | 深入 Chunked Prefill：把长 Prompt 的 Prefill 切块，消除它对 Decode 请求的干扰；理解 vLLM V1 如何用统一 Token 预算调度器抹平 Prefill/Decode 边界
+- **文章：** [2.4 Chunked Prefill 与统一调度](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.4-Chunked Prefill 与统一调度.md>) | 深入 Chunked Prefill：把长 Prompt 的 Prefill 切块，消除它对 Decode 请求的干扰；理解 vLLM V1 如何用统一 Token 预算调度器抹平 Prefill/Decode 边界
 
-- **文章：** [2.5 Attention 后端与图优化](https://caomaolufei.github.io/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术/25-attention-后端与图优化/) | 深入 vLLM 的可插拔 Attention 后端（FlashAttention/FlashInfer/FlashMLA/Triton）与图优化：用 CUDA Graph 和 torch.compile 消除 Decode 阶段的 CPU 启动开销
+- **文章：** [2.5 Attention 后端与图优化](<../guides/模块四-推理优化/第2章-推理引擎核心技术/2.5-Attention 后端与图优化.md>) | 深入 vLLM 的可插拔 Attention 后端（FlashAttention/FlashInfer/FlashMLA/Triton）与图优化：用 CUDA Graph 和 torch.compile 消除 Decode 阶段的 CPU 启动开销
 
 **模块三 · 分布式训练** 集合通信、优化器与数据并行章节文章上线：
 
-- **文章：** [2.1 集合通信原语详解](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/21-集合通信原语详解/) | 讲清 AllReduce/ReduceScatter/AllGather/All-to-All 的输入输出语义、Ring AllReduce 算法原理，以及单次通信耗时的量化方法
+- **文章：** [2.1 集合通信原语详解](<../guides/模块三-分布式训练/2.1 集合通信原语详解.md>) | 讲清 AllReduce/ReduceScatter/AllGather/All-to-All 的输入输出语义、Ring AllReduce 算法原理，以及单次通信耗时的量化方法
 
-- **文章：** [3.1 优化器：从 SGD 到 AdamW 与显存开销分析](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/31-优化器原理与显存开销分析/) | 梳理优化器从 SGD 到 AdamW 的演进，算清优化器状态的显存开销与 FP32 主权重的必要性，并介绍大 Batch 场景下的 LARS/LAMB
+- **文章：** [3.1 优化器：从 SGD 到 AdamW 与显存开销分析](<../guides/模块三-分布式训练/3.1 优化器原理与显存开销分析.md>) | 梳理优化器从 SGD 到 AdamW 的演进，算清优化器状态的显存开销与 FP32 主权重的必要性，并介绍大 Batch 场景下的 LARS/LAMB
 
-- **文章：** [4.1 数据并行详解](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/41-数据并行详解/) | 深入 DP/DDP/FSDP 三代方案的演进逻辑、梯度同步机制与通信量/显存账本的数学推导，理解 AllReduce 与参数分片的本质区别
+- **文章：** [4.1 数据并行详解](<../guides/模块三-分布式训练/4.1 数据并行详解.md>) | 深入 DP/DDP/FSDP 三代方案的演进逻辑、梯度同步机制与通信量/显存账本的数学推导，理解 AllReduce 与参数分片的本质区别
 
-- **文章：** [4.2 PyTorch 数据并行从原理到实战](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/42-pytorch-数据并行从原理到实战/) | 系统掌握 PyTorch 数据并行全栈：通信原语、DDP、FSDP 参数分片与多机多卡实战，附完整代码示例
+- **文章：** [4.2 PyTorch 数据并行从原理到实战](<../guides/模块三-分布式训练/4.2 PyTorch 数据并行从原理到实战.md>) | 系统掌握 PyTorch 数据并行全栈：通信原语、DDP、FSDP 参数分片与多机多卡实战，附完整代码示例
 
 ---
 
@@ -237,9 +253,9 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：**  [1.1 分布式训练总论：显存账本与五大并行策略全景](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/11-分布式训练总论/) | 手算训练显存账本，总览五大并行策略全景与选择原则
+- **文章：**  [1.1 分布式训练总论：显存账本与五大并行策略全景](<../guides/模块三-分布式训练/1.1 分布式训练总论.md>) | 手算训练显存账本，总览五大并行策略全景与选择原则
 
-- **文章：**  [1.2 环境搭建与分布式启动](https://caomaolufei.github.io/AIInfraGuide/distributed/模块三-分布式训练/12-环境搭建与分布式启动/) | rank/local_rank/world_size、torchrun 启动与会合机制、NCCL 调试、最小 DDP 脚本
+- **文章：**  [1.2 环境搭建与分布式启动](<../guides/模块三-分布式训练/1.2 环境搭建与分布式启动.md>) | rank/local_rank/world_size、torchrun 启动与会合机制、NCCL 调试、最小 DDP 脚本
 
 ---
 
@@ -269,9 +285,9 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：**  [6.1 FlashAttention V1详解](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/61-flashattention-v1详解) | 本文深入剖析 FlashAttention V1 的核心原理与实现细节，理解如何通过 Tiling + Online Softmax 将 Attention 的额外显存占用从 $O(N^2)$ 降至 $O(N)$，同时大幅减少 HBM 访问量，实现无精度损失的加速
+- **文章：**  [6.1 FlashAttention V1详解](<../guides/模块二-CUDA编程与算子优化/6.1-FlashAttention V1详解.md>) | 本文深入剖析 FlashAttention V1 的核心原理与实现细节，理解如何通过 Tiling + Online Softmax 将 Attention 的额外显存占用从 $O(N^2)$ 降至 $O(N)$，同时大幅减少 HBM 访问量，实现无精度损失的加速
 
-- **文章：**  [6.2 FlashAttention V2详解](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/62-flashattention-v2详解) | 本本文深入剖析 FlashAttention V2 相比 V1 的核心改进：调换内外循环顺序、优化线程块内的工作分配、减少非矩阵乘运算
+- **文章：**  [6.2 FlashAttention V2详解](<../guides/模块二-CUDA编程与算子优化/6.2-FlashAttention V2详解.md>) | 本本文深入剖析 FlashAttention V2 相比 V1 的核心改进：调换内外循环顺序、优化线程块内的工作分配、减少非矩阵乘运算
 
 ---
 
@@ -279,7 +295,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：**  [5.2 CUDA Online Softmax 实现优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/52-cuda-online-softmax实现) | 本文从算法推导出发，逐步实现并优化 Online Softmax 的 CUDA Kernel，这也是理解 FlashAttention 的核心前置知识
+- **文章：**  [5.2 CUDA Online Softmax 实现优化](<../guides/模块二-CUDA编程与算子优化/5.2-CUDA Online Softmax实现.md>) | 本文从算法推导出发，逐步实现并优化 Online Softmax 的 CUDA Kernel，这也是理解 FlashAttention 的核心前置知识
 
 ---
 
@@ -287,7 +303,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：**  [5.1 CUDA Softmax 朴素实现优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/51-cuda-softmax朴素实现优化) | 本文从朴素实现出发，逐步引入 Safe Softmax、Block 级并行、Warp Shuffle、向量化访存等优化手段
+- **文章：**  [5.1 CUDA Softmax 朴素实现优化](<../guides/模块二-CUDA编程与算子优化/5.1-CUDA Softmax朴素实现优化.md>) | 本文从朴素实现出发，逐步引入 Safe Softmax、Block 级并行、Warp Shuffle、向量化访存等优化手段
 
 ---
 
@@ -295,7 +311,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [4.1 CUDA GEMM算子性能优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/41-cuda-gemm算子性能优化) |本文从朴素实现出发，逐步Block-Warp-Thread三级Tiling优化、向量化访存、Bank Conflict 消除、双缓冲等优化手段，带你系统掌握 CUDA GEMM 优化的完整方法论
+- **文章：** [4.1 CUDA GEMM算子性能优化](<../guides/模块二-CUDA编程与算子优化/4.1-CUDA GEMM算子性能优化.md>) |本文从朴素实现出发，逐步Block-Warp-Thread三级Tiling优化、向量化访存、Bank Conflict 消除、双缓冲等优化手段，带你系统掌握 CUDA GEMM 优化的完整方法论
 
 ---
 
@@ -303,7 +319,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [3.1 CUDA Reduce算子优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/31-cuda-reduce算子优化) | Reduce（规约）是 GPU 编程中最基础、也最能体现并行思维的算子之一。本文从最朴素的实现出发，逐步引入 Warp 级原语、向量化访存、多元素处理等优化手段，每一步都有性能对比和原理解析，帮你真正搞懂"怎么写出快的 Kernel"。
+- **文章：** [3.1 CUDA Reduce算子优化](<../guides/模块二-CUDA编程与算子优化/3.1-CUDA Reduce算子优化.md>) | Reduce（规约）是 GPU 编程中最基础、也最能体现并行思维的算子之一。本文从最朴素的实现出发，逐步引入 Warp 级原语、向量化访存、多元素处理等优化手段，每一步都有性能对比和原理解析，帮你真正搞懂"怎么写出快的 Kernel"。
 
 ---
 
@@ -311,7 +327,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **模块三 · 分布式训练** 新增 [第2章：优化器](/AIInfraGuide/distributed/模块三-分布式训练/第2章-优化器) | 理解 SGD → Momentum → Adam → AdamW 的演进逻辑与内部状态组成，手算优化器显存开销（AdamW 占训练总显存 75%），掌握大 Batch 优化器 LAMB/LARS 的适用场景，为后续 ZeRO 显存优化和混合精度训练打下基础。
+- **模块三 · 分布式训练** 新增 [第2章：优化器](<../guides/模块三-分布式训练/第3章-优化器.md>) | 理解 SGD → Momentum → Adam → AdamW 的演进逻辑与内部状态组成，手算优化器显存开销（AdamW 占训练总显存 75%），掌握大 Batch 优化器 LAMB/LARS 的适用场景，为后续 ZeRO 显存优化和混合精度训练打下基础。
 
 ### 结构调整
 
@@ -324,7 +340,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [2.4 同步与原子操作](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/24-同步与原子操作) | 正确的同步机制是编写无 Bug 并行程序的基础。本文详解 CUDA 中的块内同步 `__syncthreads()`、Warp 级同步、Memory Fence，以及原子操作的使用场景、性能代价与优化技巧，帮助你在保证正确性的前提下写出高性能的并行代码。
+- **文章：** [2.4 同步与原子操作](<../guides/模块二-CUDA编程与算子优化/2.4-同步与原子操作.md>) | 正确的同步机制是编写无 Bug 并行程序的基础。本文详解 CUDA 中的块内同步 `__syncthreads()`、Warp 级同步、Memory Fence，以及原子操作的使用场景、性能代价与优化技巧，帮助你在保证正确性的前提下写出高性能的并行代码。
 
 ---
 
@@ -332,8 +348,8 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [2.2 内存访问优化](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/22-内存访问优化) | 内存访问效率是 CUDA Kernel 性能最大的杠杆。本文深入讲解合并访问（Coalesced Access）的原理与判定方法、共享内存 Bank Conflict 的成因与 Padding 解决方案，以及向量化加载（float4/int4）提升带宽利用率的实战技巧。
-- **文章：** [2.3 Occupancy 与资源分配](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/23-occupancy与资源分配) | Occupancy 衡量 SM 上实际活跃 Warp 数与理论最大值的比例，是调优 CUDA Kernel 的核心指标之一。本文讲解 Occupancy 的定义、计算方法、三大限制因素（寄存器/共享内存/Block 大小），以及为什么 Occupancy 并非越高越好——真正的目标是在延迟隐藏与资源利用之间找到平衡点。
+- **文章：** [2.2 内存访问优化](<../guides/模块二-CUDA编程与算子优化/2.2-内存访问优化.md>) | 内存访问效率是 CUDA Kernel 性能最大的杠杆。本文深入讲解合并访问（Coalesced Access）的原理与判定方法、共享内存 Bank Conflict 的成因与 Padding 解决方案，以及向量化加载（float4/int4）提升带宽利用率的实战技巧。
+- **文章：** [2.3 Occupancy 与资源分配](<../guides/模块二-CUDA编程与算子优化/2.3-Occupancy与资源分配.md>) | Occupancy 衡量 SM 上实际活跃 Warp 数与理论最大值的比例，是调优 CUDA Kernel 的核心指标之一。本文讲解 Occupancy 的定义、计算方法、三大限制因素（寄存器/共享内存/Block 大小），以及为什么 Occupancy 并非越高越好——真正的目标是在延迟隐藏与资源利用之间找到平衡点。
 
 ---
 
@@ -341,30 +357,30 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [2.1 Warp 与执行模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/21-warp与执行模型) | 深入理解 GPU 最核心的执行单元——Warp
+- **文章：** [2.1 Warp 与执行模型](<../guides/模块二-CUDA编程与算子优化/2.1-Warp与执行模型.md>) | 深入理解 GPU 最核心的执行单元——Warp
 
 ---
 ## 2026-05-09
 
 ### 新增内容
 
-- **文章：** [CUDA 内存模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/13-cuda内存模型) | 本文详解全局内存、共享内存、寄存器、常量内存和统一内存的特性、适用场景及优化技巧
-- **文章：** [第一个实用 Kernel：向量加法](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/14-第一个实用kernel) | 通过一个完整的向量加法案例，走通 CUDA 编程的全流程
+- **文章：** [CUDA 内存模型](<../guides/模块二-CUDA编程与算子优化/1.3-CUDA内存模型.md>) | 本文详解全局内存、共享内存、寄存器、常量内存和统一内存的特性、适用场景及优化技巧
+- **文章：** [第一个实用 Kernel：向量加法](<../guides/模块二-CUDA编程与算子优化/1.4-第一个实用Kernel.md>) | 通过一个完整的向量加法案例，走通 CUDA 编程的全流程
 
 ---
 ## 2026-05-08
 
 ### 新增内容
 
-- **文章：** [1.1 CUDA 开发环境搭建](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/11-cuda开发环境搭建)
-- **文章：** [1.2 CUDA 编程模型](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/12-cuda编程模型)
+- **文章：** [1.1 CUDA 开发环境搭建](<../guides/模块二-CUDA编程与算子优化/1.1-CUDA开发环境搭建.md>)
+- **文章：** [1.2 CUDA 编程模型](<../guides/模块二-CUDA编程与算子优化/1.2-CUDA编程模型.md>)
 
 ---
 ## 2026-05-07
 
 ### 新增内容
 
-- **文章：** [✅ CUDA编程快速入门指南 🔥](https://caomaolufei.github.io/AIInfraGuide/cuda/模块二-cuda编程与算子优化/cuda编程入门指南/)
+- **文章：** [✅ CUDA编程快速入门指南 🔥](<../guides/模块二-CUDA编程与算子优化/CUDA编程入门指南.md>)
 
 
 ---
@@ -372,35 +388,35 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [🔥 集群通信网络与NCCL：分布式训练的通信骨架](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/communication/collective-communication-primer/)
+- **文章：** [🔥 集群通信网络与NCCL：分布式训练的通信骨架](<../guides/模块一-前置知识/communication/collective-communication-primer.md>)
 
 ---
 ## 2026-04-27
 
 ### 新增内容
 
-- **文章：** [5.1 NVIDIA GPU架构演进：从Volta到Blackwell](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/gpunvidia-gpu-evolution/)
+- **文章：** [5.1 NVIDIA GPU架构演进：从Volta到Blackwell](<../guides/模块一-前置知识/gpu/nvidia-gpu-evolution.md>)
 
 ---
 ## 2026-04-26
 
 ### 新增内容
 
-- **文章：** [🔥 GPU基础知识：从硬件架构到AI计算](https://caomaolufei.github.io/AIInfraGuide/prerequisites/模块一-前置知识/gpu/gpu-basics/)
+- **文章：** [🔥 GPU基础知识：从硬件架构到AI计算](<../guides/模块一-前置知识/gpu/gpu-basics.md>)
 
 ---
 ## 2026-04-25
 
 ### 新增内容
 
-- **文章：** [🔥 PyTorch框架快速入门篇](/AIInfraGuide/prerequisites/模块一-前置知识/pyroch/pytorch框架入门)
+- **文章：** [🔥 PyTorch框架快速入门篇](<../guides/模块一-前置知识/pyroch/PyTorch框架入门.md>)
 
 ---
 ## 2026-04-24
 
 ### 新增内容
 
-- **文章：** [3.9 Tokenization与词嵌入](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/39-tokenization与词嵌入)
+- **文章：** [3.9 Tokenization与词嵌入](<../guides/模块一-前置知识/transformer/3.9 Tokenization与词嵌入.md>)
 
 
 ---
@@ -408,7 +424,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [3.8 从Transformer到LLM自回归生成深入理解](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/38-从transformer到llm自回归生成深入理解)
+- **文章：** [3.8 从Transformer到LLM自回归生成深入理解](<../guides/模块一-前置知识/transformer/3.8 从Transformer到LLM自回归生成深入理解.md>)
 
 ---
 
@@ -416,8 +432,8 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [3.6 LayerNorm与残差连接深入理解](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/36-layernorm与残差连接深入理解)
-- **文章：** [3.7 Transformer Decoder Block完整解析](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/37-transformer-decoder-block完整解析)
+- **文章：** [3.6 LayerNorm与残差连接深入理解](<../guides/模块一-前置知识/transformer/3.6 LayerNorm与残差连接深入理解.md>)
+- **文章：** [3.7 Transformer Decoder Block完整解析](<../guides/模块一-前置知识/transformer/3.7 Transformer Decoder Block完整解析.md>)
 
 ---
 
@@ -425,8 +441,8 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [3.4 Transformer前馈网络ffn深入理解](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/34-transformer前馈网络ffn深入理解)
-- **文章：** [3.5 Transformer位置编码深入理解](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/35-transformer位置编码深入理解)
+- **文章：** [3.4 Transformer前馈网络ffn深入理解](<../guides/模块一-前置知识/transformer/3.4 Transformer前馈网络FFN深入理解.md>)
+- **文章：** [3.5 Transformer位置编码深入理解](<../guides/模块一-前置知识/transformer/3.5 Transformer位置编码深入理解.md>)
 
 ---
 
@@ -434,7 +450,7 @@ tags: ["公告", "更新日志"]
 
 ### 新增内容
 
-- **文章：** [3.3 Self-Attention 机制深入理解](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/33-Self-Attention机制深入理解)
+- **文章：** [3.3 Self-Attention 机制深入理解](<../guides/模块一-前置知识/transformer/3.3 Self-Attention机制深入理解.md>)
 
 ---
 
@@ -444,7 +460,7 @@ tags: ["公告", "更新日志"]
 
 - **面试专区**：共收录 **180+ 场面试真题**，覆盖 **40+ 家公司**，按梯队分类组织。[在线浏览 →](https://caomaolufei.github.io/AIInfraGuide/interview)
 - 涵盖公司包括字节跳动、阿里巴巴、腾讯、百度、快手、美团、蚂蚁、英伟达、MiniMax、蔚来、小鹏、理想等。
-- **社区入口**：新增[wx交流群]((/AIInfraGuide/about/author))，欢迎大家加入讨论
+- **社区入口**：新增[wx交流群](/AIInfraGuide/about/)，欢迎大家加入讨论
 
 ### 内容优化
 
@@ -457,19 +473,19 @@ tags: ["公告", "更新日志"]
 ### 重大更新
 
 - **知识库框架全面升级**：细化四大学习模块，调整页面布局结构
-  - **[模块一 · 前置知识](/AIInfraGuide/prerequisites)**（6 章）：[编程语言基础](/AIInfraGuide/prerequisites/模块一-前置知识/第1章-编程语言基础)、[数学基础](/AIInfraGuide/prerequisites/模块一-前置知识/第2章-数学基础)、[Transformer 架构详解](/AIInfraGuide/prerequisites/模块一-前置知识/第3章-Transformer架构详解)、[PyTorch 框架](/AIInfraGuide/prerequisites/模块一-前置知识/第4章-PyTorch框架)、[GPU 硬件概论](/AIInfraGuide/prerequisites/模块一-前置知识/第5章-GPU硬件概论)、[集合通信基础](/AIInfraGuide/prerequisites/模块一-前置知识/第6章-集合通信基础)
-  - **[模块二 · CUDA 编程与算子优化](/AIInfraGuide/cuda)**（8 章）：[CUDA 入门](/AIInfraGuide/cuda/模块二-CUDA编程与算子优化/第1章-CUDA编程入门)、[性能优化基础](/AIInfraGuide/cuda/模块二-CUDA编程与算子优化/第2章-CUDA性能优化基础)、Reduce 实战、GEMM 实战、Softmax 实战、[Attention 算子](/AIInfraGuide/cuda/模块二-CUDA编程与算子优化/第6章-Attention算子)、[AI 编译器](/AIInfraGuide/cuda/模块二-CUDA编程与算子优化/第7章-AI编译器)、[性能分析工具链](/AIInfraGuide/cuda/模块二-CUDA编程与算子优化/第8章-性能分析工具链)
-  - **[模块三 · 分布式训练](/AIInfraGuide/distributed)**（7 章）：[分布式训练总论](/AIInfraGuide/distributed/模块三-分布式训练/第1章-分布式训练总论)、[数据并行](/AIInfraGuide/distributed/模块三-分布式训练/第2章-数据并行)、[ZeRO 系列](/AIInfraGuide/distributed/模块三-分布式训练/第3章-ZeRO系列)、[张量并行与序列并行](/AIInfraGuide/distributed/模块三-分布式训练/第4章-张量并行与序列并行)、[流水线并行](/AIInfraGuide/distributed/模块三-分布式训练/第5章-流水线并行)、[3D 并行与混合训练策略](/AIInfraGuide/distributed/模块三-分布式训练/第6章-其他显存优化技术)、[训练框架实战](/AIInfraGuide/distributed/模块三-分布式训练/第7章-训练框架实战)
-  - **[模块四 · 推理优化](/AIInfraGuide/inference)**（8 章）：推理基础、[推理引擎核心技术](/AIInfraGuide/inference/模块四-推理优化/第2章-推理引擎核心技术)、推理框架、[量化](/AIInfraGuide/inference/模块四-推理优化/第4章-量化)、[Speculative Decoding](/AIInfraGuide/inference/模块四-推理优化/第5章-Speculative-Decoding)、[PD 解耦架构](/AIInfraGuide/inference/模块四-推理优化/第6章-PD解耦架构)、[性能分析与 Benchmark](/AIInfraGuide/inference/模块四-推理优化/第7章-性能分析与Benchmark)、[选型与端到端实战](/AIInfraGuide/inference/模块四-推理优化/第8章-推理优化选型与端到端实战)
+  - **[模块一 · 前置知识](/AIInfraGuide/prerequisites)**（6 章）：[编程语言基础](<../guides/模块一-前置知识/第1章-编程语言基础.md>)、[数学基础](<../guides/模块一-前置知识/第2章-数学基础.md>)、[Transformer 架构详解](<../guides/模块一-前置知识/第3章-Transformer架构详解.md>)、[PyTorch 框架](<../guides/模块一-前置知识/第4章-PyTorch框架.md>)、[GPU 硬件概论](<../guides/模块一-前置知识/第5章-GPU硬件概论.md>)、[集合通信基础](<../guides/模块一-前置知识/第6章-集合通信基础.md>)
+  - **[模块二 · CUDA 编程与算子优化](/AIInfraGuide/cuda)**（8 章）：[CUDA 入门](<../guides/模块二-CUDA编程与算子优化/第1章-CUDA编程入门.md>)、[性能优化基础](<../guides/模块二-CUDA编程与算子优化/第2章-CUDA性能优化基础.md>)、Reduce 实战、GEMM 实战、Softmax 实战、[Attention 算子](<../guides/模块二-CUDA编程与算子优化/第6章-Attention算子.md>)、[AI 编译器](<../guides/模块二-CUDA编程与算子优化/第7章-AI编译器.md>)、[性能分析工具链](<../guides/模块二-CUDA编程与算子优化/第8章-性能分析工具链.md>)
+  - **[模块三 · 分布式训练](/AIInfraGuide/distributed)**（7 章）：[分布式训练总论](<../guides/模块三-分布式训练/第1章-分布式训练总论.md>)、[数据并行](<../guides/模块三-分布式训练/第4章-数据并行.md>)、[ZeRO 系列](<../guides/模块三-分布式训练/第5章-ZeRO系列.md>)、[张量并行与序列并行](<../guides/模块三-分布式训练/第6章-张量并行与序列并行.md>)、[流水线并行](<../guides/模块三-分布式训练/第7章-流水线并行.md>)、[3D 并行与混合训练策略](<../guides/模块三-分布式训练/第11章-3D并行与混合并行策略.md>)、[训练框架实战](<../guides/模块三-分布式训练/第17章-训练框架与异构加速生态.md>)
+  - **[模块四 · 推理优化](/AIInfraGuide/inference)**（8 章）：推理基础、[推理引擎核心技术](<../guides/模块四-推理优化/第2章-推理引擎核心技术/第2章-推理引擎核心技术.md>)、推理框架、[量化](<../guides/模块四-推理优化/第4章-量化/第4章-量化.md>)、[Speculative Decoding](<../guides/模块四-推理优化/第5章-Speculative-Decoding/第5章-Speculative-Decoding.md>)、[PD 解耦架构](<../guides/模块四-推理优化/第7章-PD解耦架构.md>)、[性能分析与 Benchmark](<../guides/模块四-推理优化/第8章-性能分析与Benchmark.md>)、[选型与端到端实战](<../guides/模块四-推理优化/第9章-生产部署与运维.md>)
 
 ### 新增内容
 
 - **Transformer 系列文章**：
-  - [Transformer 架构入门](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/Transformer架构快速入门)
-  - [3.1 AI Infra 工程师为什么必须懂 Transformer](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/31-ai-infra工程师为什么必须懂transformer)
-  - [3.2 Transformer 全貌及代码实现](/AIInfraGuide/prerequisites/模块一-前置知识/transformer/32-transformer全貌及代码实现)
+  - [Transformer 架构入门](<../guides/模块一-前置知识/transformer/Transformer架构快速入门.md>)
+  - [3.1 AI Infra 工程师为什么必须懂 Transformer](<../guides/模块一-前置知识/transformer/3.1 AI Infra工程师为什么必须懂Transformer.md>)
+  - [3.2 Transformer 全貌及代码实现](<../guides/模块一-前置知识/transformer/3.2 Transformer全貌及代码实现.md>)
 - **课程资料**：150+ 篇详细子文章上线，覆盖四大模块全部章节
-- **博客文章**：新增[「关于作者」](/AIInfraGuide/about/author)介绍页
+- **博客文章**：新增[「关于作者」](/AIInfraGuide/about/)介绍页
 
 ---
 
@@ -479,7 +495,7 @@ tags: ["公告", "更新日志"]
 
 - AIInfraGuide 知识库正式上线
 - 发布 [AI Infra 学习路线](/AIInfraGuide/guides/AI Infra学习路线)总览
-- 发布[「从零理解 AI Infra」](/AIInfraGuide/blog/ai-infra-introduction)入门指引
+- 发布[「从零理解 AI Infra」](<../guides/AI Infra学习路线.md>)入门指引
 
 ---
 

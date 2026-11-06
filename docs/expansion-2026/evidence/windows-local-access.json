@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-07",
+  "client": "Windows System32 curl.exe --noproxy *",
+  "checks": [
+    {
+      "url": "http://localhost:4321/AIInfraGuide/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4321/AIInfraGuide/",
+      "status": 200
+    }
+  ],
+  "note": "Windows curl succeeded; Windows PowerShell HttpWebRequest to localhost timed out, including with proxy disabled. No network settings changed; browser rendering was validated separately in Chromium."
+}

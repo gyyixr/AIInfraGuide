@@ -1,0 +1,46 @@
+8.3-FP8与FP4训练的缩放数值与验收.md block0: exit=0
+tensor-wise small block [0.0, 0.0, 0.0, 0.0]
+power-of-two block-wise [9.918212890625e-05, 0.0001983642578125, 0.00030517578125, 0.000396728515625]
+stale scale reconstruction of 10 1.0
+
+9.3-RoPE扩展与长上下文训练课程.md block0: exit=0
+0.0 -1.7763568394002505e-15 0.7071067811865477
+long attention cost share 0.64
+
+9.4-Packing混合长度与动态序列并行.md block0: exit=0
+padded efficiency 0.625
+packed efficiency 0.8333333333333334
+square pairs 256 192 120
+causal useful pairs 70
+ideal makespan 32.0 16.0
+
+9.5-有效上下文评测与稀疏混合架构.md block0: exit=0
+Wilson interval 0.7111690380734977 0.8666340774409013
+pair ratio 21.333658854166668
+[1.0, 2.5, 4.25]
+
+15.1-参数FLOPs与训练预算的完整推导.md block0: exit=0
+parameters 5801771008
+days 35.603841145833336
+GPU hours 875000.0
+full attention / linear 18.72457142857143
+
+15.2-五类大模型配置与并行方案设计.md block0: exit=0
+70B-A 26.25
+70B-B 39.375
+400B 23.4375
+
+15.3-训练课程优化算法与数值稳定性.md block0: exit=0
+AdamW [0.899, -2.098]
+cosine fraction 0 1.0
+cosine fraction 0.5 0.5
+cosine fraction 1 0.0
+
+15.4-ScalingLaws超参数迁移与实验设计.md block0: exit=0
+[(25, 400.0, 1.25), (100, 100.0, 1.2000000000000002), (400, 25.0, 1.25)]
+16 -0.32 -0.02
+64 -1.28 -0.02
+256 -5.12 -0.02
+
+16.2-可复现训练项目与系统设计验收.md block0: exit=0
+evidence record is structurally complete

@@ -24,7 +24,7 @@ const aboutPages = [
   },
   {
     title: '本站教程更新计划',
-    description: '五大学习模块的系统化更新路线，介绍本站教程的规划、更新节奏与获取方式。',
+    description: '七大学习模块的系统化更新路线，介绍本站教程的规划、更新节奏与获取方式。',
     href: getPathEarly('/about/roadmap'),
     pubDate: new Date('2026-04-11'),
     tags: ['公告', '更新计划'],
@@ -62,6 +62,7 @@ const categoryDescriptions: Record<string, string> = {
   'inference-optimization': '模型压缩、量化加速与推理引擎优化',
   'llm-rl': 'PPO、GRPO、DPO、奖励工程与训练推理协同',
   'performance-analysis': '性能瓶颈定位、Profiling 工具与调优策略',
+  'deepseek-open': '模型架构、训练推理、算子通信与存储数据的开放技术全景',
 };
 
 const categoryUrlPrefix: Record<string, string> = {
@@ -71,7 +72,8 @@ const categoryUrlPrefix: Record<string, string> = {
   'distributed-training': '/distributed',
   'inference-optimization': '/inference',
   'llm-rl': '/rl',
-  'performance-analysis': '/guides',
+  'performance-analysis': '/performance',
+  'deepseek-open': '/deepseek',
 };
 
 const getPath = (path: string) => {

@@ -10,5 +10,6 @@ public/pagefind/
 __pycache__/
 labs/llm_rl/results/latest.json
 labs/distributed/results/latest*.json
+labs/deepseek/results/latest*.json
 image-cards/
 docs/interview/面试宝典

@@ -1,0 +1,638 @@
+{
+  "date": "2026-11-07",
+  "baseline_commit": "3ad88e4782ce57befe4e42967d25faaf5e0cc825",
+  "original_docs_preserved": 326,
+  "missing_original_docs": [],
+  "original_extensions": {
+    ".md": 326
+  },
+  "new_guides": 125,
+  "new_guide_lines": 44813,
+  "documents": [
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/1.1-DeepSeek模型与开源项目演进.md",
+      "lines": 366,
+      "sha256": "d12639deaa4eef983174ae58fa0a1f15aaf55e80a55e1fe77b6ff9f82dd917d2"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/1.2-开源代码开放权重与论文披露边界.md",
+      "lines": 379,
+      "sha256": "c254825f2a50e779d0bcba6f1fc14fe4d307cce641a9d36aed811647ee1fe27b"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/1.3-DeepSeekLLM-Coder与ESFT的早期技术路线.md",
+      "lines": 283,
+      "sha256": "071184de58c81fbfb341c78b9245c6b15e3452e5b10edb2a4b4dfdb9ad10e55d"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.1-MLA低秩压缩解耦RoPE与矩阵吸收.md",
+      "lines": 408,
+      "sha256": "cf4e1060a6cbcb0f61a44707aabe881e8b6079d4cf72c3f4c30d46efbf9315a9"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.2-DeepSeekMoE细粒度专家与共享专家.md",
+      "lines": 416,
+      "sha256": "094008f504d39888504411714307aa0488665b62c71962356b3f267a36e7e61b"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.3-NSA与DSA稀疏注意力.md",
+      "lines": 371,
+      "sha256": "c95ae79f67f1162b69aebc15e8066bfc93ddf52a2f714c0fc39af0edaf641a9a"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.4-V4混合注意力CSA与HCA.md",
+      "lines": 351,
+      "sha256": "5bb9cba41c170bda62ff51372dcba30cfd28b03685b7880674e74a0bfb0bad37"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.5-mHC残差流形约束与数值稳定性.md",
+      "lines": 369,
+      "sha256": "05f2b24da8e50ecf3d918d06c643c35070ae02b61f09de83ae05de5fd851193c"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.6-V4点1架构更新与原生视觉.md",
+      "lines": 353,
+      "sha256": "a571b20e9e0c7a4ea7814ab1d8645f81e791f6e09e83d2e3205fd1336aa24585"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.7-CED编解码解耦与PrefixReplay.md",
+      "lines": 363,
+      "sha256": "7935897ee19df3508b0f37e5fbee0d3db81a06a179fe8248cfa0582282879165"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.8-Engram条件记忆与分层卸载.md",
+      "lines": 378,
+      "sha256": "423e2811dba38200d50b5126b7003f2eb25de40a119d291024eebc63969c3491"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/2.9-CSA2与分层稀疏索引.md",
+      "lines": 404,
+      "sha256": "5730ff8259c55bddf4464a0b1e0966abf5e5512dc398b9f1b118b926fd9bbf55"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/3.1-FP8细粒度缩放与训练数值链路.md",
+      "lines": 360,
+      "sha256": "fb6999586d58e3a1e30b33686c7e4d124e6555c937844c3e3f2c76cedf4cc7e1"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/3.2-DualPipe与DualPipeV流水调度.md",
+      "lines": 355,
+      "sha256": "f07cbf3a192f8e120be9bd4c8875b6f59e50ee4faeda948f5d1992e9c42947dc"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/3.3-Muon优化器与V4训练配方.md",
+      "lines": 353,
+      "sha256": "ec848147379f151cab802219142b05c1b7fc891a7bc73cf16d70b7ce7127e01f"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/3.4-MTP与DSpark训练目标.md",
+      "lines": 400,
+      "sha256": "c3c85791f34faf62c899d9d348487a86f1d908bd027ebebfbfdbf5dd0aceca6c"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/4.1-GRPO与R1Zero到R1的训练路线.md",
+      "lines": 357,
+      "sha256": "b80c86027702f22363b5fb096d0fcb0a8c5002da421e170027cc0763c9fb9e57"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/4.2-V3点2与V4点1AgentRL和环境系统.md",
+      "lines": 368,
+      "sha256": "8a08b5642ccea9c40dc1ff39fc4b6adb60cfc875b125a3371c8963b03f36fa1a"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/4.3-DeepSeekMath与自验证推理.md",
+      "lines": 371,
+      "sha256": "1d2f0ef86361b47ea518ea2d905d4b0dd6bb3cf941153783a2eccab1384b67c5"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/4.4-蒸馏合成数据与1017自反馈更新.md",
+      "lines": 361,
+      "sha256": "66bc64adf34d7995cd9af2beece93b047418f177d5e5bfadaa4ad8a851bab402"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/5.1-FlashMLA稀疏算子与KV缓存格式.md",
+      "lines": 296,
+      "sha256": "ad81fd40198149a6dd0f667b7d28734203ed3afc423250e38202cc8e17076bd3"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/5.2-DeepInfer端到端源码与执行生命周期.md",
+      "lines": 324,
+      "sha256": "29f98bc464567c0ef86588018841450ab6d1b23467bc2a9fea1f83899a329224"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/5.3-DSpark投机验证与置信度调度.md",
+      "lines": 338,
+      "sha256": "907dce2a35d36f6f8aa4f5d7a3d3069cf7bc56b3a11657d6fd64e0bea1241e25"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.1-DeepGEMM低精度矩阵与MegaMoE.md",
+      "lines": 301,
+      "sha256": "a2f5554637010892bb4683845f686fd9cf27a86012afddcb83ecf347f5962ad4"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.2-DeepEP通信布局与异步生命周期.md",
+      "lines": 319,
+      "sha256": "fe8d16019d8a8a9635df110a86baf206563b5457d25ac64487b822f55bd68c62"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.3-EPLB与LPLB专家副本和动态均衡.md",
+      "lines": 282,
+      "sha256": "592672f217ca5a509398177f2b1226b30655ccf7f69988895913f7a6d72144a0"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.4-DeepSelect稀疏索引与TopK算法.md",
+      "lines": 283,
+      "sha256": "360740e17812151ecdeb81d838e36de7d63645b3e855ff1d0adb1040eb77b67e"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.5-DeepJIT编译缓存与运行时契约.md",
+      "lines": 297,
+      "sha256": "1d72b4ad1413d9c66286576aaa50bb33b09f90d66b1f05b20dd896c778a8efa0"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/6.6-Ascend后端与跨硬件能力矩阵.md",
+      "lines": 259,
+      "sha256": "53354bb979d7654a1e42b07583086ed94ab642685130a22877410a788eb35049"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/7.1-3FS存储架构一致性与训练IO.md",
+      "lines": 289,
+      "sha256": "52eea4f6809878530ec65c44ad3176288e0d4ee7619a337b852bb4b9b967252d"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/7.2-smallpond数据处理分区与恢复.md",
+      "lines": 306,
+      "sha256": "40d1bab9ada258dc714842f6567e17441b862207ae011a967153294d1f861641"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/7.3-FireFlyer集群与通信存储协同.md",
+      "lines": 354,
+      "sha256": "c5981b8e5f493582cae803b1a4ba0afd62edfb54497605e3eef835140d9900c2"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/7.4-DSec沙箱与Agent训练环境Infra.md",
+      "lines": 351,
+      "sha256": "dcefde2b9ce253e802368038b25c22c9e103b44759ae224b22db6fb5de2fd443"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/8.1-DeepSeekVL与Janus多模态路线.md",
+      "lines": 359,
+      "sha256": "d6fe23eb4c5814d730ffb31bcd9cfc6514fd60383e65c1656ed0ba06541687dd"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/8.2-DeepSeekOCR与OCR2视觉压缩.md",
+      "lines": 358,
+      "sha256": "333984ce06c05a8b752b39330f514293ab59686a7d866124a4da7f629c7af628"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/8.3-DeepSeekHarness插件与Agent执行链.md",
+      "lines": 358,
+      "sha256": "4f79d915f901cbd232f0ee58cca031e2317cfa6395cabb95e37176978743d1a6"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/8.4-DeepSeekRecipe协议格式与可复现接入.md",
+      "lines": 361,
+      "sha256": "f8001ff3e11de49016175369701941a9a668b95a001ceaa17db5e2e76cf6f0b8"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/9.1-DeepSeek数学状态与MLA本地实验.md",
+      "lines": 244,
+      "sha256": "a9b7e1134539322838f4cfc3180ee37769b55b048e4118153482843814223a7c"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/9.2-DeepSeek复现矩阵与工程验收.md",
+      "lines": 295,
+      "sha256": "8c6df4dd41abd4254be22b24565d79c9cdd1132fbc3fd10485d16a77d114abb8"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第1章-开放技术版图与版本证据.md",
+      "lines": 146,
+      "sha256": "1be3482ebfed07aede9aeb17b9e277ff133be6067c89a6745838deea5d620113"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第2章-模型架构与长上下文.md",
+      "lines": 145,
+      "sha256": "1dcd7739037b18ad73ce68c7c374e97f8cd644ba10ccf74966256f50cfded09c"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第3章-预训练数值与并行系统.md",
+      "lines": 140,
+      "sha256": "e59c06d7bea4e3f36cf227da393ee81da8830a9fa995223b402dc32c9f6b226d"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第4章-RL推理与Agent后训练.md",
+      "lines": 140,
+      "sha256": "89bbe3545d3999247f1561aadd7545bd4da0c18db05568bc4ffe54ad1e7ac283"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第5章-推理算子与DeepInfer运行时.md",
+      "lines": 138,
+      "sha256": "2dec8ab9bacad6259ea2296ce6a2a686129004a79a8d13acd9b5cd4c361d395c"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第6章-算子通信与跨硬件工程.md",
+      "lines": 149,
+      "sha256": "7e0f13f794f1a42161d4a0bb7690b10e8063b9672ef79dbab917a6345d7e5289"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第7章-存储数据与集群基础设施.md",
+      "lines": 157,
+      "sha256": "026417cec7aa51afa575679b46531e332908e325bb2bdc037b9f0df26a655ba7"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第8章-多模态与Agent开放生态.md",
+      "lines": 142,
+      "sha256": "07d36f6ffc359f57b6928533b4d1763004367c34d383cc3671f2fa652071f316"
+    },
+    {
+      "path": "docs/guides/模块七-DeepSeek开放技术详解/第9章-本地实验与复现验收.md",
+      "lines": 104,
+      "sha256": "e5a3b889e951be0083a6ad94403915e45ee181d7b69da1c0422e31b2471031e2"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/12.1-语料治理去重与数据混合.md",
+      "lines": 483,
+      "sha256": "6b8f37ab59683f26cf315a028cc616ac97b1395b3fd870d06598bed77de43a2a"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/12.2-GPTDataset索引Packing与确定性恢复.md",
+      "lines": 511,
+      "sha256": "a3da7f40b627be63592ea3bf280f4a697e17306815ca2013717670300eb9c7fe"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/12.3-数据加载吞吐与存储协同.md",
+      "lines": 463,
+      "sha256": "2b22a74c14e5f24b0619408899127bbc8a855f8886d46a7249c5459a9b7e0005"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.1-一次Megatron训练迭代的完整调用链.md",
+      "lines": 582,
+      "sha256": "b91a6e50e6d185b3e2832cbf292ec4626f9780b76c20fb397c6f0d38645fc363"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.2-ModuleSpec模型构造与TransformerEngine.md",
+      "lines": 518,
+      "sha256": "0af1aae93fd1ffc4cd4b4f7e5ac38a4c7ca5b9edd414d35abd88c17f5194dc05"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.3-梯度Buffer分布式优化器与状态所有权.md",
+      "lines": 525,
+      "sha256": "0cab4ca93aac76ed4c20a788da7949fb1cdeea641f2ded90138a63f4880cc643"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.4-HybridModel与广义张量并行.md",
+      "lines": 564,
+      "sha256": "7bdc293d3675a2d390625d3f269ac8988c80b66d59dae4795ff95c18553ace17"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.5-Megatron中MLA与MTP的源码Gate.md",
+      "lines": 474,
+      "sha256": "f5d9c2716a61d24a00dccd45d1ec446ad9915db031aac6cf28548f8a0b2ae8ef"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/13.6-ProcessGroupCollection与动态混合CP.md",
+      "lines": 532,
+      "sha256": "d549f63747eda75c224258199c4d713b8125402cdcb6b8f05925e73076dbdefb"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/14.1-分布式Checkpoint提交与重分片.md",
+      "lines": 512,
+      "sha256": "3d563abb9a0c86c03563ad79c080122320f5648be45ad825644cc19fe473d0db"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/14.2-FailSlow静默错误与自动恢复.md",
+      "lines": 478,
+      "sha256": "bf41487a7b779d55f33e6cc75991b227491ef92c9dbe270759230e03694ab1b7"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/14.3-集群调度观测与故障演练.md",
+      "lines": 521,
+      "sha256": "7e7be3743d699966337037e89b0be66f30a64866389cc3465b4eafed23064db9"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/15.1-参数FLOPs与训练预算的完整推导.md",
+      "lines": 509,
+      "sha256": "2962bcabbe75286038370592b89e7b09667a3eeb4cdfdc2116446f823e7490d0"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/15.2-五类大模型配置与并行方案设计.md",
+      "lines": 486,
+      "sha256": "6c5724bd498a0518fc4e90e3a65ee940827a0c1a71301fe20be09b76520169a4"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/15.3-训练课程优化算法与数值稳定性.md",
+      "lines": 474,
+      "sha256": "f0aff2be2fca90510c82b61ef5c4e2e17c57d9da29f90bd091a127dd38bc2dd4"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/15.4-ScalingLaws超参数迁移与实验设计.md",
+      "lines": 468,
+      "sha256": "5b414309cd9967cd65bd804775af3944ac1e1c9e549b9dc5650abbc3fad8231f"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/16.1-训练Infra源码追问与计算题.md",
+      "lines": 416,
+      "sha256": "a43ce25c08f5cb9c17e3565477c8ede4b29c4dc815378738561457cb0818eb30"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/16.2-可复现训练项目与系统设计验收.md",
+      "lines": 549,
+      "sha256": "569308acf3c80254cb142d64ab397bdcc4b00c7dcd5ef5b638aaf6f032ad266e"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/17.1-TorchTitan与原生PyTorch训练生态.md",
+      "lines": 408,
+      "sha256": "661cba495eadbf87ea8937f1c6d2b19ae2a8527d00ebffc343b0f7ffe3735e12"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/17.2-MaxText与JAX的分片和训练系统.md",
+      "lines": 408,
+      "sha256": "345ce0bb375e4e0109923c6aaab7ff5e5bbac5a9741bfacd666ebcbbf105b035"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/17.3-开放训练框架选型与集成契约.md",
+      "lines": 496,
+      "sha256": "7253ffd7ca93790c083d1a43cef639b788b6ba91b04558db937c455934c95dac"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/17.4-AMD-TPU-Trainium与异构训练边界.md",
+      "lines": 559,
+      "sha256": "b32006e2eb273d70070a57fb15a655f3ca95d870b511e20235b56d63fbcd67c1"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/5.3-HSDP与多实例分布式优化器.md",
+      "lines": 473,
+      "sha256": "e70bed110725b766d5c2415cf4099dbd3c1bb9a537ba473a4b7653f022dc36e5"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/8.3-FP8与FP4训练的缩放数值与验收.md",
+      "lines": 524,
+      "sha256": "9fd494f1ccbfacf87ae020fea715344693288a792c1c9e042ea6fae5099e4dbf"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/9.3-RoPE扩展与长上下文训练课程.md",
+      "lines": 452,
+      "sha256": "0a5626fbc7d3768caf8a5aa9a9089deb675b0ac90feddcc3e28c8b1ce0786cc9"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/9.4-Packing混合长度与动态序列并行.md",
+      "lines": 470,
+      "sha256": "2f134943073d1d4094ea62f4c71c24a2cb3e2253a718f3c13f44ff588184b4ea"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/9.5-有效上下文评测与稀疏混合架构.md",
+      "lines": 439,
+      "sha256": "865e47f9d93e388ff8f159aac805bc96e68e6557c8164508413cb55157faad86"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/9.6-AutoSP与HexiSeq动态长序列调度.md",
+      "lines": 487,
+      "sha256": "bbf8554a17e8c6e79db36f70a62566b75b92eba367444b421e5e5352d6afe18b"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第12章-训练数据系统.md",
+      "lines": 159,
+      "sha256": "974c405990550ffa11586cf2ad319ea4a913dfa25b82e443890206ae56c66ba4"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第13章-Megatron源码与训练状态.md",
+      "lines": 183,
+      "sha256": "e5f4abbbf778962bff41e39d7954faaf6d674e7eb3f50ac59adc8014ac4d820b"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第14章-大规模训练可靠性.md",
+      "lines": 159,
+      "sha256": "c4f9c6658e1446fc141774da03e3d665569798c85a8df9ef0c176623fcc8ce95"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第15章-超大规模训练设计与成本.md",
+      "lines": 177,
+      "sha256": "6a1ae311f2abc070179272c45bfacdd13a933ceb590174f55f92d1ef6fc2ba6a"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第16章-训练源码题库与项目实战.md",
+      "lines": 170,
+      "sha256": "d6d6a5785e6621322eadae9f6a96dc8e4c399bb424f52453f5429670a0573268"
+    },
+    {
+      "path": "docs/guides/模块三-分布式训练/第17章-训练框架与异构加速生态.md",
+      "lines": 179,
+      "sha256": "8fa9b272d841a31ccfaa11f0478d329f6cb7bc4de130eb007f8040658abc6407"
+    },
+    {
+      "path": "docs/guides/模块二-CUDA编程与算子优化/6.3-FlashAttention3与4的架构和流水线.md",
+      "lines": 362,
+      "sha256": "0139c0df04ae3bed72f8e235f998dab0e197866dd22ab70e85cb632d64ed9351"
+    },
+    {
+      "path": "docs/guides/模块五-LLM-RL后训练/11.1-长轨迹Mask与分布式Loss归一化.md",
+      "lines": 473,
+      "sha256": "224b934bc367b494ed5557b111538722e28d6234eb049d5e0221f4f37e065f1c"
+    },
+    {
+      "path": "docs/guides/模块五-LLM-RL后训练/11.2-GSPO序列比率与离策略校正.md",
+      "lines": 504,
+      "sha256": "531d66324b3b11bab63466819c4d836c103c139b4e0443f123a56ad5d8acb2c0"
+    },
+    {
+      "path": "docs/guides/模块五-LLM-RL后训练/11.3-Agent环境吞吐与训练稳定性.md",
+      "lines": 513,
+      "sha256": "6aab9eeecb9081830bc332f5e61486ac26c93a93164358b9e40a7bc1fb7b31af"
+    },
+    {
+      "path": "docs/guides/模块五-LLM-RL后训练/第11章-长上下文与异步RL工程.md",
+      "lines": 177,
+      "sha256": "1e8531850a6f76702e7cbfcb3581cf5faaa56da776a101e4494cd7a66e10fa53"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/1.1-跨训练推理的Roofline与关键路径.md",
+      "lines": 352,
+      "sha256": "f62acc3ec309e96c639fbeda45e863410984c917746300ad739a9164747cc9c2"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/1.2-统计测量基准设计与性能归因.md",
+      "lines": 352,
+      "sha256": "6ca76f27d9499fbe4c7edcb817939cbfa9727ff68998f6917b58325ab7a0f0fe"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/2.1-从GPU时间线到微架构瓶颈.md",
+      "lines": 352,
+      "sha256": "0edcf2a67944026283fb31a3e59477d3aff175ffe6f2005b88092f41985a9b6a"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/2.2-编译CUDA图与动态Shape工程.md",
+      "lines": 353,
+      "sha256": "4197de1473c299f2a0df5c5d2f9a467e9694c22a6028940a74b9687381e11e63"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/3.1-NCCL与RDMA网络性能工程.md",
+      "lines": 354,
+      "sha256": "324b00badc36f54da1f0a92298d016563fcbe260cf4fd60b1a1e36432044881d"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/3.2-NUMA数据加载与异步IO流水.md",
+      "lines": 356,
+      "sha256": "5f5228b736900ed8090f134afbef77e50879130ebb6f0c407b2eef5c717bd605"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/4.1-低精度Kernel正确性与发布门禁.md",
+      "lines": 352,
+      "sha256": "ea82c4a7cecd5422e0507b278cef9a38ecab314a62e188fcb69a1b21e96672f3"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/4.2-AIInfra性能项目与综合实验.md",
+      "lines": 351,
+      "sha256": "4f1aac74e6c85528ca45480544be62e634eccf6755061113893f09ac1b38fb0c"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/第1章-性能模型与实验方法.md",
+      "lines": 124,
+      "sha256": "87bd61355aa433674e202be7244c975be163a5dab2f5eb1f0cbd74f78bc462b1"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/第2章-GPU算子编译与调优.md",
+      "lines": 124,
+      "sha256": "48fd2d0c493cd68e129aa5bbc32dd76236eb1318dead1d0bec73656a34bec93e"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/第3章-通信存储与主机协同.md",
+      "lines": 122,
+      "sha256": "c46d55e84d0842a5e41a72d90c69e4a5ae5dcf3c5a70d840ba3237bffede4452"
+    },
+    {
+      "path": "docs/guides/模块六-性能工程与生产实践/第4章-正确性回归与优化项目.md",
+      "lines": 122,
+      "sha256": "8fb9aaa832bfbfc4fc53d02bd0780ae03a6ced1d4f5e4e6082a0b5d7938d85ae"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.1-请求入口Tokenizer与多进程协议.md",
+      "lines": 365,
+      "sha256": "17508921b3a9828303e0c166e130eb7c8f1056bb8631fb37a34fb990d34c52e4"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.2-Scheduler状态机与预算不变量.md",
+      "lines": 350,
+      "sha256": "5d372b87e8dfa9cd16d3b2e80c7354f4842cd6fc28ef2ecad2ce613f2db0920e"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.3-KV缓存索引驱逐与事件协议.md",
+      "lines": 363,
+      "sha256": "ab8ab1cca5aae64673b09d6e41d2175e3678a274c1346247bf93fcfacaa99b8c"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.4-ModelRunner算子派发与DayZero接入.md",
+      "lines": 352,
+      "sha256": "68fac58a986ed00f18d3972d188fa2d1c0ad5de9fe3e31b3bb129aa5b2b58016"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.5-结构化输出与投机分支状态机.md",
+      "lines": 356,
+      "sha256": "79bcb71f781515a9d52a40461b821e016db9c7db844030179e5a1f43adb4d823"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/11.6-多模态处理Encoder与缓存生命周期.md",
+      "lines": 399,
+      "sha256": "57952a3f28cb3a35f10306ef72ff77e668205666a2aa96e486649231b9ff6225"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/12.1-推理Infra源码追问与计算题.md",
+      "lines": 639,
+      "sha256": "03de246d9cf0c91707912bb9a82c5bc4e711ad31c48473990b072d39f92bde1a"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/12.2-推理系统设计与项目答辩.md",
+      "lines": 433,
+      "sha256": "d420a1623c0a8843332a2c8f201f89daffc467aec31315fac52fc1024e9586a2"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/12.3-推理面试235题索引与逐题速查.md",
+      "lines": 1493,
+      "sha256": "0bdea44658672ec82f4cad3c18ac6bd237befc2bf7ade0afb6ca1c92a53e8ed5"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/12.4-模拟面试评分与分岗学习路线.md",
+      "lines": 395,
+      "sha256": "59985b96fcc679b4f85efecb824e78d3eebae7ce6980b20b8588a8e9e2b9fe3a"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/6.1-分布式推理的容量与并行设计.md",
+      "lines": 365,
+      "sha256": "c20c631b22764bfe1bc4092e3cad6d0a0725051a4f7ff58afeb1ce3ea8fb1b3f"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/6.2-MoE推理WideEP与负载均衡.md",
+      "lines": 361,
+      "sha256": "eaf7d3ad319e8c0ec0ae2971ccc6743077f38ab14857d23f7eb927bfcf6a4102"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/6.3-多节点部署与权重加载一致性.md",
+      "lines": 360,
+      "sha256": "967d0854b166b0376ae6f42951cc9052c9544b5ba81fa9284a49ac27f718710f"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/7.1-PD解耦的成本模型与调度.md",
+      "lines": 351,
+      "sha256": "cb095a0384f1aa0c5e5c33e7d262fb1f3da5cc715063dfa340e295bef945e738"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/7.2-KVConnector与HiCache分层缓存.md",
+      "lines": 367,
+      "sha256": "3d42dff2cbdcd28b69f59f575ce2f33fe7a59fa9210f9af6be72cb7c4ea6b9fa"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/7.3-KV传输取消重试与生命周期.md",
+      "lines": 364,
+      "sha256": "9a847b85bb6d3e226b4bf7fee8bdc859a622c1b6f30ade637ef092f6a0a42a47"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/8.1-推理Benchmark指标与负载模型.md",
+      "lines": 367,
+      "sha256": "62ca0180c5dc00b44a2dc9dcefe7622feff5961a0000293ce716724ac1af10bf"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/8.2-从端到端Trace到GPUKernel定位.md",
+      "lines": 373,
+      "sha256": "fe55afd63d99cfe82697d2b324853469182307dd8f583944dd4eb7463d97f48c"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/8.3-性能回归质量护栏与成本优化.md",
+      "lines": 370,
+      "sha256": "ca8485c6b49766947a29cebb2124ff9e973beb2a0c8901ffd3734101a29c8bfa"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/9.1-流式服务背压与多租户隔离.md",
+      "lines": 351,
+      "sha256": "809a1a8ffde06477d66f826508864cdf05d31a30fe9c84884613015ebeb76207"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/9.2-路由Autoscaling与冷启动治理.md",
+      "lines": 354,
+      "sha256": "92245b423c88189764f38313cf5fe3653831ece2cde6dc09a3dfd64d04351668"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/9.3-生产故障演练与推理系统设计.md",
+      "lines": 376,
+      "sha256": "752319c05717adfabfbf158cba3ae15a8ced5e705099e7a88175f527190cf470"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/第11章-SGLang与vLLM源码数据流.md",
+      "lines": 140,
+      "sha256": "da321cea2d8edbf2e28c170bd0fad39540676991490f38404b8188226e4fcc06"
+    },
+    {
+      "path": "docs/guides/模块四-推理优化/第12章-推理源码题库与项目实战.md",
+      "lines": 136,
+      "sha256": "b735b23a4a69f87a89dbdd2ea859e2eae77c2df73b1e738374e20a74f549fde8"
+    },
+    {
+      "path": "docs/guides/训练推理与DeepSeek进阶学习导航.md",
+      "lines": 155,
+      "sha256": "d6849349c416ef1454356d1b824fa185489754d48731e2f49b48d47757f4dcc6"
+    },
+    {
+      "path": "docs/guides/资料来源版本与覆盖边界.md",
+      "lines": 126,
+      "sha256": "389a5ac2005060a109630efcb6cdad3ca91be50520689e567f438172cdfc1bae"
+    }
+  ]
+}

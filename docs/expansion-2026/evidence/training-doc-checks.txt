@@ -1,0 +1,62 @@
+12.1-语料治理去重与数据混合.md block 0: exit=0
+web 0.703414 211.024 2.345
+code 0.222439 66.732 7.415
+math 0.074146 22.244 22.244
+LSH candidate probability 0.985237
+
+12.2-GPTDataset索引Packing与确定性恢复.md block 0: exit=0
+([11, 12, 99, 30], [12, 99, 30, 31])
+
+12.3-数据加载吞吐与存储协同.md block 0: exit=0
+logical MB/s 40.0
+CPU cores lower estimate 22.857142857142858
+node queue MB 8192
+opens 163840
+metadata seconds lower bound 8.192
+
+13.1-一次Megatron训练迭代的完整调用链.md block 1: exit=0
+0 0 [0, 1]
+0 1 [2, 3]
+1 0 [4, 5]
+1 1 [6, 7]
+2 0 [8, 9]
+2 1 [10, 11]
+3 0 [12, 13]
+3 1 [14, 15]
+valid tokens if unmasked 128
+
+13.2-ModuleSpec模型构造与TransformerEngine.md block 1: exit=0
+duplicate kwargs rejected
+
+13.2-ModuleSpec模型构造与TransformerEngine.md block 2: exit=0
+Q (8, 2, 2, 4)
+KV (8, 2, 1, 4)
+FC1 output (8, 2, 24)
+FC2 input (8, 2, 12)
+
+13.3-梯度Buffer分布式优化器与状态所有权.md block 1: exit=0
+0 A local (0, 3) param (0, 3)
+0 B local (3, 4) param (0, 1)
+1 B local (0, 4) param (1, 5)
+2 C local (0, 4) param (0, 4)
+norm 6.928203230275509 updated 0.9
+
+13.4-HybridModel与广义张量并行.md block 0: exit=0
+200 0.234375 0
+25 1.875 1.475
+independent stored plus gathered MiB 80.0
+
+14.1-分布式Checkpoint提交与重分片.md block 0: exit=0
+
+14.1-分布式Checkpoint提交与重分片.md block 1: exit=0
+[[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11]]
+
+14.2-FailSlow静默错误与自动恢复.md block 0: exit=0
+RNG replay matches; shallow nested state does not isolate
+
+14.3-集群调度观测与故障演练.md block 0: exit=0
+retained billion tokens 41.04
+goodput 1900000.0
+efficiency 0.95
+RPO seconds under stated assumptions 360
+potential replay tokens 720000000

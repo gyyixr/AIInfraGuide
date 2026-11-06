@@ -1,0 +1,74 @@
+[
+  {
+    "module": "prerequisites",
+    "source_documents": 20,
+    "chapters": 6,
+    "detailed_articles": 14,
+    "ungrouped_documents": [],
+    "built_pages": 21,
+    "local_links_checked": 2480,
+    "errors": []
+  },
+  {
+    "module": "cuda",
+    "source_documents": 25,
+    "chapters": 8,
+    "detailed_articles": 16,
+    "ungrouped_documents": [
+      "CUDA编程入门指南.md"
+    ],
+    "built_pages": 26,
+    "local_links_checked": 2720,
+    "errors": []
+  },
+  {
+    "module": "distributed",
+    "source_documents": 68,
+    "chapters": 17,
+    "detailed_articles": 51,
+    "ungrouped_documents": [],
+    "built_pages": 69,
+    "local_links_checked": 9767,
+    "errors": []
+  },
+  {
+    "module": "inference",
+    "source_documents": 59,
+    "chapters": 12,
+    "detailed_articles": 47,
+    "ungrouped_documents": [],
+    "built_pages": 60,
+    "local_links_checked": 8347,
+    "errors": []
+  },
+  {
+    "module": "rl",
+    "source_documents": 34,
+    "chapters": 11,
+    "detailed_articles": 23,
+    "ungrouped_documents": [],
+    "built_pages": 35,
+    "local_links_checked": 3095,
+    "errors": []
+  },
+  {
+    "module": "performance",
+    "source_documents": 12,
+    "chapters": 4,
+    "detailed_articles": 8,
+    "ungrouped_documents": [],
+    "built_pages": 13,
+    "local_links_checked": 1019,
+    "errors": []
+  },
+  {
+    "module": "deepseek",
+    "source_documents": 48,
+    "chapters": 9,
+    "detailed_articles": 39,
+    "ungrouped_documents": [],
+    "built_pages": 49,
+    "local_links_checked": 5634,
+    "errors": []
+  }
+]

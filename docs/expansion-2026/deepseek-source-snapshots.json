@@ -1,0 +1,219 @@
+{
+  "checked": "2026-11-07",
+  "repositories": [
+    {
+      "repository": "deepseek-ai/DeepGEMM",
+      "url": "https://github.com/deepseek-ai/DeepGEMM",
+      "branch": "main",
+      "commit": "5081f8513af57e61696de4f4f04b0e707ffb503e",
+      "license": "MIT",
+      "description": "DeepGEMM: clean and efficient BLAS kernel library on GPU",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepEP",
+      "url": "https://github.com/deepseek-ai/DeepEP",
+      "branch": "main",
+      "commit": "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+      "license": "MIT",
+      "description": "DeepEP: an efficient expert-parallel communication library",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/FlashMLA",
+      "url": "https://github.com/deepseek-ai/FlashMLA",
+      "branch": "main",
+      "commit": "395cb3afbb331fef7b1b21e9340861b9436b42d8",
+      "license": "MIT",
+      "description": "FlashMLA: Efficient Multi-head Latent Attention Kernels",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DualPipe",
+      "url": "https://github.com/deepseek-ai/DualPipe",
+      "branch": "main",
+      "commit": "030ce4325f4ebeb437da4ebc6d00a70469dd58ae",
+      "license": "MIT",
+      "description": "A bidirectional pipeline parallelism algorithm for computation-communication overlap in DeepSeek V3/R1 training.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/3FS",
+      "url": "https://github.com/deepseek-ai/3FS",
+      "branch": "main",
+      "commit": "22fca04564c7cc230fd8b9523b8b92864e1dad47",
+      "license": "MIT",
+      "description": " A high-performance distributed file system designed to address the challenges of AI training and inference workloads. ",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/smallpond",
+      "url": "https://github.com/deepseek-ai/smallpond",
+      "branch": "main",
+      "commit": "52ecc5e45535c7448f848bcb45b0da00d9484f81",
+      "license": "MIT",
+      "description": "A lightweight data processing framework built on DuckDB and 3FS.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepInfer",
+      "url": "https://github.com/deepseek-ai/DeepInfer",
+      "branch": "main",
+      "commit": "a679bb86ce36e883a98a97733492b686e5b9a08e",
+      "license": "Apache-2.0",
+      "description": "DeepInfer: High-performance, large-scale inference framework for DeepSeek models",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/EPLB",
+      "url": "https://github.com/deepseek-ai/EPLB",
+      "branch": "main",
+      "commit": "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+      "license": "MIT",
+      "description": "Expert Parallelism Load Balancer",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepJIT",
+      "url": "https://github.com/deepseek-ai/DeepJIT",
+      "branch": "main",
+      "commit": "6e4bba88ee9e73a0986714f7f6bb45590ebeb04d",
+      "license": "MIT",
+      "description": "A lightweight library for xPU kernel JIT compilation",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSelect",
+      "url": "https://github.com/deepseek-ai/DeepSelect",
+      "branch": "main",
+      "commit": "bfa4507d935f17ebfc3d0f00ff7d3c9a4d0e5c18",
+      "license": "MIT",
+      "description": "DeepSelect: TopK kernels for DeepSeek Sparse Attention (DSA) and Samplers",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/LPLB",
+      "url": "https://github.com/deepseek-ai/LPLB",
+      "branch": "main",
+      "commit": "0490f79452f7ef277e814449600b1b1dd4c663b3",
+      "license": "MIT",
+      "description": "An early research stage expert-parallel load balancer for MoE models based on linear programming.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/deepseek-recipe",
+      "url": "https://github.com/deepseek-ai/deepseek-recipe",
+      "branch": "main",
+      "commit": "935817c66f5d6e64838f419692545f06787e485f",
+      "license": "MIT",
+      "description": null,
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "branch": "master",
+      "commit": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+      "license": "MIT",
+      "description": "DeepSeek Harness: Everything is a Plugin.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-Math-V2",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Math-V2",
+      "branch": "main",
+      "commit": "665c840782baf7faae8a8b244ea313f3cfcc346f",
+      "license": "Apache-2.0",
+      "description": null,
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-OCR-2",
+      "url": "https://github.com/deepseek-ai/DeepSeek-OCR-2",
+      "branch": "main",
+      "commit": "2f3699ebbb96fa8af32212e8c170f2cc28730fad",
+      "license": "Apache-2.0",
+      "description": "Visual Causal Flow",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepGEMM-Ascend",
+      "url": "https://github.com/deepseek-ai/DeepGEMM-Ascend",
+      "branch": "main",
+      "commit": "3a35326271b069b8b5bf1a754435acd6cc91575b",
+      "license": "MIT",
+      "description": "DeepGEMM-Ascend: clean and efficient matrix multiplication kernel library for Huawei Ascend NPUs",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepEP-Ascend",
+      "url": "https://github.com/deepseek-ai/DeepEP-Ascend",
+      "branch": "main",
+      "commit": "4dfccac4fc345519427e1019557301c9e59e9c76",
+      "description": "A high-performance communication library for machine learning training and inference on Huawei Ascend NPUs.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/TileKernels",
+      "url": "https://github.com/deepseek-ai/TileKernels",
+      "branch": "main",
+      "commit": "c1cf914a82e6901c679445f872051ce44ac2cc63",
+      "license": "MIT",
+      "description": "A kernel library written in tilelang",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/profile-data",
+      "url": "https://github.com/deepseek-ai/profile-data",
+      "branch": "main",
+      "commit": "449602428a1b023acb8a505d4f34fef536535db6",
+      "description": "Analyze computation-communication overlap in V3/R1.",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSpec",
+      "url": "https://github.com/deepseek-ai/DeepSpec",
+      "branch": "main",
+      "commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+      "license": "MIT",
+      "description": "DeepSpec: a full-stack codebase for training and evaluating speculative decoding algorithms",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/ESFT",
+      "url": "https://github.com/deepseek-ai/ESFT",
+      "branch": "main",
+      "commit": "3746ca74410c92163cc521571dbd17579bfdc962",
+      "license": "MIT",
+      "description": "Expert Specialized Fine-Tuning",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-Coder",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder",
+      "branch": "main",
+      "commit": "2f9fd85927c669dae3c0fbb2d607274023af243e",
+      "license": "MIT",
+      "description": "DeepSeek Coder: Let the Code Write Itself",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-Coder-V2",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+      "branch": "main",
+      "commit": "a2b4e0a25b5dab1ee87e8080f76e4512b0725b7b",
+      "license": "MIT",
+      "description": "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence",
+      "checked": "2026-11-07"
+    },
+    {
+      "repository": "deepseek-ai/DeepSeek-LLM",
+      "url": "https://github.com/deepseek-ai/DeepSeek-LLM",
+      "branch": "main",
+      "commit": "6712a86bfb7dd25c73383c5ad2eb7a8db540258b",
+      "license": "MIT",
+      "description": "DeepSeek LLM: Let there be answers",
+      "checked": "2026-11-07"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "file": "docs/guides/模块三-分布式训练/13.5-Megatron中MLA与MTP的源码Gate.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "zigzag, packed boundaries, loss normalization and cache counts: PASS\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/13.6-ProcessGroupCollection与动态混合CP.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "required fields and rank membership: PASS\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/13.6-ProcessGroupCollection与动态混合CP.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "orthogonal groups, rank inverse and folded PP agreement: PASS\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/13.6-ProcessGroupCollection与动态混合CP.md",
+    "block": 2,
+    "exit": 0,
+    "stdout": "CP degree and relative workload: [(1024, 1, 1048576), (2048, 1, 4194304), (4096, 2, 8388608), (8192, 4, 16777216)]\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.1-TorchTitan与原生PyTorch训练生态.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "world 32 state_GiB 8.382\ntokens_per_update 131072\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.1-TorchTitan与原生PyTorch训练生态.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "complete state resumes; resetting RNG changes trajectory\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.2-MaxText与JAX的分片和训练系统.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "local W (2048, 4096) local X (2, 1024, 4096)\nglobal weighted loss 5.0 incorrect rank mean 8.75\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.2-MaxText与JAX的分片和训练系统.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "break_even_steps 120000\nshort_job 500.0 610.0 long_job 10000.0 9920.0\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.3-开放训练框架选型与集成契约.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "4 64 4\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.3-开放训练框架选型与集成契约.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "weights export missing ['data_cursor', 'optimizer', 'rng', 'scheduler']\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.4-AMD-TPU-Trainium与异构训练边界.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "ideal step seconds 13.0 9.0 gradient 3.0\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.4-AMD-TPU-Trainium与异构训练边界.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "serial/pipeline lower bounds ms 25.625000000000004 11.953125000000002\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/17.4-AMD-TPU-Trainium与异构训练边界.md",
+    "block": 2,
+    "exit": 0,
+    "stdout": "weight/m/v global-coordinate reshard: PASS\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/5.3-HSDP与多实例分布式优化器.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "{'global_fsdp': 2.25, 'hfsdp': 3.0, 'hsdp': 4.5, 'global_distopt': 7.5, 'partial_distopt': 9.0}\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/5.3-HSDP与多实例分布式优化器.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "globally averaged gradients [4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/9.6-AutoSP与HexiSeq动态长序列调度.md",
+    "block": 0,
+    "exit": 0,
+    "stdout": "head shards [[(0, 0), (1, 0), (2, 0), (3, 0)], [(0, 1), (1, 1), (2, 1), (3, 1)]]\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/9.6-AutoSP与HexiSeq动态长序列调度.md",
+    "block": 1,
+    "exit": 0,
+    "stdout": "[[2, 6], [6, 18]] 2.0 1.0 ['weighted', 'equal']\n",
+    "stderr": ""
+  },
+  {
+    "file": "docs/guides/模块三-分布式训练/13.1-一次Megatron训练迭代的完整调用链.md",
+    "block": 2,
+    "exit": 0,
+    "stdout": "step schedule sample thresholds: PASS\n",
+    "stderr": ""
+  }
+]
